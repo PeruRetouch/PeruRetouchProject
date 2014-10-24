@@ -45,7 +45,7 @@
                             if (fileName != null) {
                                 String newFileName = userBean.getIdUser() + " - " + fPart.getFileName();
                                 //if (PhotosBean.addPhotoToList(newFileName)) {
-                                if (PhotosBean.addPhotoToList(session, fileName)) {
+                                if (PhotosBean.addPhotoToList(session, newFileName)) {
                                     //  fPart.writeTo(new File(fileSavePath));
                                     File newPhoto = new File(fileSavePath);
                                     fPart.writeTo(newPhoto);
