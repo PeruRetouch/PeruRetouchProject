@@ -82,9 +82,9 @@
                     <div id="viewOrder">
                         <!-- / content -->
                         <br>
-                        <a href="Controller?action=downloadAll&idOrder=<%= orden.getIdOrder() %>">Donwload all the order's photos</a> | 
+                        <!--a href="Controller?action=downloadAll&idOrder=<%= orden.getIdOrder() %>">Donwload all the order's photos</a> | 
                         <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder() %>">Donwload all the orginal photos</a> | 
-                        <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder() %>">Donwload all the orginal photos</a>
+                        <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder() %>">Donwload all the orginal photos</a-->
                         <br>
                         <%
                             if (request.getParameter("idPhoto") != null) {
