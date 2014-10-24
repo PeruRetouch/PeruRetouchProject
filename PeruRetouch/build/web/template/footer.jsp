@@ -1,0 +1,14 @@
+<%-- 
+    Document   : footer
+    Created on : 15/09/2014, 04:15:26 PM
+    Author     : Roy Taza Rojas
+--%>
+
+<div id="footer">
+    <div id="left_con_bot">
+        <p>Copyright  2014. <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p> 
+        <!--p>Design by <a>Free Flash Templates</a></p>
+        <p>M&aacute;s <a href="#" title="MPG - plantillas web y plantillas Flash" target="_blank">Plantillas Web Gratis</a> en MPG.</p-->
+        <p>Developed by Roy Taza Rojas</p>
+    </div>
+</div>
