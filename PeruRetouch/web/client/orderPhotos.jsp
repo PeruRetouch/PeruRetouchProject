@@ -312,7 +312,7 @@
                                                 break;
                                             case ConstantesWeb.ID_STATUS_REFERENCE:
                                         %>
-                                        <img src="../images/reference.png" alt="approved" height="11" /><label id="photoType">Reference</label>
+                                        <!--img src="../images/reference.png" alt="reference" height="11" /--><label id="photoType">Reference</label>
                                         <%
                                                 break;
                                             case ConstantesWeb.ID_STATUS_REWORKED:

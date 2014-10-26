@@ -91,6 +91,9 @@ public class Controller extends HttpServlet {
             case ConstantesWeb.MANAGER_PAY_ORDER:
                 this.ManagerPayOrder(request, response);
                 break;
+            case ConstantesWeb.ARTIST_DELETE_REFERENCES_APPROVED_ORDERS:
+                this.ArtistDeleteReferencesOfApprovedOrders(request, response);
+                break;
         }
     }
 
@@ -397,6 +400,21 @@ public class Controller extends HttpServlet {
             response.sendRedirect("artist/errorArtist.jsp?message=" + ex.getMessage());
         } catch (Exception e) {
             response.sendRedirect("artist/errorArtist.jsp?message=" + e.getMessage());
+        }
+    }
+
+    protected void ArtistDeleteReferencesOfApprovedOrders(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            session = request.getSession(false);
+            UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
+            List<Retouch> listRetouchs = retouchBusiness.listarReferencesOfApprovedOrders(userBean.getIdUser());
+            for (Retouch retouch : listRetouchs) {
+                retouch.setIdArtist(ConstantesWeb.ID_ARTIST_NOT_ASSIGNED);
+                retouchBusiness.ejecutar(OperacionEnum.ACTUALIZAR, retouch);
+            }
+            response.sendRedirect("artist/retouchOrders.jsp");
+        } catch (Exception e) {
         }
     }
 

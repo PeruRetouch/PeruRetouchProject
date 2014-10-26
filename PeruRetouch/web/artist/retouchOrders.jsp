@@ -115,6 +115,7 @@
                     <%
                         if (lstRetouchs.size() > 0) {
                     %>
+                    <a href="../Controller?action=<%= ConstantesWeb.ARTIST_DELETE_REFERENCES_APPROVED_ORDERS%>" style="">Clean References</a>
                     <table cellspacing="10">
                         <tr>
                             <td>File</td>

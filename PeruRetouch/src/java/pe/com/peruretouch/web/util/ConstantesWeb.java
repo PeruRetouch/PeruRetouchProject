@@ -14,6 +14,7 @@ public final class ConstantesWeb {
     public static final String FORGOT_USERNAME = "ForgotUsername";
     public static final String MANAGER_PAY_ORDER = "ManagerPayOrder";
     public static final String MANAGER_DISABLE_ACOCUNT = "ManagerDisableOrder";
+    public static final String ARTIST_DELETE_REFERENCES_APPROVED_ORDERS = "ArtistDeleteReferencesOfApprovedOrders";
     public static final int ID_SYSTEM_PROFILE = 1;
     public static final int ID_MANAGER_PROFILE = 2;
     public static final int ID_SUPERVISOR_PROFILE = 3;

@@ -123,4 +123,12 @@ public final class RetouchBusiness implements BaseBusiness<Retouch> {
             throw new CoreException(ex);
         }
     }
+
+    public List<Retouch> listarReferencesOfApprovedOrders(int idArtist) throws CoreException {
+        try {
+            return RETOUCH_DAO.listarReferencesOfApprovedOrders(idArtist);
+        } catch (CoreException ex) {
+            throw new CoreException(ex);
+        }
+    }
 }
