@@ -321,7 +321,7 @@ public final class RetouchDao extends BaseDao<Retouch> {
         }
         return lista;
     }
-    
+
     public List<Retouch> obtenerRetouchPendienteByOrder(int idArtist, int idOrder) throws CoreException {
         List<Retouch> lista = new ArrayList<>();
         try {
@@ -352,7 +352,7 @@ public final class RetouchDao extends BaseDao<Retouch> {
         }
         return lista;
     }
-    
+
     public List<Retouch> listarReworkByArtist(int idArtist) throws CoreException {
         List<Retouch> lista = new ArrayList<>();
         try {
@@ -382,13 +382,44 @@ public final class RetouchDao extends BaseDao<Retouch> {
         }
         return lista;
     }
-    
+
     public List<Retouch> listarReferencesOfApprovedOrders(int idArtist) throws CoreException {
         List<Retouch> lista = new ArrayList<>();
         try {
             cn = obtenerConexion();
             cl = cn.prepareCall("{CALL spF_ArtistPhotoReferencesOfApprovedOrders(?)}");
             cl.setInt(1, idArtist);
+            rs = cl.executeQuery();
+            while (rs.next()) {
+                Retouch retouch = new Retouch();
+                retouch.setIdRetouch(rs.getInt("idRetouch"));
+                retouch.setIdOrder(rs.getInt("idOrder"));
+                retouch.setIdProduct(rs.getInt("idProduct"));
+                retouch.setIdArtist(rs.getInt("idArtist"));
+                retouch.setIdSupervisor(rs.getInt("idSupervisor"));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setFileNombre(rs.getString("fileNombre"));
+                retouch.setPhotoId(rs.getInt("photoId"));
+                lista.add(retouch);
+            }
+        } catch (Exception e) {
+            throw new CoreException(e);
+        } finally {
+            cerrar(cl);
+            cerrar(rs);
+            cerrar(cn);
+        }
+        return lista;
+    }
+
+    public List<Retouch> listarRetouchsApprovedOfTheArtistByProduct(int idArtist, int idProduct) throws CoreException {
+        List<Retouch> lista = new ArrayList<>();
+        try {
+            cn = obtenerConexion();
+            cl = cn.prepareCall("{CALL spF_RetouchApprovedOfTheArtistByProduct(?,?)}");
+            cl.setInt(1, idArtist);
+            cl.setInt(2, idProduct);
             rs = cl.executeQuery();
             while (rs.next()) {
                 Retouch retouch = new Retouch();

@@ -33,6 +33,7 @@ Author     : Roy Taza Rojas
         <li id="button3"><a href="../artist/retouchOrders.jsp">Retouch Orders</a></li>
         <li id="button4"><a href="../artist/getNewOrder.jsp">Get New Order</a></li>
         <li id="button5"><a href="../artist/uploadRetouchedPhoto.jsp">Upload Retouched Photo</a></li>
+        <li id="button6"><a href="../artist/artistComission.jsp">Artist Comission</a></li>
     </ul>
 </div>
 <%
