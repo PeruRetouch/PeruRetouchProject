@@ -85,9 +85,11 @@
                         <br>
                         <p style="text-align: justify"><%= product.getDescription()%></p>
                         <br>
+                        <p><img src="../images/dollar.png" alt="#"> Price per photo : $<%= product.getPrice()%></p>
                         <br>
                         <br>
-                        <p>Choose the photos to be retouched : </p>
+                        <br>
+                        <p>Choose the photos to be retouched. <label style="font-size: 15px">(You can upload photo references. Photo references does NOT have price.)</label></p>
                         <br>
                         <div id="uploader">
                             <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
@@ -95,10 +97,12 @@
                         <br>
                     </div>
                     <br>
-                    <div id="buttonsUploadFiles">
-                        <button onclick="location.href = 'chooseProduct.jsp';" name="btnCancel" style="float: left;" >Choose another product</button>
+                    <div id="buttonsUploadFiles" style="margin-left: 12px;margin-right: 12px">
+                        <!--button onclick="location.href = 'chooseProduct.jsp';" name="btnCancel" style="float: left;" ><img src="../images/cancel.png" alt="Cancel" height="50"></button-->
+                        <a href="chooseProduct.jsp" style="float: left;" ><img src="../images/cancel.png" alt="Cancel" height="40"></a>
                         <form id="form" method="post" action="addSpecifications.jsp?idProduct=<%= product.getIdProduct()%>" >
-                            <input type="submit" name="btnContinue" value="Continue" style="float: right;" />
+                            <input type="image" src="../images/continue.png" name="btnContinue" style="float: right;margin-top: -10px;" height="70" alt="Continue"/>
+                            <!--a href="chooseProduct.jsp" style="float: left;" ><img src="../images/continue.png" alt="Cancel" height="50"></a-->
                         </form>
                     </div>
                     <!-- / content -->

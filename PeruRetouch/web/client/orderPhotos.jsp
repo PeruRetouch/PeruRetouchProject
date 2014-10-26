@@ -292,7 +292,7 @@
                                             }
                                         }
                                         //Agrego una columna
-%>
+                                    %>
                                     <td>
                                         <b><%= UtilWeb.formatName(r.getFileNombre(), userBean.getIdUser().toString().length())%></b><br />
                                         <a href="orderPhotos.jsp?idOrder=<%= idOrder%>&idPhoto=<%= r.getPhotoId()%>"><img src="../photoResources/photos/<%= r.getFileNombre()%>" height="110"></a><br />
@@ -302,12 +302,12 @@
                                                     switch (rxs.getIdStatus()) {
                                                         case ConstantesWeb.ID_STATUS_APPROVED:
                                             %>
-                                        <img src="../images/approved.png" alt="approved" height="11" /><label id="photoType">Approved</label>
+                                        <img src="../images/approved.png" alt="approved" height="11" /><label id="photoType" style="color: green">Approved</label>
                                         <%
                                                 break;
                                             case ConstantesWeb.ID_STATUS_PAYED:
                                         %>
-                                        <img src="../images/approvedAndPayed.png" alt="approved" height="11" /><label id="photoType">Payed</label>
+                                        <img src="../images/approvedAndPayed.png" alt="approved" height="11" /><label id="photoType" style="color: green">Payed</label>
                                         <%
                                                 break;
                                             case ConstantesWeb.ID_STATUS_REFERENCE:
@@ -317,7 +317,7 @@
                                                 break;
                                             case ConstantesWeb.ID_STATUS_REWORKED:
                                         %>
-                                        <img src="../images/reworked.png" alt="approved" height="11" /><label id="photoType">Reworked</label>
+                                        <img src="../images/reworked.png" alt="approved" height="11" /><label id="photoType" style="color: green;font-weight: bold;font-size: 16px">Reworked</label>
                                         <%
                                                 break;
                                             case ConstantesWeb.ID_STATUS_REWORKING:
@@ -327,7 +327,7 @@
                                                 break;
                                             case ConstantesWeb.ID_STATUS_WAITING_ANSWER:
                                         %>
-                                        <img src="../images/waitingAnswer.png" alt="approved" height="11" /><label id="photoType">Waiting Answer</label>
+                                        <img src="../images/waitingAnswer.png" alt="approved" height="11" /><label id="photoType" style="color: green;font-weight: bold;font-size: 16px">Waiting Answer</label>
                                         <%
                                                 break;
                                             case ConstantesWeb.ID_STATUS_WORKING:

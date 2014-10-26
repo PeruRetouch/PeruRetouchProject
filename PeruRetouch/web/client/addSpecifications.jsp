@@ -71,8 +71,13 @@
                             <h3><%= product.getName()%></h3>
                             <br>
                             <p style="text-align: justify"><%= product.getDescription()%></p>
-                            <br><br><br>
-                            <p>Add the requirement for all the photos or/and each photo and choose an artist if you prefer:</p>
+                            <br>
+                            <br>
+                            <p><img src="../images/dollar.png" alt="#"> Price per photo : $<%= product.getPrice()%></p>
+                            <p style="font-size: 15px">Photo references does NOT have price.</p>
+                            <br>
+                            <br>
+                            <p>Add the requirement for all the photos and/or each photo:</p>
                             <br>
 
                             <!--p>
@@ -114,10 +119,10 @@
                                         }
                                     }
                                     //Agrego una columna
-                                %>
+%>
                                 <td>
                                     <%= UtilWeb.formatName(s, userBean.getIdUser().toString().length())%><br />
-                                    <img src="../photoResources/photos/<%= s%>" height="100"><br />
+                                    <img src="../photoResources/temporary/<%= s%>" height="100"><br />
                                     <textarea name="txtPhotoSpecification" cols="20" rows="4" placeholder="Photo's specification"></textarea><br />
                                     <input type="checkbox" name="chkReference" value="<%= s%>" >Reference
                                 </td>
@@ -131,15 +136,17 @@
                         <br />
                         <div id="buttonsUploadFiles">
                             <div style="float: right">
-                                <input type="checkbox" name="chkConfirm" value="1" required />I'm sure about the specifications and I want to Send the order.
+                                <input type="checkbox" name="chkConfirm" value="1" required />I'm sure about the specifications, pay $<%= product.getPrice() %> per photo and SEND and BUY the order.
                             </div>
                             <br><br>
-                            <button onclick="location.href = 'chooseProduct.jsp';" name="btnCancel" style="float: left;" >Choose another product</button>
+                            <!--button onclick="location.href = 'chooseProduct.jsp';" name="btnCancel" style="float: left;" >Choose another product</button-->
+                            <a href="chooseProduct.jsp" style="float: left;" ><img src="../images/cancel.png" alt="Cancel" height="40"></a>
                             <div style="float: right;">
                                 <input type="hidden" name="idClient" value="<%= product.getIdProduct()%>" />
                                 <input type="hidden" name="idProduct" value="<%= product.getIdProduct()%>" />
                                 <input type="hidden" name="action" value="<%= ConstantesWeb.UPLOAD_PHOTOS_CLIENT%>" />
-                                <input type="submit" name="btnContinue" value="Confirm and Send the Order" />
+                                <!--input type="submit" name="btnContinue" value="Confirm and Send the Order" /-->
+                                <input type="image" src="../images/buyNow.gif" name="btnContinue" style="float: right;margin-top: -12px;" height="55" alt="BuyNow"/>
                             </div>
                         </div>
                     </form>

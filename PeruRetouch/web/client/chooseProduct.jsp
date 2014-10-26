@@ -54,13 +54,23 @@
                     <div id="uploadFiles">
                         <br>
                         <h3>Choose a product:</h3>
-                        <table cellspacing="30">
+                        <br>
+                        <p>Click in the product to choose it.</p>
+                        <br><br>
+                        <table cellspacing="15" width="100%">
+                            <tr>
+                                <td colspan="3" width="11%" align="center"><label style="text-align: center;color: #008ae8;font-size: 17px">Product</label></td>
+                                <td width="11%" align="center"><label style="text-align: center;color: #008ae8;font-size: 15px">Price per photo</label></td>
+                                <td width="78%"><label style="text-align: center;color: #008ae8;font-size: 15px">Features</label></td>
+                            </tr>
                             <%
                                 for (Product p : products) {
                             %>
                             <tr>
+                                <td><a href="uploadPhotos.jsp?idProduct=<%= p.getIdProduct()%>"><img src="../images/right.png" alt="Choose"></a></td>
                                 <td><a href="uploadPhotos.jsp?idProduct=<%= p.getIdProduct()%>"><h4><%= p.getName()%></h4></a></td>
-                                <td><%= p.getAbreviation()%></td>
+                                <td align="center"><%= p.getAbreviation()%></td>
+                                <td align="center">$<%= p.getPrice()%></td>
                                 <td style="text-align: justify"><%= p.getDescription()%></td>
                                 <!--td><img src="#" width="400" height="120" /></td-->
                             </tr>
@@ -68,7 +78,7 @@
                                 }
                             %>
                         </table>
-                        <br>
+                        <br><br><br>
                     </div>
                     <!-- / content -->
                     <!-- footer -->
