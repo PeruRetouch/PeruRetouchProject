@@ -24,7 +24,8 @@
             response.sendRedirect("../sa/homeSa.jsp");
         } else {
             try {
-                PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
+                PhotosBean photosBean = new PhotosBean();
+                photosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
                 ProductBusiness productBusiness = ProductBusiness.obtenerEntidad();
 %>
 <!DOCTYPE html>

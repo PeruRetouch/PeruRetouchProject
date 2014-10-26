@@ -25,7 +25,8 @@
         } else {
             ProductBusiness productBusiness = ProductBusiness.obtenerEntidad();
             List<Product> products = productBusiness.listarProducts();
-            PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
+            PhotosBean photosBean = new PhotosBean();
+            photosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
 %>
 <!DOCTYPE html>
 <html>

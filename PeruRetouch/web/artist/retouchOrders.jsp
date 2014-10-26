@@ -31,7 +31,7 @@
         } else if (userBean.getPrivilege().equalsIgnoreCase("sa")) {
             response.sendRedirect("../sa/homeSa.jsp");
         } else {
-            PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
+            //PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
             RetouchBusiness retouchBusiness = RetouchBusiness.obtenerEntidad();
             List<Retouch> lstRetouchs = retouchBusiness.listarByArtist(userBean.getIdUser());
             ProductBusiness productBusiness = ProductBusiness.obtenerEntidad();

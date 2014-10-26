@@ -29,7 +29,8 @@
         } else if (userBean.getPrivilege().equalsIgnoreCase("sa")) {
             response.sendRedirect("../sa/homeSa.jsp");
         } else {
-            PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
+            PhotosBean photosBean = new PhotosBean();
+            photosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
             Integer idOrder = Integer.parseInt(request.getParameter("order"));
             OrdenBusiness ordenBusiness = OrdenBusiness.obtenerEntidad();
             Orden orden = new Orden();
@@ -69,7 +70,7 @@
                         <%
                             if (request.getParameter("n") != null) {
                         %>
-                        <p><b>Product:</b> <%= request.getParameter("n") %></p>
+                        <p><b>Product:</b> <%= request.getParameter("n")%></p>
                         <%
                             }
                         %>

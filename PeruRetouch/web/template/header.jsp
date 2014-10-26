@@ -18,7 +18,7 @@
 </div>
 <br>
 <div class="contenedorLogout" style="float: right;">
-    Bienvenido <%= userInfo.getName()%> <%= userInfo.getLastName()%> <a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><img id="btnLogoutx" src="../images/logoutHover.png" alt="Logout" /></a>
+    Welcome <%= userInfo.getName()%> <%= userInfo.getLastName()%> <a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><img id="btnLogoutx" src="../images/logoutHover.png" alt="Logout" /></a>
 </div>
 <%
 }

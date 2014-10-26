@@ -6,6 +6,7 @@
 package pe.com.peruretouch.web.bean;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.LinkedHashSet;
 import javax.servlet.http.HttpSession;
 import pe.com.peruretouch.web.util.ConstantesWeb;
@@ -14,17 +15,11 @@ import pe.com.peruretouch.web.util.ConstantesWeb;
  *
  * @author Roy Taza Rojas
  */
-public final class PhotosBean {
+public class PhotosBean implements Serializable {
 
-    private final static ProductBean PRODUCT_BEAN = new ProductBean();
-    //private final static List<String> LIST_PHOTOS_UPLOADED = new ArrayList<String>();
-    //private final static LinkedHashSet<String> LIST_PHOTOS_UPLOADED = new LinkedHashSet<String>();
+    private LinkedHashSet<String> list_photos;
 
-    private PhotosBean() {
-    }
-
-    public static ProductBean getInstancia() {
-        return PRODUCT_BEAN;
+    public PhotosBean() {
     }
     /*
      public static LinkedHashSet<String> getListPhotos() {
@@ -47,16 +42,17 @@ public final class PhotosBean {
      */
 
     // CON SESION
-    public static LinkedHashSet<String> getListPhotos(HttpSession sesion) {
-        return (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
+    public LinkedHashSet<String> getListPhotos(HttpSession sesion) {
+        this.list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
+        return list_photos;
     }
 
-    public static boolean addPhotoToList(HttpSession sesion, String fileName) {
+    public boolean addPhotoToList(HttpSession sesion, String fileName) {
         // Obtener la lista actual de la sesion
-        LinkedHashSet<String> list_photos;
-        if (sesion.getAttribute(ConstantesWeb.PHOTO_LIST) == null) {
+        this.list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
+        if (list_photos == null) {
             // Si NO existe se crea la lista
-            list_photos = new LinkedHashSet<String>();
+            list_photos = new LinkedHashSet<>();
         } else {
             // Si SI existe se obtiene la lista
             list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
@@ -72,8 +68,8 @@ public final class PhotosBean {
         }
     }
 
-    public static void removeAllPhotosFromTheList(HttpSession sesion, String fileSavePath) {
-        LinkedHashSet<String> list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
+    public void removeAllPhotosFromTheList(HttpSession sesion, String fileSavePath) {
+        this.list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
         if (list_photos != null) {
             if (!list_photos.isEmpty()) {
                 for (String s : list_photos) {
@@ -81,7 +77,27 @@ public final class PhotosBean {
                     file.delete();
                 }
                 list_photos.clear();
+                sesion.setAttribute(ConstantesWeb.PHOTO_LIST, list_photos);
             }
+        }
+        //sesion.removeAttribute(ConstantesWeb.PHOTO_LIST);
+    }
+    /*
+     public static void cleartList(HttpSession sesion) {
+     LinkedHashSet<String> list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
+     list_photos.size();
+     if (sesion.getAttribute(ConstantesWeb.PHOTO_LIST) == null) {
+     sesion.removeAttribute(ConstantesWeb.PHOTO_LIST);
+     }
+     }
+     */
+
+    public void cleartList2(HttpSession sesion) {
+        this.list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
+        if (list_photos != null) {
+            list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
+            list_photos.clear();
+            sesion.setAttribute(ConstantesWeb.PHOTO_LIST, list_photos);
         }
     }
 }

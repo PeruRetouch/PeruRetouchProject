@@ -15,6 +15,7 @@
         response.sendRedirect("../index.jsp");
     } else {
         UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
+        PhotosBean photosBean = new PhotosBean();
         if (userBean.getPrivilege().equalsIgnoreCase("artist")) {
             response.sendRedirect("../artist/homeArtist.jsp");
         } else if (userBean.getPrivilege().equalsIgnoreCase("supervisor")) {
@@ -26,7 +27,7 @@
         } else if (request.getParameter("idProduct") == null) {
             response.sendRedirect("chooseProduct.jsp");
             //} else if (PhotosBean.getListPhotos().size() == 0) {
-        } else if (PhotosBean.getListPhotos(session).size() == 0) {
+        } else if (photosBean.getListPhotos(session).size() == 0) {
             response.sendRedirect("chooseProduct.jsp");
         } else {
             try {
@@ -35,11 +36,11 @@
                 product.setIdProduct(Integer.parseInt(request.getParameter("idProduct")));
                 if (product.getIdProduct() == ConstantesWeb.ID_PRODUCT_REFERENCE) {
                     response.sendRedirect("chooseProduct.jsp");
-                } else if (PhotosBean.getListPhotos(session).size() == 0) {
+                } else if (photosBean.getListPhotos(session).size() == 0) {
                     response.sendRedirect("chooseProduct.jsp");
                 } else {
                     product = productBusiness.ejecutar(OperacionEnum.OBTENER, product);
-                    LinkedHashSet<String> photos = PhotosBean.getListPhotos(session);
+                    LinkedHashSet<String> photos = photosBean.getListPhotos(session);
 %>
 <!DOCTYPE html>
 <html>
@@ -113,7 +114,7 @@
                                         }
                                     }
                                     //Agrego una columna
-%>
+                                %>
                                 <td>
                                     <%= UtilWeb.formatName(s, userBean.getIdUser().toString().length())%><br />
                                     <img src="../photoResources/photos/<%= s%>" height="100"><br />

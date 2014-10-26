@@ -36,7 +36,8 @@
             response.sendRedirect("../sa/homeSa.jsp");
         } else {
             try {
-                PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
+                PhotosBean photosBean = new PhotosBean();
+                photosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
                 OrdenBusiness ordenBusiness = OrdenBusiness.obtenerEntidad();
                 Integer idOrder = Integer.parseInt(request.getParameter("idOrder"));
                 Orden orden = new Orden();
@@ -82,9 +83,9 @@
                     <div id="viewOrder">
                         <!-- / content -->
                         <br>
-                        <!--a href="Controller?action=downloadAll&idOrder=<%= orden.getIdOrder() %>">Donwload all the order's photos</a> | 
-                        <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder() %>">Donwload all the orginal photos</a> | 
-                        <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder() %>">Donwload all the orginal photos</a-->
+                        <!--a href="Controller?action=downloadAll&idOrder=<%= orden.getIdOrder()%>">Donwload all the order's photos</a> | 
+                        <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder()%>">Donwload all the orginal photos</a> | 
+                        <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder()%>">Donwload all the orginal photos</a-->
                         <br>
                         <%
                             if (request.getParameter("idPhoto") != null) {
@@ -101,7 +102,7 @@
                         %>
                         <div id="photoWorking">
                             <img src="../photoResources/photos/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="400"><br />
-                            <a href="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
+                            <a href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
                             <label>PHOTO REFERENCE</label><br />
                         </div>
                         <%
@@ -110,7 +111,7 @@
                         %>
                         <div id="photoWorking">
                             <img src="../photoResources/photos/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="400"><br />
-                            <a href="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
+                            <a href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
                             <label>STATUS: WORKING</label><br />
                         </div>
                         <br />
@@ -291,7 +292,7 @@
                                             }
                                         }
                                         //Agrego una columna
-                                    %>
+%>
                                     <td>
                                         <b><%= UtilWeb.formatName(r.getFileNombre(), userBean.getIdUser().toString().length())%></b><br />
                                         <a href="orderPhotos.jsp?idOrder=<%= idOrder%>&idPhoto=<%= r.getPhotoId()%>"><img src="../photoResources/photos/<%= r.getFileNombre()%>" height="110"></a><br />

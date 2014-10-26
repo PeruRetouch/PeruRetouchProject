@@ -24,7 +24,7 @@
             response.sendRedirect("../sa/homeSa.jsp");
         } else {
             try {
-                PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
+                //PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
 %>
 <!DOCTYPE html>
 <html>

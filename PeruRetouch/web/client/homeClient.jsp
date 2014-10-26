@@ -30,7 +30,8 @@
         } else if (userBean.getPrivilege().equalsIgnoreCase("sa")) {
             response.sendRedirect("../sa/homeSa.jsp");
         } else {
-            PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
+            PhotosBean photosBean = new PhotosBean();
+            photosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
             OrdenBusiness ordenBusiness = OrdenBusiness.obtenerEntidad();
             List<Orden> listOrders = ordenBusiness.listOrdersByClient(userBean.getIdUser());
             OrderXStatusBusiness orderXStatusBusiness = OrderXStatusBusiness.obtenerEntidad();

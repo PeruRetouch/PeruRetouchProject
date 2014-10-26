@@ -25,30 +25,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import pe.com.peruretouch.business.OrdenBusiness;
-import pe.com.peruretouch.business.OrderXStatusBusiness;
-import pe.com.peruretouch.business.ProductBusiness;
-import pe.com.peruretouch.business.ProfileBusiness;
-import pe.com.peruretouch.business.RetouchBusiness;
-import pe.com.peruretouch.business.RetouchXSpecificationBusiness;
-import pe.com.peruretouch.business.RetouchXStatusBusiness;
-import pe.com.peruretouch.business.UserBusiness;
+import pe.com.peruretouch.business.*;
 import pe.com.peruretouch.business.base.BusinessException;
 import pe.com.peruretouch.business.base.OperacionEnum;
-import pe.com.peruretouch.entity.Orden;
-import pe.com.peruretouch.entity.OrderXStatus;
-import pe.com.peruretouch.entity.Product;
-import pe.com.peruretouch.entity.Profile;
-import pe.com.peruretouch.entity.Retouch;
-import pe.com.peruretouch.entity.RetouchXSpecification;
-import pe.com.peruretouch.entity.RetouchXStatus;
-import pe.com.peruretouch.entity.User;
+import pe.com.peruretouch.entity.*;
 import pe.com.peruretouch.web.bean.PhotosBean;
 import pe.com.peruretouch.web.bean.UserBean;
-import pe.com.peruretouch.web.util.ConstantesWeb;
-import pe.com.peruretouch.web.util.Encryptor;
-import pe.com.peruretouch.web.util.ManejadorFechas;
-import pe.com.peruretouch.web.util.UtilWeb;
+import pe.com.peruretouch.web.util.*;
 
 /**
  *
@@ -121,7 +104,6 @@ public class Controller extends HttpServlet {
             String clave = Encryptor.encrypt(request.getParameter("txtPassword"));
             if (!usuario.isEmpty() && !clave.isEmpty()) {
                 User user = userBusiness.userAuthentication(usuario, clave);
-                session = request.getSession(true);
                 if (user != null) {
                     userBean.setIdUser(user.getIdUser());
                     userBean.setName(user.getName());
@@ -131,30 +113,42 @@ public class Controller extends HttpServlet {
                     Profile p = new Profile();
                     p.setIdProfile(user.getIdProfile());
                     userBean.setPrivilege(profileBusiness.ejecutar(OperacionEnum.OBTENER, p).getName());
-                    session.setAttribute(ConstantesWeb.USER_HOME, userBean);
-                    session.setMaxInactiveInterval(60 * 60);
-
                     if (user.getState().equalsIgnoreCase(ConstantesWeb.STATE_INACTIVE)) {
-                        session.setAttribute(ConstantesWeb.USER_HOME, null);
+                        //session.setAttribute(ConstantesWeb.USER_HOME, null);
                         mensaje += "Your account has been disabled";
                         url = "index.jsp?" + ConstantesWeb.MESSAGE + "=" + mensaje;
                     } else if (user.getIdProfile() == ConstantesWeb.ID_CLIENT_PROFILE) {
+                        session = request.getSession(true);
+                        session.setAttribute(ConstantesWeb.USER_HOME, userBean);
+                        session.setMaxInactiveInterval(60 * 60);
                         url = "client/homeClient.jsp";
                     } else if (user.getIdProfile() == ConstantesWeb.ID_ARTIST_PROFILE) {
+                        session = request.getSession(true);
+                        session.setAttribute(ConstantesWeb.USER_HOME, userBean);
+                        session.setMaxInactiveInterval(60 * 60);
                         url = "artist/retouchOrders.jsp";
                     } else if (user.getIdProfile() == ConstantesWeb.ID_SUPERVISOR_PROFILE) {
+                        session = request.getSession(true);
+                        session.setAttribute(ConstantesWeb.USER_HOME, userBean);
+                        session.setMaxInactiveInterval(60 * 60);
                         url = "supervisor/homeSupervisor.jsp";
                     } else if (user.getIdProfile() == ConstantesWeb.ID_MANAGER_PROFILE) {
+                        session = request.getSession(true);
+                        session.setAttribute(ConstantesWeb.USER_HOME, userBean);
+                        session.setMaxInactiveInterval(60 * 60);
                         url = "manager/homeManager.jsp";
                     } else if (user.getIdProfile() == ConstantesWeb.ID_SYSTEM_PROFILE) {
+                        session = request.getSession(true);
+                        session.setAttribute(ConstantesWeb.USER_HOME, userBean);
+                        session.setMaxInactiveInterval(60 * 60);
                         url = "sa/homeSystem.jsp";
                     } else {
-                        session.setAttribute(ConstantesWeb.USER_HOME, null);
+                        //session.setAttribute(ConstantesWeb.USER_HOME, null);
                         mensaje += "An error has ocurred";
                         url = "index.jsp?" + ConstantesWeb.MESSAGE + "=" + mensaje;
                     }
                 } else {
-                    session.setAttribute(ConstantesWeb.USER_HOME, null);
+                    //session.setAttribute(ConstantesWeb.USER_HOME, null);
                     mensaje += "User or password incorrect";
                     url = "index.jsp?" + ConstantesWeb.MESSAGE + "=" + mensaje;
                 }
@@ -175,11 +169,15 @@ public class Controller extends HttpServlet {
 
     protected void Logout(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (session.getAttribute(ConstantesWeb.USER_HOME) != null) {
-            session.removeAttribute(ConstantesWeb.USER_HOME);
-        }
-        if (request.getSession(true) != null) {
-            request.getSession(true).invalidate();
+        session = request.getSession(false);
+        if (session != null) {
+            if (session.getAttribute(ConstantesWeb.USER_HOME) != null) {
+                session.removeAttribute(ConstantesWeb.USER_HOME);
+            }
+            if (session.getAttribute(ConstantesWeb.PHOTO_LIST) != null) {
+                session.removeAttribute(ConstantesWeb.USER_HOME);
+            }
+            session.invalidate();
         }
         response.sendRedirect("index.jsp");
     }
@@ -189,7 +187,6 @@ public class Controller extends HttpServlet {
         String rpta = "";
         String mensaje = "";
         try {
-
             String userLogin = request.getParameter("txtUserName");
             // Comprobar si el usuario ya existe
             User userAux = new User();
@@ -233,8 +230,10 @@ public class Controller extends HttpServlet {
     protected void uploadPhotosClient(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            session = request.getSession(false);
+            PhotosBean photosBean = new PhotosBean();
             //if (PhotosBean.getListPhotos().isEmpty()) {
-            if (PhotosBean.getListPhotos(session).isEmpty()) {
+            if (photosBean.getListPhotos(session).isEmpty()) {
                 response.sendRedirect("client/homeClient.jsp");
             } else {
                 // Current UTC time
@@ -278,7 +277,7 @@ public class Controller extends HttpServlet {
                 ////// CREATE RETOUCH and RetouchXSpecification FOR EVERY PHOTO
                 Double totalOrder = 0D;
                 //LinkedHashSet<String> lstPhotos = PhotosBean.getListPhotos();
-                LinkedHashSet<String> lstPhotos = PhotosBean.getListPhotos(session);
+                LinkedHashSet<String> lstPhotos = photosBean.getListPhotos(session);
                 String[] lstSpecifications = request.getParameterValues("txtPhotoSpecification");
                 String[] lstReferences = request.getParameterValues("chkReference");
                 String fileSavePath = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT;
@@ -351,7 +350,7 @@ public class Controller extends HttpServlet {
                 orden.setTotal(totalOrder);
                 ordenBusiness.ejecutar(OperacionEnum.ACTUALIZAR, orden);
                 //PhotosBean.getListPhotos().clear();
-                PhotosBean.getListPhotos(session).clear();
+                photosBean.cleartList2(session);
                 response.sendRedirect("client/orderDetail.jsp?order=" + idorder + "&n=" + product.getName());
             }
         } catch (BusinessException ex) {
@@ -364,6 +363,7 @@ public class Controller extends HttpServlet {
     protected void GetNewOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            session = request.getSession(false);
             // Current UTC time
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -404,6 +404,7 @@ public class Controller extends HttpServlet {
             throws ServletException, IOException {
         String rpta = "";
         String mensaje = "";
+        session = request.getSession(false);
         UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
         try {
             // Setear datos actualizados del usuario
@@ -437,6 +438,7 @@ public class Controller extends HttpServlet {
 
     protected void ChangePassword(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        session = request.getSession(false);
         String rpta = "";
         String mensaje = "";
         UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
@@ -475,6 +477,7 @@ public class Controller extends HttpServlet {
 
     protected void SendAnswer(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        session = request.getSession(false);
         String rpta = "";
         String mensaje = "";
         UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
