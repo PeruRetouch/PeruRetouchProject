@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,6 +6,10 @@
 package pe.com.peruretouch.web.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import static java.nio.file.StandardCopyOption.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashSet;
@@ -173,6 +177,8 @@ public class Controller extends HttpServlet {
     protected void Logout(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         session = request.getSession(false);
+        PhotosBean photosBean = new PhotosBean();
+        photosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
         if (session != null) {
             if (session.getAttribute(ConstantesWeb.USER_HOME) != null) {
                 session.removeAttribute(ConstantesWeb.USER_HOME);
@@ -283,7 +289,8 @@ public class Controller extends HttpServlet {
                 LinkedHashSet<String> lstPhotos = photosBean.getListPhotos(session);
                 String[] lstSpecifications = request.getParameterValues("txtPhotoSpecification");
                 String[] lstReferences = request.getParameterValues("chkReference");
-                String fileSavePath = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT;
+                String fileSavePathOrigen = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_TEMPORARY;
+                String fileSavePathDestino = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT;
                 int idSpecification = ConstantesWeb.ID_SPECIFICATION_NORMAL;
                 boolean isReference;
                 for (int i = 0; i < lstPhotos.size(); i++) {
@@ -330,9 +337,31 @@ public class Controller extends HttpServlet {
                     }
                     retouch.setIdRetouch(idRetouch);
                     retouch.setPhotoId(idRetouch);
+
                     String newFileName = idRetouch + photoName.substring(userBean.getIdUser().toString().length());
-                    UtilWeb.renameFile(fileSavePath, photoName, newFileName);
+                    UtilWeb.renameFile(fileSavePathOrigen, photoName, newFileName);
+
+                    Path source = Paths.get(fileSavePathOrigen + "/" + newFileName);
+                    Path destiny = Paths.get(fileSavePathDestino + "/" + newFileName);
+                    Files.move(source, destiny, REPLACE_EXISTING);
                     retouch.setFileNombre(newFileName);
+
+                    /*
+                     File sourceFile = new File(fileSavePathOrigen + "/" + newFileName);
+                     File destinyFile = new File(fileSavePathDestino + "/" + newFileName);
+                     InputStream inStream = new FileInputStream(sourceFile);
+                     OutputStream outStream = new FileOutputStream(destinyFile);
+                     byte[] buffer = new byte[1024];
+                     int length;
+                     //copy the file content in bytes 
+                     while ((length = inStream.read(buffer)) > 0) {
+                     outStream.write(buffer, 0, length);
+                     }
+                     inStream.close();
+                     outStream.close();
+                     //delete the original file
+                     sourceFile.delete();
+                     */
                     retouchBusiness.ejecutar(OperacionEnum.ACTUALIZAR, retouch);
                     // Insert Reotuch status
                     if (isReference) {

@@ -24,7 +24,7 @@
         <form method="post" action="upload.jsp" name="upform" enctype="multipart/form-data">
             <%
                 String fileSavePath;
-                String UPLOAD_DIRECTORY = "photoResources/photos";
+                String UPLOAD_DIRECTORY = "photoResources/temporary";
                 UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
                 // idClient - fileName - dateTime
                 // Guardar las fotos en el directorio "" de la aplicacion web

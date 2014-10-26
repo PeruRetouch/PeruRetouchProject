@@ -28,7 +28,8 @@ public final class ConstantesWeb {
     public static final String STATE_ACTIVE = "Active";
     public static final String STATE_INACTIVE = "Inactive";
     public static final String FILE_SAVE_PATH_CLIENT = "photoResources/photos";
-    public static final String FILE_SAVE_PATH_ARTIST = "photoResources/photosArtist";
+    public static final String FILE_SAVE_PATH_RETOUCHED = "photoResources/photosRetouched";
+    public static final String FILE_SAVE_PATH_TEMPORARY = "photoResources/temporary";
     
     public static final int ID_STATUS_WORKING = 1;
     public static final int ID_STATUS_REVIEW = 2;
