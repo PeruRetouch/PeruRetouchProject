@@ -135,7 +135,7 @@ public final class OrdenDao extends BaseDao<Orden> {
         return lista;
     }
 
-    public List<Orden> listOrdersByClient(int idCliente) throws CoreException {        
+    public List<Orden> listOrdersByClient(int idCliente) throws CoreException {
         List<Orden> lista = new ArrayList<>();
         try {
             cn = obtenerConexion();
@@ -161,7 +161,7 @@ public final class OrdenDao extends BaseDao<Orden> {
         }
         return lista;
     }
-    
+
     public int insertarAndReturnId(Orden e) throws CoreException {
         Integer idOrder = 0;
         try {
@@ -183,8 +183,8 @@ public final class OrdenDao extends BaseDao<Orden> {
         }
         return idOrder;
     }
-    
-    public List<Orden> listOrdersNoAssigned() throws CoreException {        
+
+    public List<Orden> listOrdersNoAssigned() throws CoreException {
         List<Orden> lista = new ArrayList<>();
         try {
             cn = obtenerConexion();
@@ -209,8 +209,8 @@ public final class OrdenDao extends BaseDao<Orden> {
         }
         return lista;
     }
-    
-    public int orderNumberOfPhotos(int idOrder) throws CoreException {        
+
+    public int orderNumberOfPhotos(int idOrder) throws CoreException {
         int numberOfPhotos = 0;
         try {
             cn = obtenerConexion();
@@ -229,8 +229,8 @@ public final class OrdenDao extends BaseDao<Orden> {
         }
         return numberOfPhotos;
     }
-    
-    public int orderNumberOfReferences(int idOrder) throws CoreException {        
+
+    public int orderNumberOfReferences(int idOrder) throws CoreException {
         int numberOfPhotos = 0;
         try {
             cn = obtenerConexion();
@@ -249,8 +249,8 @@ public final class OrdenDao extends BaseDao<Orden> {
         }
         return numberOfPhotos;
     }
-    
-     public int orderProductType(int idOrder) throws CoreException {        
+
+    public int orderProductType(int idOrder) throws CoreException {
         int idProduct = 1;
         try {
             cn = obtenerConexion();
@@ -269,8 +269,8 @@ public final class OrdenDao extends BaseDao<Orden> {
         }
         return idProduct;
     }
-     
-     public List<Orden> listOrdersNoPayed() throws CoreException {        
+
+    public List<Orden> listOrdersNoPayed() throws CoreException {
         List<Orden> lista = new ArrayList<>();
         try {
             cn = obtenerConexion();
