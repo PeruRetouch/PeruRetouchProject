@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Error Manager</title>
+        <link rel="icon" type="image/png" href="images/iconoPR.jpg" />
     </head>
     <body>
         <a href="errorArtist.jsp">Error Detectec, Go Home!</a>

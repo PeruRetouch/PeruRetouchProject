@@ -17,6 +17,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Peru Retouch</title>
+        <link rel="icon" type="image/png" href="images/iconoPR.jpg" />
         <meta name="description" content="Peru Retouch gives you a post-photography service">
         <meta name="keywords" content="retouch,peru,photo,photographer,retouch photo">
         <meta name="author" content="Roy Taza Rojas">
@@ -26,6 +27,9 @@
         <link rel="stylesheet" href="slider/nivo-slider.css" type="text/css" media="screen" />
     </head>
     <body>
+        <!-- BAJAR LAS ORDENES POR ORDEN -->
+        <!-- VER LA CANTIDAD DE FOTOS QUE EL CLIENTE ENVIA EN UN DETERMINADO TIEMPO -->
+        <!-- PONERLE NOMBRE A CADA ORDEN DEL CLIENTE PARA QUE ASI NO PUEDA VER EL IDORDEN DE LA BASE DE DATOS -->
         <div id="bg1">
             <div id="content">
                 <!-- header -->

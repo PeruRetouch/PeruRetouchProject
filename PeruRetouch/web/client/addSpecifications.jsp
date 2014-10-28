@@ -47,6 +47,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Peru Retouch - Add Photo Specifications</title>
+        <link rel="icon" type="image/png" href="images/iconoPR.jpg" />
         <meta name="author" content="Roy Taza Rojas">
         <link href="../css/styles.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
@@ -146,7 +147,7 @@
                                 <input type="hidden" name="idProduct" value="<%= product.getIdProduct()%>" />
                                 <input type="hidden" name="action" value="<%= ConstantesWeb.UPLOAD_PHOTOS_CLIENT%>" />
                                 <!--input type="submit" name="btnContinue" value="Confirm and Send the Order" /-->
-                                <input type="image" src="../images/buyNow.gif" name="btnContinue" style="float: right;margin-top: -12px;" height="55" alt="BuyNow"/>
+                                <input type="image" src="../images/send.png" name="btnContinue" style="float: right;margin-top: -12px;" height="55" alt="BuyNow"/>
                             </div>
                         </div>
                     </form>

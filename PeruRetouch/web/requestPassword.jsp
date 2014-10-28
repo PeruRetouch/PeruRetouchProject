@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Peru Retouch - Request Password</title>
+        <link rel="icon" type="image/png" href="images/iconoPR.jpg" />
         <meta name="description" content="Peru Retouch gives you a post-photography service">
         <meta name="keywords" content="retouch,peru,photo,photographer,retouch photo">
         <meta name="author" content="Roy Taza Rojas">

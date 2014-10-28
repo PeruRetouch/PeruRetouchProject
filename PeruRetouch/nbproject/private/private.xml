@@ -3,18 +3,41 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/css/styles.css</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/help.jsp</file>
             <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/plupload/UploadFilesUtilWeb.jsp</file>
-            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/orderPhotos.jsp</file>
-            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/uploadPhotos.jsp</file>
-            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/src/java/pe/com/peruretouch/web/util/UtilWeb.java</file>
-            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/chooseProduct.jsp</file>
-            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/src/java/pe/com/peruretouch/web/bean/PhotosBean.java</file>
-            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/addSpecifications.jsp</file>
-            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/src/java/pe/com/peruretouch/web/util/ConstantesWeb.java</file>
-            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/manager/payOrder.jsp</file>
-            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/orderDetail.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/artist/artistComission.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/artist/changePassword.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/homeClient.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/artist/homeArtist.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/artist/retouchOrders.jsp</file>
             <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/src/java/pe/com/peruretouch/web/controller/Controller.java</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/errorClient.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/ordersClient.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/index.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/uploadPhotos.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/viewUserInfo.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/chooseProduct.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/productsInfo.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/addSpecifications.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/manager/listUsers.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/images/continue.png</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/manager/homeManager.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/orderPhotos.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/manager/changePassword.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/manager/payOrder.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/artist/viewUserInfo.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/orderDetail.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/manager/errorManager.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/manager/viewUserInfo.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/artist/errorArtist.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/artist/editUserInfo.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/manager/editUserInfo.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/editUserInfo.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/artist/uploadRetouchedPhoto.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/artist/getNewOrder.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/about.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/plupload/ArtistUploadUtilWeb.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/PeruRetouchProject/PeruRetouch/web/client/changePassword.jsp</file>
         </group>
     </open-files>
 </project-private>
