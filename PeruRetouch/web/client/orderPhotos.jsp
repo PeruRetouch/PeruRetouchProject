@@ -84,8 +84,8 @@
                     <div id="viewOrder">
                         <!-- / content -->
                         <br>
-                        <!--a href="Controller?action=downloadAll&idOrder=<%= orden.getIdOrder()%>">Donwload all the order's photos</a> | 
-                        <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder()%>">Donwload all the orginal photos</a> | 
+                        <a href="../Controller?action=<%= ConstantesWeb.DONWLOAD_RETOUCHED_PHOTOS%>&idOrder=<%= orden.getIdOrder()%>" target="_blank">Donwload all retouched photos</a>
+                        <!--a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder()%>">Donwload all the orginal photos</a> | 
                         <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder()%>">Donwload all the orginal photos</a-->
                         <br>
                         <%

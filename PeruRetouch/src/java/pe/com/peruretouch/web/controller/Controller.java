@@ -5,6 +5,10 @@
  */
 package pe.com.peruretouch.web.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,6 +21,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.TimeZone;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -29,6 +35,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.DefaultStyledDocument;
 import pe.com.peruretouch.business.*;
 import pe.com.peruretouch.business.base.BusinessException;
 import pe.com.peruretouch.business.base.OperacionEnum;
@@ -97,6 +104,9 @@ public class Controller extends HttpServlet {
                 break;
             case ConstantesWeb.ARTIST_DELETE_REFERENCES_APPROVED_ORDERS:
                 this.ArtistDeleteReferencesOfApprovedOrders(request, response);
+                break;
+            case ConstantesWeb.DONWLOAD_RETOUCHED_PHOTOS:
+                this.DonwloadRetouchedPhotos(request, response);
                 break;
         }
     }
@@ -346,22 +356,6 @@ public class Controller extends HttpServlet {
                     Files.move(source, destiny, REPLACE_EXISTING);
                     retouch.setFileNombre(newFileName);
 
-                    /*
-                     File sourceFile = new File(fileSavePathOrigen + "/" + newFileName);
-                     File destinyFile = new File(fileSavePathDestino + "/" + newFileName);
-                     InputStream inStream = new FileInputStream(sourceFile);
-                     OutputStream outStream = new FileOutputStream(destinyFile);
-                     byte[] buffer = new byte[1024];
-                     int length;
-                     //copy the file content in bytes 
-                     while ((length = inStream.read(buffer)) > 0) {
-                     outStream.write(buffer, 0, length);
-                     }
-                     inStream.close();
-                     outStream.close();
-                     //delete the original file
-                     sourceFile.delete();
-                     */
                     retouchBusiness.ejecutar(OperacionEnum.ACTUALIZAR, retouch);
                     // Insert Reotuch status
                     if (isReference) {
@@ -796,6 +790,60 @@ public class Controller extends HttpServlet {
             response.sendRedirect(rpta + "?message=" + mensaje);
         } catch (Exception e) {
             rpta = "manager/errorManager.jsp";
+            mensaje = e.getMessage();
+            response.sendRedirect(rpta + "?message=" + mensaje);
+        }
+    }
+
+    protected void DonwloadRetouchedPhotos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String rpta = "";
+        String mensaje = "";
+        try {
+            int idOrder = Integer.parseInt(request.getParameter("idOrder"));
+            List<Retouch> listRetouchs = retouchBusiness.listarByOrder(idOrder);
+
+            String fileSavePathDestino = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_RETOUCHED;
+            
+            String filenameX = "Order" + idOrder + ".zip";
+
+            // Reference to the file we will be adding to the zipfile
+            BufferedInputStream origin = null;
+            // Reference to our zip file
+            FileOutputStream dest = new FileOutputStream(filenameX);
+            // Wrap our destination zipfile with a ZipOutputStream
+            ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(dest));
+                // Create a byte[] buffer that we will read data 
+
+            // from the source
+            // files into and then transfer it to the zip file
+            byte[] data = new byte[DefaultStyledDocument.BUFFER_SIZE_DEFAULT];
+            // Iterate over all of the files in our list
+            //for (Iterator i = files.iterator(); i.hasNext();) {
+            for (Retouch retouch : listRetouchs) {
+                // Get a BufferedInputStream that we can use to read the source file
+                String filename = retouch.getFileNombre();
+                System.out.println("Adding: " + fileSavePathDestino + "/" + filename);
+                FileInputStream fi = new FileInputStream(fileSavePathDestino + "/" + filename);
+                origin = new BufferedInputStream(fi, DefaultStyledDocument.BUFFER_SIZE_DEFAULT);
+                // Setup the entry in the zip file
+                ZipEntry entry = new ZipEntry(fileSavePathDestino + "/" + filename);
+                out.putNextEntry(entry);
+                // Read data from the source file and write it out to the zip file
+                int count;
+                while ((count = origin.read(data, 0, DefaultStyledDocument.BUFFER_SIZE_DEFAULT)) != -1) {
+                    out.write(data, 0, count);
+                }
+                // Close the source file
+            }
+            // Close the zip file
+            out.close();
+        } catch (BusinessException e) {
+            rpta = "manager/errorClient.jsp";
+            mensaje = e.getMessage();
+            response.sendRedirect(rpta + "?message=" + mensaje);
+        } catch (Exception e) {
+            rpta = "manager/errorClient.jsp";
             mensaje = e.getMessage();
             response.sendRedirect(rpta + "?message=" + mensaje);
         }

@@ -137,7 +137,7 @@
                         <br />
                         <div id="buttonsUploadFiles">
                             <div style="float: right">
-                                <input type="checkbox" name="chkConfirm" value="1" required />I'm sure about the specifications, pay $<%= product.getPrice() %> per photo and SEND and BUY the order.
+                                <input type="checkbox" name="chkConfirm" value="1" required />I'm sure about the specifications, pay $<%= product.getPrice() %> per photo and SEND the order.
                             </div>
                             <br><br>
                             <!--button onclick="location.href = 'chooseProduct.jsp';" name="btnCancel" style="float: left;" >Choose another product</button-->
