@@ -34,7 +34,10 @@
             <div id="content">
                 <!-- header -->
                 <div id="header">
-                    <img id="logoPeruRetouch" src="images/logoPeruRetouch.jpg" alt="logoPeruRetouch">
+                    <!--img id="logoPeruRetouch" src="images/logoPeruRetouch.jpg" alt="logoPeruRetouch"-->
+                    <script language="javascript">AC_FL_RunContent = 0;</script>
+                    <script src="js/AC_RunActiveContent.js"></script>
+                    <%@include file="template/logo.jsp" %>
                     <br><br><br>
                     <div id="menu">
                         <ul>

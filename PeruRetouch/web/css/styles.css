@@ -6,7 +6,7 @@ body {background:url(../images/bg_all.jpg);background-repeat:repeat-x;background
 #content {margin:0 auto;width:987px;text-align:left;background:url(../images/contentbg.jpg);background-repeat:repeat-y;background-position:left}
 .inner_copy, .inner_copy a {border:0;float:right;background:#fff;color:#f00;width:50%;line-height:10px;font-size:10px;margin:-220% 0 0 0;overflow:hidden;padding:0}
 #main {width:969px;margin-left:8px;clear:both;background:url(../images/left_bg.jpg);background-repeat:repeat-y;background-position:left}
-#header {height:242px;padding-top:10px;/*background:url(../images/header.jpg);*/background-repeat:no-repeat;background-position:top;padding-bottom:3px}
+#header {height:242px;padding-top:10px;/*background:url(../images/header.jpg);*/background-repeat:no-repeat;background-position:top;padding-bottom:3px;}
 #search {float:right;padding-right:50px;padding-top:5px}
 #search form {margin:0}
 #search fieldset {margin:0;padding:0;border:none}

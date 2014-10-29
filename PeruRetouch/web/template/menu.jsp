@@ -12,6 +12,7 @@ Author     : Roy Taza Rojas
     if (usuariox != null) {
         if (usuariox.getPrivilege().equalsIgnoreCase("client")) {
 %>
+<br /><br /><br /><br /><br /><br /><br /><br />
 <div id="menu">
     <ul>
         <li id="button1"><a href="../client/homeClient.jsp">Home</a></li>

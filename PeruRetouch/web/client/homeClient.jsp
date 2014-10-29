@@ -50,15 +50,18 @@
             <div id="content">
                 <!-- header -->
                 <div id="header" style="height: auto">
-                    <img id="logoPeruRetouch" src="../images/logoPeruRetouch.jpg" alt="logoPeruRetouch">
+                    <!--img id="logoPeruRetouch" src="images/logoPeruRetouch.jpg" alt="logoPeruRetouch"-->
+                    <script language="javascript">AC_FL_RunContent = 0;</script>
+                    <script src="../js/AC_RunActiveContent.js"></script>
+                    <%@include file="../template/logo.jsp" %>
                     <div id="contenedorLogout">
-                        Bienvenido <%= userBean.getName()%> <%= userBean.getLastName()%>&nbsp;&nbsp;<a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><div id="btnLogout"></div></a>
+                        Welcome <%= userBean.getName()%> <%= userBean.getLastName()%>&nbsp;&nbsp;<a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><div id="btnLogout"></div></a>
                     </div>
                     <%@include file="../template/menu.jsp" %>
                 </div>
                 <!-- / header -->
                 <!-- content -->
-                <br><br><br><br><br><br>
+                <br><br><br>
                 <div id="main1">
                     <br>
                     <div id="viewOrder" style="margin-left: 0px">
@@ -99,7 +102,7 @@
                                             }
                                         }
                                         //Agrego una columna
-%>
+                                    %>
                                     <td>
                                         <h2># <%= o.getIdOrder()%></h2><br />
                                         <a href="orderPhotos.jsp?idOrder=<%= o.getIdOrder()%>"><img src="../images/folderImage.png" alt="<%= o.getIdOrder()%>"></a><br>

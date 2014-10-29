@@ -41,13 +41,16 @@
             <div id="content">
                 <!-- header -->
                 <div id="header" style="height: auto">
-                    <img id="logoPeruRetouch" src="../images/logoPeruRetouch.jpg" alt="logoPeruRetouch">
+                    <!--img id="logoPeruRetouch" src="images/logoPeruRetouch.jpg" alt="logoPeruRetouch"-->
+                    <script language="javascript">AC_FL_RunContent = 0;</script>
+                    <script src="../js/AC_RunActiveContent.js"></script>
+                    <%@include file="../template/logo.jsp" %>
                     <div id="contenedorLogout">
-                        Bienvenido <%= userBean.getName()%> <%= userBean.getLastName()%>&nbsp;&nbsp;<a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><div id="btnLogout"></div></a>
+                        Welcome <%= userBean.getName()%> <%= userBean.getLastName()%>&nbsp;&nbsp;<a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><div id="btnLogout"></div></a>
                     </div>
                     <%@include file="../template/menu.jsp" %>
                 </div>
-                <br><br><br><br><br><br>
+                <br><br><br><br>
                 <!-- content -->
                 <div style="margin-left: 310px">
                     <div id="main">
