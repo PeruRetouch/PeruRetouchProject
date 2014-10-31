@@ -295,4 +295,33 @@ public final class OrdenDao extends BaseDao<Orden> {
         }
         return lista;
     }
+
+    public List<Orden> listOrdersBetweenDates(int idUser, Date dateFrom, Date dateTo) throws CoreException {
+        List<Orden> lista = new ArrayList<>();
+        try {
+            cn = obtenerConexion();
+            cl = cn.prepareCall("{CALL spF_OrdersBetweenDates(?,?,?)}");
+            cl.setInt(1, idUser);
+            cl.setDate(2, dateFrom);
+            cl.setDate(3, dateTo);
+            rs = cl.executeQuery();
+            while (rs.next()) {
+                Orden order = new Orden();
+                order.setIdOrder(rs.getInt("idOrder"));
+                order.setIdClient(rs.getInt("idClient"));
+                order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
+                order.setSpecifications(rs.getString("specifications"));
+                order.setTotal(rs.getDouble("total"));
+                order.setState(rs.getString("state"));
+                lista.add(order);
+            }
+        } catch (Exception e) {
+            throw new CoreException(e);
+        } finally {
+            cerrar(cl);
+            cerrar(rs);
+            cerrar(cn);
+        }
+        return lista;
+    }
 }
