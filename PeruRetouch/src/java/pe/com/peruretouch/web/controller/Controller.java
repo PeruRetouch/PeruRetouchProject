@@ -5,10 +5,6 @@
  */
 package pe.com.peruretouch.web.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,8 +17,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.TimeZone;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -30,18 +24,16 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.DefaultStyledDocument;
 import pe.com.peruretouch.business.*;
-import pe.com.peruretouch.business.base.BusinessException;
-import pe.com.peruretouch.business.base.OperacionEnum;
+import pe.com.peruretouch.business.base.*;
 import pe.com.peruretouch.entity.*;
-import pe.com.peruretouch.web.bean.PhotosBean;
-import pe.com.peruretouch.web.bean.UserBean;
+import pe.com.peruretouch.web.bean.*;
 import pe.com.peruretouch.web.util.*;
 
 /**
@@ -107,6 +99,9 @@ public class Controller extends HttpServlet {
                 break;
             case ConstantesWeb.DONWLOAD_RETOUCHED_PHOTOS:
                 this.DonwloadRetouchedPhotos(request, response);
+                break;
+            case ConstantesWeb.ORDERS_BETWEEN_DATES:
+                this.RedirectOrdersBetweenDates(request, response);
                 break;
         }
     }
@@ -735,6 +730,7 @@ public class Controller extends HttpServlet {
 
     protected void ManagerPayOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        session = request.getSession(false);
         String rpta = "";
         String mensaje = "";
         try {
@@ -767,6 +763,7 @@ public class Controller extends HttpServlet {
 
     protected void ManagerDisableOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        session = request.getSession(false);
         String rpta = "";
         String mensaje = "";
         try {
@@ -797,47 +794,23 @@ public class Controller extends HttpServlet {
 
     protected void DonwloadRetouchedPhotos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        session = request.getSession(false);
         String rpta = "";
         String mensaje = "";
         try {
             int idOrder = Integer.parseInt(request.getParameter("idOrder"));
             List<Retouch> listRetouchs = retouchBusiness.listarByOrder(idOrder);
-
             String fileSavePathDestino = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_RETOUCHED;
-            
-            String filenameX = "Order" + idOrder + ".zip";
-
-            // Reference to the file we will be adding to the zipfile
-            BufferedInputStream origin = null;
-            // Reference to our zip file
-            FileOutputStream dest = new FileOutputStream(filenameX);
-            // Wrap our destination zipfile with a ZipOutputStream
-            ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(dest));
-                // Create a byte[] buffer that we will read data 
-
-            // from the source
-            // files into and then transfer it to the zip file
-            byte[] data = new byte[DefaultStyledDocument.BUFFER_SIZE_DEFAULT];
-            // Iterate over all of the files in our list
-            //for (Iterator i = files.iterator(); i.hasNext();) {
-            for (Retouch retouch : listRetouchs) {
-                // Get a BufferedInputStream that we can use to read the source file
-                String filename = retouch.getFileNombre();
-                System.out.println("Adding: " + fileSavePathDestino + "/" + filename);
-                FileInputStream fi = new FileInputStream(fileSavePathDestino + "/" + filename);
-                origin = new BufferedInputStream(fi, DefaultStyledDocument.BUFFER_SIZE_DEFAULT);
-                // Setup the entry in the zip file
-                ZipEntry entry = new ZipEntry(fileSavePathDestino + "/" + filename);
-                out.putNextEntry(entry);
-                // Read data from the source file and write it out to the zip file
-                int count;
-                while ((count = origin.read(data, 0, DefaultStyledDocument.BUFFER_SIZE_DEFAULT)) != -1) {
-                    out.write(data, 0, count);
-                }
-                // Close the source file
+            String fileSavePathZip = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_ZIP;
+            String filenameZip = "Order" + idOrder + ".zip";
+            //UtilZip.generateZip(session, listRetouchs, fileSavePathDestino, fileSavePathZip, filenameZip);
+            String resultadoCompresion = UtilZip.generateZip(session, listRetouchs, fileSavePathDestino, fileSavePathZip, filenameZip);
+            if (!resultadoCompresion.equalsIgnoreCase("invalid")) {
+                Path path = Paths.get(resultadoCompresion);
+                byte[] data = Files.readAllBytes(path);
+                ServletOutputStream out2 = response.getOutputStream();
+                out2.write(data);
             }
-            // Close the zip file
-            out.close();
         } catch (BusinessException e) {
             rpta = "manager/errorClient.jsp";
             mensaje = e.getMessage();
@@ -846,6 +819,18 @@ public class Controller extends HttpServlet {
             rpta = "manager/errorClient.jsp";
             mensaje = e.getMessage();
             response.sendRedirect(rpta + "?message=" + mensaje);
+        }
+    }
+
+    protected void RedirectOrdersBetweenDates(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        session = request.getSession(false);
+        UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
+        String dateFrom = request.getParameter("dateFrom");
+        String dateTo = request.getParameter("dateTo");
+        if (userBean.getPrivilege().equalsIgnoreCase("client")) {
+            response.sendRedirect("client/ordersClient.jsp?abc=alert&from=" + dateFrom + "&to=" + dateTo);
+        } else if (userBean.getPrivilege().equalsIgnoreCase("artist")) {
         }
     }
 

@@ -14,6 +14,7 @@ public final class ConstantesWeb {
     public static final String FORGOT_USERNAME = "ForgotUsername";
     public static final String MANAGER_PAY_ORDER = "ManagerPayOrder";
     public static final String MANAGER_DISABLE_ACOCUNT = "ManagerDisableOrder";
+    public static final String ORDERS_BETWEEN_DATES = "RedirectOrdersBetweenDates";
     public static final String ARTIST_DELETE_REFERENCES_APPROVED_ORDERS = "ArtistDeleteReferencesOfApprovedOrders";
     public static final String DONWLOAD_RETOUCHED_PHOTOS = "DonwloadRetouchedPhotos";
     public static final int ID_SYSTEM_PROFILE = 1;
@@ -31,6 +32,7 @@ public final class ConstantesWeb {
     public static final String FILE_SAVE_PATH_CLIENT = "photoResources/photos";
     public static final String FILE_SAVE_PATH_RETOUCHED = "photoResources/photosRetouched";
     public static final String FILE_SAVE_PATH_TEMPORARY = "photoResources/temporary";
+    public static final String FILE_SAVE_PATH_ZIP = "photoResources/photoZipped";
     
     public static final int ID_STATUS_WORKING = 1;
     public static final int ID_STATUS_REVIEW = 2;

@@ -4,6 +4,10 @@
     Author     : Roy Taza Rojas
 --%>
 
+<%@page import="pe.com.peruretouch.web.util.ManejadorFechas"%>
+<%@page import="pe.com.peruretouch.web.util.UtilWeb"%>
+<%@page import="java.sql.Date"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="pe.com.peruretouch.business.base.OperacionEnum"%>
 <%@page import="pe.com.peruretouch.entity.Orden"%>
@@ -26,7 +30,18 @@
             PhotosBean photosBean = new PhotosBean();
             photosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
             OrdenBusiness ordenBusiness = OrdenBusiness.obtenerEntidad();
-            List<Orden> listOrders = ordenBusiness.listOrdersByClient(userBean.getIdUser());
+            List<Orden> listOrders = new ArrayList<Orden>();
+            if (request.getParameter("from") != null) {
+                if (request.getParameter("to") != null) {
+                    listOrders = ordenBusiness.listOrdersBetweenDates(userBean.getIdUser(),
+                            new Date(UtilWeb.convertirString(request.getParameter("from"), "yyyy-MM-dd").getTime()),
+                            new Date(UtilWeb.convertirString(request.getParameter("to"), "yyyy-MM-dd").getTime()));
+                } else {
+                    listOrders = ordenBusiness.listOrdersByClient(userBean.getIdUser());
+                }
+            } else {
+                listOrders = ordenBusiness.listOrdersByClient(userBean.getIdUser());
+            }
 %>
 <!DOCTYPE html>
 <html>
@@ -58,9 +73,27 @@
                     <br>
                     <div id="viewOrder">
                         <h1><%= userBean.getName()%>'s Orders</h1><br><br>
+                        <form action="../Controller" method="post">
+                            <input type="hidden" name="action" value="<%= ConstantesWeb.ORDERS_BETWEEN_DATES%>">
+                            <p>From: <input type="date" name="dateFrom" value="">
+                                &nbsp;&nbsp;&nbsp;&nbsp;To: <input type="date" name="dateTo" value="">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="btnSearch" value="Search"></p>
+                        </form>
+                        <br><br>
                         <%
                             if (listOrders.size() > 0) {
-                                for (Orden orden : listOrders) {
+                                if (request.getParameter("abc") != null) {
+                        %>
+                        <h2>Orders from <%= request.getParameter("from")%> to <%= request.getParameter("to")%></h2>
+                        <br>
+                        <%
+                        } else {
+                        %>
+                        <h2>All the orders.</h2>
+                        <br>
+                        <%
+                            }
+                            for (Orden orden : listOrders) {
                         %>
                         <h2>ID: # <%= orden.getIdOrder()%></h2>
                         <%
@@ -81,11 +114,19 @@
                         <%
                             }
                         } else {
+                            if (request.getParameter("abc").equalsIgnoreCase("alert")) {
+                        %>
+                        <br>
+                        <h2>You don't have orders from <%= request.getParameter("from")%> to <%= request.getParameter("to")%></h2>
+                        <p><a href="ordersClient.jsp">View all the orders</a></p>
+                        <%
+                        } else {
                         %>
                         <br>
                         <h2>You don't have orders.</h2>
                         <p><a href="chooseProduct.jsp">Upload Photos</a></p>
                         <%
+                                }
                             }
                         %>
                         <br>
