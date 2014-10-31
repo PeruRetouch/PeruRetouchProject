@@ -5,6 +5,7 @@
  */
 package pe.com.peruretouch.business;
 
+import java.sql.Date;
 import java.util.List;
 import pe.com.peruretouch.business.base.BaseBusiness;
 import pe.com.peruretouch.business.base.BusinessException;
@@ -18,17 +19,17 @@ import pe.com.peruretouch.entity.Orden;
  * @author Roy Taza Rojas
  */
 public final class OrdenBusiness implements BaseBusiness<Orden> {
-    
+
     private final static OrdenDao ORDEN_DAO = OrdenDao.obtenerInstancia();
     private final static OrdenBusiness ORDEN_BUSINESS = new OrdenBusiness();
-    
+
     private OrdenBusiness() {
     }
-    
+
     public static OrdenBusiness obtenerEntidad() {
         return ORDEN_BUSINESS;
     }
-    
+
     @Override
     public Orden ejecutar(OperacionEnum operacionEnum, Orden orden) throws BusinessException {
         try {
@@ -50,7 +51,7 @@ public final class OrdenBusiness implements BaseBusiness<Orden> {
         }
         return orden;
     }
-    
+
     @Override
     public List<Orden> listar() throws BusinessException {
         try {
@@ -59,7 +60,7 @@ public final class OrdenBusiness implements BaseBusiness<Orden> {
             throw new BusinessException(ex);
         }
     }
-    
+
     public List<Orden> listOrdersByClient(int idCliente) throws BusinessException {
         try {
             return ORDEN_DAO.listOrdersByClient(idCliente);
@@ -67,7 +68,7 @@ public final class OrdenBusiness implements BaseBusiness<Orden> {
             throw new BusinessException(ex);
         }
     }
-    
+
     public int insertOrderAndReturnId(Orden orden) throws BusinessException {
         try {
             return ORDEN_DAO.insertarAndReturnId(orden);
@@ -75,7 +76,7 @@ public final class OrdenBusiness implements BaseBusiness<Orden> {
             throw new BusinessException(ex);
         }
     }
-    
+
     public List<Orden> listOrdersNoAssigned() throws BusinessException {
         try {
             return ORDEN_DAO.listOrdersNoAssigned();
@@ -83,7 +84,7 @@ public final class OrdenBusiness implements BaseBusiness<Orden> {
             throw new BusinessException(ex);
         }
     }
-    
+
     public int orderNumberOfPhotos(int idOrder) throws BusinessException {
         try {
             return ORDEN_DAO.orderNumberOfPhotos(idOrder);
@@ -91,7 +92,7 @@ public final class OrdenBusiness implements BaseBusiness<Orden> {
             throw new BusinessException(ex);
         }
     }
-    
+
     public int orderNumberOfReferences(int idOrder) throws BusinessException {
         try {
             return ORDEN_DAO.orderNumberOfReferences(idOrder);
@@ -99,7 +100,7 @@ public final class OrdenBusiness implements BaseBusiness<Orden> {
             throw new BusinessException(ex);
         }
     }
-    
+
     public int orderProductType(int idOrder) throws BusinessException {
         try {
             return ORDEN_DAO.orderProductType(idOrder);
@@ -107,10 +108,18 @@ public final class OrdenBusiness implements BaseBusiness<Orden> {
             throw new BusinessException(ex);
         }
     }
-    
+
     public List<Orden> listOrdersNoPayed() throws BusinessException {
         try {
             return ORDEN_DAO.listOrdersNoPayed();
+        } catch (CoreException ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    public List<Orden> listOrdersBetweenDates(int idUser, Date dateFrom, Date dateTo) throws BusinessException {
+        try {
+            return ORDEN_DAO.listOrdersBetweenDates(idUser, dateFrom, dateTo);
         } catch (CoreException ex) {
             throw new BusinessException(ex);
         }
