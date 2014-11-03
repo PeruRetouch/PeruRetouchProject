@@ -27,7 +27,6 @@
         <link rel="stylesheet" href="slider/nivo-slider.css" type="text/css" media="screen" />
     </head>
     <body>
-        <!-- VER LA CANTIDAD DE FOTOS QUE EL CLIENTE ENVIA EN UN DETERMINADO TIEMPO -->
         <!-- PONERLE NOMBRE A CADA ORDEN DEL CLIENTE PARA QUE ASI NO PUEDA VER EL IDORDEN DE LA BASE DE DATOS -->
         <div id="bg1">
             <div id="content">

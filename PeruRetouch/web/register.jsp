@@ -65,6 +65,7 @@
                                             <label for="text1">Email (*)</label><br /><input id="text1" type="email" name="txtEmail" value="" maxlength="50" required /><br />
                                             <label for="text1">Name (*)</label><br /><input id="text1" type="text" name="txtName" value="" maxlength="50" required /><br />
                                             <label for="text1">Last Name (*)</label><br /><input id="text1" type="text" name="txtLastName" maxlength="50" value="" required /><br />
+                                            <label for="text1">Website Address (*)</label><br /><input id="text1" type="text" name="txtWebsiteAddress" maxlength="200" value="http://" required /><br />
                                             <label for="text1">Address</label><br /><input id="text1" type="text" name="txtAddress" maxlength="200" value="" /><br />
                                             <label for="text1">Country</label><br /><input id="text1" type="text" name="txtCountry" maxlength="50" value="" /><br />
                                             <label for="text1">Birthday</label><br /><input id="text1" type="date" name="txtBirthday" value="" /><br />

@@ -87,7 +87,6 @@
                     <div id="viewOrder">
                         <!-- / content -->
                         <br>
-                        <a href="../Controller?action=<%= ConstantesWeb.DONWLOAD_RETOUCHED_PHOTOS%>&idOrder=<%= orden.getIdOrder()%>" target="_blank">Donwload all retouched photos</a>
                         <!--a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder()%>">Donwload all the orginal photos</a> | 
                         <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder()%>">Donwload all the orginal photos</a-->
                         <br>
@@ -106,7 +105,7 @@
                         %>
                         <div id="photoWorking">
                             <img src="../photoResources/photos/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="400"><br />
-                            <a href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
+                            <a style="text-decoration: none" href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
                             <label>PHOTO REFERENCE</label><br />
                         </div>
                         <%
@@ -115,7 +114,7 @@
                         %>
                         <div id="photoWorking">
                             <img src="../photoResources/photos/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="400"><br />
-                            <a href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
+                            <a style="text-decoration: none" href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
                             <label>STATUS: WORKING</label><br />
                         </div>
                         <br />
@@ -127,12 +126,12 @@
                             <div id="before" style="float: left">
                                 <label>BEFORE</label><br>
                                 <img src="../photoResources/photos/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="450"><br>
-                                <a href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
+                                <a style="text-decoration: none" href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
                             </div>
                             <div id="after" style="float: right;margin-right: 5px">
                                 <label>AFTER</label><br>
                                 <img src="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="450"><br>
-                                <a href="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
+                                <a style="text-decoration: none" href="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
                             </div>
                             <br /><br /><br /><br /><br /><br /><br /><br />
                             <label>STATUS: WAITING FOR AN ASNWER</label><br />
@@ -154,7 +153,7 @@
                         %>
                         <div id="photoWorking">
                             <img src="../photoResources/photos/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="400"><br />
-                            <a href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
+                            <a style="text-decoration: none" href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
                             <label>STATUS: RE-WORKING</label><br />
                             <%
                                 if (request.getParameter("message") != null) {
@@ -173,12 +172,12 @@
                             <div id="before" style="float: left">
                                 <label>BEFORE</label><br>
                                 <img src="../photoResources/photos/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="450"><br>
-                                <a href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
+                                <a style="text-decoration: none" href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
                             </div>
                             <div id="after" style="float: right;margin-right: 5px">
                                 <label>AFTER</label><br>
                                 <img src="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="450"><br>
-                                <a href="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
+                                <a style="text-decoration: none" href="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
                             </div>
                             <br /><br /><br /><br /><br /><br /><br /><br />
                             <label>STATUS: RE-WORKED</label><br />
@@ -202,12 +201,12 @@
                             <div id="before" style="float: left">
                                 <label>BEFORE</label><br>
                                 <img src="../photoResources/photos/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="450"><br>
-                                <a href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
+                                <a style="text-decoration: none" href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
                             </div>
                             <div id="after" style="float: right;margin-right: 5px">
                                 <label>AFTER</label><br>
                                 <img src="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="450"><br>
-                                <a href="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
+                                <a style="text-decoration: none" href="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
                             </div>
                             <br /><br /><br /><br /><br /><br /><br /><br />
                             <label>STATUS: APPROVED</label><br />
@@ -268,11 +267,12 @@
                         <%
                             if (lstRetouch.size() > 0) {
                         %>
+                        <a style="float: right;text-decoration: none" href="../Controller?action=<%= ConstantesWeb.DONWLOAD_RETOUCHED_PHOTOS%>&idOrder=<%= orden.getIdOrder()%>" target="_blank"><img src="../images/download-all-files.png" alt="#" height="15">&nbsp;Donwload all retouched photos</a><br>
                         <fieldset>
                             <legend><h2>Order's Photos</h2></legend>
                             <br>
                             <p style="margin-left: 10px;margin-right: 10px;text-align: justify"><b>Specification:</b> <%= orden.getSpecifications()%></p>
-                            <table cellspacing="40" align="center" >
+                            <table cellspacing="40" align="center">
                                 <%
                                     int i = 1;
                                     boolean aux = true;
@@ -296,7 +296,7 @@
                                             }
                                         }
                                         //Agrego una columna
-                                    %>
+%>
                                     <td>
                                         <b><%= UtilWeb.formatName(r.getFileNombre(), userBean.getIdUser().toString().length())%></b><br />
                                         <a href="orderPhotos.jsp?idOrder=<%= idOrder%>&idPhoto=<%= r.getPhotoId()%>"><img src="../photoResources/photos/<%= r.getFileNombre()%>" height="110"></a><br />
