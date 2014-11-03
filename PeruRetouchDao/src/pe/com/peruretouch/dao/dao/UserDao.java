@@ -31,7 +31,7 @@ public final class UserDao extends BaseDao<User> {
     public void insertar(User e) throws CoreException {
         try {
             cn = obtenerConexion();
-            cl = cn.prepareCall("{CALL spI_User(?,?,?,?,?,?,?,?,?,?,?,?)}");
+            cl = cn.prepareCall("{CALL spI_User(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
             cl.setString(1, e.getUserLogin());
             cl.setString(2, e.getPassword());
             cl.setInt(3, e.getIdProfile());
@@ -43,7 +43,8 @@ public final class UserDao extends BaseDao<User> {
             cl.setString(9, e.getTelephone());
             cl.setString(10, e.getCellphone());
             cl.setString(11, e.getEmail());
-            cl.setString(12, e.getState());
+            cl.setString(12, e.getWebPage());
+            cl.setString(13, e.getState());
             cl.executeUpdate();
         } catch (Exception ex) {
             throw new CoreException(ex);
@@ -57,7 +58,7 @@ public final class UserDao extends BaseDao<User> {
     public void actualizar(User e) throws CoreException {
         try {
             cn = obtenerConexion();
-            cl = cn.prepareCall("{CALL spU_User(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+            cl = cn.prepareCall("{CALL spU_User(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
             cl.setInt(1, e.getIdUser());
             cl.setString(2, e.getUserLogin());
             cl.setString(3, e.getPassword());
@@ -70,7 +71,8 @@ public final class UserDao extends BaseDao<User> {
             cl.setString(10, e.getTelephone());
             cl.setString(11, e.getCellphone());
             cl.setString(12, e.getEmail());
-            cl.setString(13, e.getState());
+            cl.setString(13, e.getWebPage());
+            cl.setString(14, e.getState());
             cl.executeUpdate();
         } catch (Exception ex) {
             throw new CoreException(ex);
@@ -117,6 +119,7 @@ public final class UserDao extends BaseDao<User> {
                 user.setTelephone(rs.getString("telephone"));
                 user.setCellphone(rs.getString("cellphone"));
                 user.setEmail(rs.getString("email"));
+                user.setWebPage(rs.getString("webPage"));
                 user.setState(rs.getString("state"));
             }
         } catch (Exception ex) {
@@ -150,6 +153,7 @@ public final class UserDao extends BaseDao<User> {
                 user.setTelephone(rs.getString("telephone"));
                 user.setCellphone(rs.getString("cellphone"));
                 user.setEmail(rs.getString("email"));
+                user.setWebPage(rs.getString("webPage"));
                 user.setState(rs.getString("state"));
                 lista.add(user);
             }
@@ -167,7 +171,7 @@ public final class UserDao extends BaseDao<User> {
         User user = null;
         try {
             cn = obtenerConexion();
-            cl = cn.prepareCall("{CALL spF_UsuarioAutenticar(?, ?)}");
+            cl = cn.prepareCall("{CALL spF_UsuarioAutenticar(?,?)}");
             cl.setString(1, userLogin);
             cl.setString(2, password);
             rs = cl.executeQuery();
@@ -185,6 +189,7 @@ public final class UserDao extends BaseDao<User> {
                 user.setTelephone(rs.getString("telephone"));
                 user.setCellphone(rs.getString("cellphone"));
                 user.setEmail(rs.getString("email"));
+                user.setWebPage(rs.getString("webPage"));
                 user.setState(rs.getString("state"));
             }
         } catch (Exception ex) {
@@ -218,6 +223,7 @@ public final class UserDao extends BaseDao<User> {
                 user.setTelephone(rs.getString("telephone"));
                 user.setCellphone(rs.getString("cellphone"));
                 user.setEmail(rs.getString("email"));
+                user.setWebPage(rs.getString("webPage"));
                 user.setState(rs.getString("state"));
             }
         } catch (Exception ex) {
@@ -251,6 +257,7 @@ public final class UserDao extends BaseDao<User> {
                 user.setTelephone(rs.getString("telephone"));
                 user.setCellphone(rs.getString("cellphone"));
                 user.setEmail(rs.getString("email"));
+                user.setWebPage(rs.getString("webPage"));
                 user.setState(rs.getString("state"));
                 lista.add(user);
             }

@@ -31,12 +31,13 @@ public final class OrdenDao extends BaseDao<Orden> {
     public void insertar(Orden e) throws CoreException {
         try {
             cn = obtenerConexion();
-            cl = cn.prepareCall("{CALL spI_Order(?,?,?,?,?)}");
+            cl = cn.prepareCall("{CALL spI_Order(?,?,?,?,?,?)}");
             cl.setInt(1, e.getIdClient());
-            cl.setDate(2, new Date(e.getDateTimeClientRequest().getTime()));
-            cl.setString(3, e.getSpecifications());
-            cl.setDouble(4, e.getTotal());
-            cl.setString(5, e.getState());
+            cl.setString(2, e.getOrderName());
+            cl.setDate(3, new Date(e.getDateTimeClientRequest().getTime()));
+            cl.setString(4, e.getSpecifications());
+            cl.setDouble(5, e.getTotal());
+            cl.setString(6, e.getState());
             cl.executeUpdate();
         } catch (Exception ex) {
             throw new CoreException(ex);
@@ -50,13 +51,14 @@ public final class OrdenDao extends BaseDao<Orden> {
     public void actualizar(Orden e) throws CoreException {
         try {
             cn = obtenerConexion();
-            cl = cn.prepareCall("{CALL spU_Order(?,?,?,?,?,?)}");
+            cl = cn.prepareCall("{CALL spU_Order(?,?,?,?,?,?,?)}");
             cl.setInt(1, e.getIdOrder());
             cl.setInt(2, e.getIdClient());
-            cl.setDate(3, new Date(e.getDateTimeClientRequest().getTime()));
-            cl.setString(4, e.getSpecifications());
-            cl.setDouble(5, e.getTotal());
-            cl.setString(6, e.getState());
+            cl.setString(3, e.getOrderName());
+            cl.setDate(4, new Date(e.getDateTimeClientRequest().getTime()));
+            cl.setString(5, e.getSpecifications());
+            cl.setDouble(6, e.getTotal());
+            cl.setString(7, e.getState());
             cl.executeUpdate();
         } catch (Exception ex) {
             throw new CoreException(ex);
@@ -93,6 +95,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 order = new Orden();
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
+                order.setOrderName(rs.getString("orderName"));
                 order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
@@ -119,6 +122,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 Orden order = new Orden();
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
+                order.setOrderName(rs.getString("orderName"));
                 order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
@@ -146,6 +150,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 Orden order = new Orden();
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
+                order.setOrderName(rs.getString("orderName"));
                 order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
@@ -166,13 +171,14 @@ public final class OrdenDao extends BaseDao<Orden> {
         Integer idOrder = 0;
         try {
             cn = obtenerConexion();
-            cl = cn.prepareCall("{CALL spI_Order_2(?,?,?,?,?,?)}");
+            cl = cn.prepareCall("{CALL spI_Order_2(?,?,?,?,?,?,?)}");
             cl.registerOutParameter(1, java.sql.Types.INTEGER);
             cl.setInt(2, e.getIdClient());
-            cl.setDate(3, new Date(e.getDateTimeClientRequest().getTime()));
-            cl.setString(4, e.getSpecifications());
-            cl.setDouble(5, e.getTotal());
-            cl.setString(6, e.getState());
+            cl.setString(3, e.getOrderName());
+            cl.setDate(4, new Date(e.getDateTimeClientRequest().getTime()));
+            cl.setString(5, e.getSpecifications());
+            cl.setDouble(6, e.getTotal());
+            cl.setString(7, e.getState());
             cl.executeUpdate();
             idOrder = cl.getInt(1);
         } catch (Exception ex) {
@@ -194,6 +200,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 Orden order = new Orden();
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
+                order.setOrderName(rs.getString("orderName"));
                 order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
@@ -280,6 +287,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 Orden order = new Orden();
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
+                order.setOrderName(rs.getString("orderName"));
                 order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
@@ -309,6 +317,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 Orden order = new Orden();
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
+                order.setOrderName(rs.getString("orderName"));
                 order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
