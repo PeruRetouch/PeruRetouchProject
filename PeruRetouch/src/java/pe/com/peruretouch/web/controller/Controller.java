@@ -215,6 +215,7 @@ public class Controller extends HttpServlet {
                 String name = request.getParameter("txtName");
                 String lastName = request.getParameter("txtLastName");
                 String email = request.getParameter("txtEmail");
+                String websiteAddress = request.getParameter("txtWebsiteAddress");
                 String address = request.getParameter("txtAddress");
                 String country = request.getParameter("txtCountry");
 
@@ -226,7 +227,7 @@ public class Controller extends HttpServlet {
                 // YYY-MM-DD
                 Date birthdayDate = UtilWeb.convertirString(birthday, "yyyymmdd");
 
-                User user = new User(0, userLogin, password, idClientProfile, name, lastName, address, country, birthdayDate, telephone, cellphone, email, ConstantesWeb.STATE_ACTIVE);
+                User user = new User(0, userLogin, password, idClientProfile, name, lastName, address, country, birthdayDate, telephone, cellphone, email, websiteAddress, ConstantesWeb.STATE_ACTIVE);
                 userBusiness.ejecutar(OperacionEnum.GUARDAR, user);
                 rpta = "index.jsp";
                 mensaje = "The user has been created succesfully";
@@ -450,6 +451,9 @@ public class Controller extends HttpServlet {
             userRefresh.setName(request.getParameter("txtName"));
             userRefresh.setLastName(request.getParameter("txtLastName"));
             userRefresh.setEmail(request.getParameter("txtEmail"));
+            if (userBean.getIdProfile() == ConstantesWeb.ID_CLIENT_PROFILE) {
+                userRefresh.setWebPage(request.getParameter("txtWebsiteAddress"));
+            }
             userRefresh.setAddress(request.getParameter("txtAddress"));
             userRefresh.setCountry(request.getParameter("txtCountry"));
             userRefresh.setTelephone(request.getParameter("txtTelephone"));
