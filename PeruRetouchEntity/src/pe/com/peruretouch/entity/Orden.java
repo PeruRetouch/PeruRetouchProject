@@ -15,6 +15,7 @@ import java.util.Date;
 public class Orden {
     private Integer idOrder;
     private Integer idClient;
+    private String orderName;
     private Date dateTimeClientRequest;
     private String specifications;
     private Double total;
@@ -23,9 +24,10 @@ public class Orden {
     public Orden() {
     }
 
-    public Orden(Integer idOrder, Integer idClient, Date dateTimeClientRequest, String specifications, Double total, String state) {
+    public Orden(Integer idOrder, Integer idClient, String orderName, Date dateTimeClientRequest, String specifications, Double total, String state) {
         this.idOrder = idOrder;
         this.idClient = idClient;
+        this.orderName = orderName;
         this.dateTimeClientRequest = dateTimeClientRequest;
         this.specifications = specifications;
         this.total = total;
@@ -46,6 +48,14 @@ public class Orden {
 
     public void setIdClient(Integer idClient) {
         this.idClient = idClient;
+    }
+
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
     }
 
     public Date getDateTimeClientRequest() {
@@ -78,5 +88,5 @@ public class Orden {
 
     public void setState(String state) {
         this.state = state;
-    }    
+    }
 }

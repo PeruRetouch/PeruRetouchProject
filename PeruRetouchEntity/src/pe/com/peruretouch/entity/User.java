@@ -24,12 +24,13 @@ public class User {
     private String telephone;
     private String cellphone;
     private String email;
+    private String webPage;
     private String state;
 
     public User() {
     }
 
-    public User(Integer idUser, String userLogin, String password, Integer idProfile, String name, String lastName, String address, String country, Date birthDay, String telephone, String cellphone, String email, String state) {
+    public User(Integer idUser, String userLogin, String password, Integer idProfile, String name, String lastName, String address, String country, Date birthDay, String telephone, String cellphone, String email, String webPage, String state) {
         this.idUser = idUser;
         this.userLogin = userLogin;
         this.password = password;
@@ -42,6 +43,7 @@ public class User {
         this.telephone = telephone;
         this.cellphone = cellphone;
         this.email = email;
+        this.webPage = webPage;
         this.state = state;
     }
 
@@ -141,11 +143,19 @@ public class User {
         this.email = email;
     }
 
+    public String getWebPage() {
+        return webPage;
+    }
+
+    public void setWebPage(String webPage) {
+        this.webPage = webPage;
+    }
+
     public String getState() {
         return state;
     }
 
     public void setState(String state) {
         this.state = state;
-    }    
+    }
 }
