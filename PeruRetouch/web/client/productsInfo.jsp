@@ -33,7 +33,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Peru Retouch - Products Info</title>
-        <link rel="icon" type="image/png" href="images/iconoPR.jpg" />
+        <link rel="icon" type="image/png" href="../images/iconoPR.jpg" />
         <meta name="author" content="Roy Taza Rojas">
         <link href="../css/styles.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
@@ -69,7 +69,7 @@
                                 <li style="font-size: 15px;">Image exposure</li>
                             </ul>
                         </div>
-                        <!--div class="readl"><a href="#">more</a></div-->
+                        <div class="readl"><a href="viewExamples.jsp?product=basic&photo=1">more</a></div>
                     </div>
                     <br><br><br><br><br><br>
                     <div id="left1">
@@ -88,7 +88,7 @@
                                 <li style="font-size: 15px;">Spot Coloring (all B&W except 1 object)</li>
                             </ul>
                         </div>
-                        <!--div class="readl"><a href="#">more</a></div-->
+                        <div class="readl"><a href="viewExamples.jsp?product=plus&photo=1">more</a></div>
                     </div>
                     <br><br><br><br>
                     <div id="left1">
@@ -105,7 +105,7 @@
                                 <li style="font-size: 15px;">Take off 10 years, 20 lbs, etc.</li>
                                 <li style="font-size: 15px;">Anything not covered by complete or complete plus</li>
                             </ul>                                
-                            <!--div class="readl"><a href="#">more</a></div-->
+                            <div class="readl"><a href="viewExamples.jsp?product=special&photo=1">more</a></div>
                         </div>
                     </div>
                     <!-- / content -->

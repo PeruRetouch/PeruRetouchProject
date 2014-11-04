@@ -48,7 +48,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Peru Retouch - Orders</title>
-        <link rel="icon" type="image/png" href="images/iconoPR.jpg" />
+        <link rel="icon" type="image/png" href="../images/iconoPR.jpg" />
         <meta name="author" content="Roy Taza Rojas">
         <link href="../css/styles.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
@@ -114,12 +114,14 @@
                         <%
                             }
                         } else {
-                            if (request.getParameter("abc").equalsIgnoreCase("alert")) {
+                            if (request.getParameter("abc") != null) {
+                                if (request.getParameter("abc").equalsIgnoreCase("alert")) {
                         %>
                         <br>
                         <h2>You don't have orders from <%= request.getParameter("from")%> to <%= request.getParameter("to")%></h2>
                         <p><a href="ordersClient.jsp">View all the orders</a></p>
                         <%
+                            }
                         } else {
                         %>
                         <br>

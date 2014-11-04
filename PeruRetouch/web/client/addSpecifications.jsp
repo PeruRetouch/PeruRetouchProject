@@ -47,7 +47,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Peru Retouch - Add Photo Specifications</title>
-        <link rel="icon" type="image/png" href="images/iconoPR.jpg" />
+        <link rel="icon" type="image/png" href="../images/iconoPR.jpg" />
         <meta name="author" content="Roy Taza Rojas">
         <link href="../css/styles.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
@@ -70,7 +70,7 @@
                 <br><br><br><br>
                 <div id="main1">
 
-                    <form method="post" action="../Controller">
+                    <form method="post" action="../Controller" onsubmit="document.forms['frmPhotos']['btnSendNow'].disabled = true;" name="frmPhotos">
                         <div id="uploadFiles">
                             <h3><%= product.getName()%></h3>
                             <br>
@@ -123,7 +123,7 @@
                                         }
                                     }
                                     //Agrego una columna
-%>
+                                %>
                                 <td>
                                     <%= UtilWeb.formatName(s, userBean.getIdUser().toString().length())%><br />
                                     <img src="../photoResources/temporary/<%= s%>" height="100"><br />
@@ -140,7 +140,7 @@
                         <br />
                         <div id="buttonsUploadFiles">
                             <div style="float: right">
-                                <input type="checkbox" name="chkConfirm" value="1" required />I'm sure about the specifications, pay $<%= product.getPrice() %> per photo and SEND the order.
+                                <input type="checkbox" name="chkConfirm" value="1" required />I'm sure about the specifications, pay $<%= product.getPrice()%> per photo and SEND the order.
                             </div>
                             <br><br>
                             <!--button onclick="location.href = 'chooseProduct.jsp';" name="btnCancel" style="float: left;" >Choose another product</button-->
@@ -150,7 +150,7 @@
                                 <input type="hidden" name="idProduct" value="<%= product.getIdProduct()%>" />
                                 <input type="hidden" name="action" value="<%= ConstantesWeb.UPLOAD_PHOTOS_CLIENT%>" />
                                 <!--input type="submit" name="btnContinue" value="Confirm and Send the Order" /-->
-                                <input type="image" src="../images/send.png" name="btnContinue" style="float: right;margin-top: -12px;" height="55" alt="BuyNow"/>
+                                <input type="image" src="../images/send.png" name="btnSendNow" style="float: right;margin-top: -12px;" height="55" alt="SendNow"/>
                             </div>
                         </div>
                     </form>

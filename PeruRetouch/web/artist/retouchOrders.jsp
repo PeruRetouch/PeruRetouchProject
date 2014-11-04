@@ -48,7 +48,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Peru Retouch - Retouch Orders</title>
-        <link rel="icon" type="image/png" href="images/iconoPR.jpg" />
+        <link rel="icon" type="image/png" href="../images/iconoPR.jpg" />
         <meta name="author" content="Roy Taza Rojas">
         <link href="../css/styles.css" rel="stylesheet" type="text/css" media="screen" />
     </head>

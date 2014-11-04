@@ -70,7 +70,8 @@
                                             <label for="text1">Country</label><br /><input id="text1" type="text" name="txtCountry" maxlength="50" value="" /><br />
                                             <label for="text1">Birthday</label><br /><input id="text1" type="date" name="txtBirthday" value="" /><br />
                                             <label for="text1">Telephone</label><br /><input id="text1" type="text" name="txtTelephone" maxlength="50" value="" /><br /> 
-                                            <label for="text1">Cellphone</label><br /><input id="text1" type="text" name="txtCellphone" maxlength="50" value="" /><br /> 
+                                            <label for="text1">Cellphone</label><br /><input id="text1" type="text" name="txtCellphone" maxlength="50" value="" /><br /> <br />
+                                            <label for="text1"><input type="checkbox" name="txtCellphone" value="Agree" required />I agree to all the <a href="terms.jsp" target="_blank">TERMS AND CONDITIONS</a>(*)</label><br /> 
                                             <h5 align="right">(*)Required fields</h5><br>
                                             <input type="submit" value="Register" name="btnRegister" align="center"/>
                                         </fieldset>

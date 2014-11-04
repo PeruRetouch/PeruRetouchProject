@@ -53,7 +53,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Peru Retouch - See Order Photos</title>
-        <link rel="icon" type="image/png" href="images/iconoPR.jpg" />
+        <link rel="icon" type="image/png" href="../images/iconoPR.jpg" />
         <meta name="author" content="Roy Taza Rojas">
         <link href="../css/styles.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
@@ -268,7 +268,7 @@
                             if (lstRetouch.size() > 0) {
                         %>
                         <a style="float: right;text-decoration: none" href="../Controller?action=<%= ConstantesWeb.DONWLOAD_RETOUCHED_PHOTOS%>&idOrder=<%= orden.getIdOrder()%>" target="_blank"><img src="../images/download-all-files.png" alt="#" height="15">&nbsp;Donwload all retouched photos</a><br>
-                        <fieldset>
+                        <fieldset style="width: 100%">
                             <legend><h2>Order's Photos</h2></legend>
                             <br>
                             <p style="margin-left: 10px;margin-right: 10px;text-align: justify"><b>Specification:</b> <%= orden.getSpecifications()%></p>

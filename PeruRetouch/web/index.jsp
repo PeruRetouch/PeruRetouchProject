@@ -6,8 +6,7 @@
 
 <%@page import="pe.com.peruretouch.web.util.ConstantesWeb"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    String message = "";
+<%    String message = "";
     if (request.getParameter("message") != null) {
         message = request.getParameter("message").toString();
     }
@@ -116,6 +115,7 @@
                         <!-- footer -->
                     </div>
                 </div>
+                <br>
                 <%@include file="template/footer.jsp" %>
             </div>
         </div>
