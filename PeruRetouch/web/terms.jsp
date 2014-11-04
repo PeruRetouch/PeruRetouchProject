@@ -79,7 +79,7 @@
                             </p>
                         </div>
                         <br>
-                        <center><a href="#" name="btnCloseWindow" onclick="window.close()" style="text-align: center"><img src="images/close.png" alt="Close" height="50"></a></center>
+                        <center><a href="javascript:window.close()" name="btnCloseWindow" style="text-align: center"><img src="images/close.png" alt="Close" height="50"></a></center>
                         <br>
                     </div>
                     <div id="footer">
