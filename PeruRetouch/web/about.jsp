@@ -5,6 +5,28 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%    
+    boolean showPage = false;
+    if (session.getAttribute(ConstantesWeb.USER_HOME) != null) {
+        UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
+        if (userBean.getPrivilege().equalsIgnoreCase("artist")) {
+            response.sendRedirect("artist/homeArtist.jsp");
+        } else if (userBean.getPrivilege().equalsIgnoreCase("supervisor")) {
+            response.sendRedirect("supervisor/homeSupervisor.jsp");
+        } else if (userBean.getPrivilege().equalsIgnoreCase("manager")) {
+            response.sendRedirect("manager/homeManager.jsp");
+        } else if (userBean.getPrivilege().equalsIgnoreCase("sa")) {
+            response.sendRedirect("sa/homeSa.jsp");
+        } else if (userBean.getPrivilege().equalsIgnoreCase("client")) {
+            response.sendRedirect("client/homeClient.jsp");
+        } else {
+            showPage = true;
+        }
+    } else {
+        showPage = true;
+    }
+    if (showPage) {
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -67,3 +89,6 @@
         </div>
     </body>
 </html>
+<%
+    }
+%>

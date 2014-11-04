@@ -54,12 +54,50 @@
                     <%@include file="../template/menu.jsp" %>
                 </div>
                 <br><br><br><br>
+                <p style="font-family:Arial, Helvetica, sans-serif;text-align: center;margin-left: 20px;margin-right: 20px;font-size:15px;color: #0f3d85">
+                    If you have some request or need some help, please send us a message.<br>
+                    We are glad to help you.<br>
+                </p>
+                <p style="font-family:Arial, Helvetica, sans-serif;text-align: center;margin-left: 20px;margin-right: 20px;font-size:16px;color: #008ae8">
+                    <b>PERU RETOUCH</b>
+                </p>
+                <br><br>
                 <!-- content -->
-                <div style="margin-left: 310px">
+                <div style="margin-left: 335px;min-height: 300px">
                     <div id="main">
-                        Under construction.
+                        <div id="main_bot">
+                            <div id="left">
+                                <div id="log">
+
+                                    <h3>Contact US</h3>
+                                    <form id="formLogin" method="post" action="../Controller">
+                                        <fieldset>
+                                            <input type="hidden" name="action" value="<%= ConstantesWeb.HELP_CLIENT_SEND_EMAIL%>" />
+                                            <%
+                                                if (request.getParameter("message") != null) {
+                                                    if (request.getParameter("message").contentEquals("sent")) {
+                                            %>
+                                            <label for="text1" style="color: green">Your message has been sent.</label><br />
+                                            <label for="text1" style="color: green">We will contact you by your email.</label><br />
+                                            <%
+                                            } else {
+                                            %>
+                                            <label for="text1" style="color: red"><%= request.getParameter("message")%></label><br />
+                                            <%
+                                                    }
+                                                }
+                                            %>
+                                            <label for="text1">Subject (*)</label><br /><input id="text2" type="text" name="txtSubject" value="" maxlength="50" required/><br />
+                                            <label for="text1">Message (*)</label><br /><textarea name="txtMessage" rows="5" cols="38" required></textarea><br />
+                                            <h5 align="right">(*)Required fields</h5><br>
+                                            <input type="submit" value="Send" name="btnSend" align="center"/>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <br /><br /><br /><br /><br /><br />
+                    <br>
                 </div>
                 <%@include file="../template/footer.jsp" %>
             </div>

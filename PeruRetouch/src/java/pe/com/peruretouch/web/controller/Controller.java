@@ -85,6 +85,9 @@ public class Controller extends HttpServlet {
             case ConstantesWeb.CONTACT_US_SEND_EMAIL:
                 this.ConstactUsSendEmail(request, response);
                 break;
+            case ConstantesWeb.HELP_CLIENT_SEND_EMAIL:
+                this.HelpSendEmail(request, response);
+                break;
             case ConstantesWeb.FORGOT_PASSWORD:
                 this.ForgotPassword(request, response);
                 break;
@@ -122,6 +125,7 @@ public class Controller extends HttpServlet {
                     userBean.setLastName(user.getLastName());
                     userBean.setIdProfile(user.getIdProfile());
                     userBean.setUserName(user.getUserLogin());
+                    userBean.setEmail(user.getEmail());
                     Profile p = new Profile();
                     p.setIdProfile(user.getIdProfile());
                     userBean.setPrivilege(profileBusiness.ejecutar(OperacionEnum.OBTENER, p).getName());
@@ -153,7 +157,7 @@ public class Controller extends HttpServlet {
                         session = request.getSession(true);
                         session.setAttribute(ConstantesWeb.USER_HOME, userBean);
                         session.setMaxInactiveInterval(60 * 60);
-                        url = "sa/homeSystem.jsp";
+                        url = "sa/homeSa.jsp";
                     } else {
                         //session.setAttribute(ConstantesWeb.USER_HOME, null);
                         mensaje += "An error has ocurred";
@@ -729,6 +733,45 @@ public class Controller extends HttpServlet {
             response.sendRedirect("requestPassword.jsp?type=2&message=" + e.getMessage());
         } catch (BusinessException e) {
             response.sendRedirect("requestPassword.jsp?type=2&message=" + e.getMessage());
+        }
+    }
+
+    protected void HelpSendEmail(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Properties properties = new Properties();
+        Session sescsion;
+
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.port", 587);
+        properties.put("mail.smtp.mail.sender", "peruretouch@gmail.com");
+        properties.put("mail.smtp.password", "soberanaorden1");
+        properties.put("mail.smtp.user", "peruretouch@gmail.com");
+        properties.put("mail.smtp.auth", "true");
+        sescsion = Session.getDefaultInstance(properties);
+
+        try {
+            session = request.getSession(false);
+            UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
+            String destino = "peruretouch@gmail.com";
+            String asunto = request.getParameter("txtSubject");
+
+            MimeMessage message = new MimeMessage(sescsion);
+            message.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(destino));
+            message.setSubject(asunto);
+            //message.setText(mensaje);
+            message.setContent("<b>De: </b>" + userBean.getName() + " " + userBean.getLastName()
+                    + "<br><b>Usuario: </b>" + userBean.getUserName()
+                    + "<br><b>Email: </b>" + userBean.getEmail()
+                    + "<br><br><b>Message: </b><br>" + request.getParameter("txtMessage"), "text/html");
+            Transport t = sescsion.getTransport("smtp");
+            t.connect((String) properties.get("mail.smtp.user"), (String) properties.get("mail.smtp.password"));
+            t.sendMessage(message, message.getAllRecipients());
+            t.close();
+            response.sendRedirect("client/help.jsp?message=sent");
+        } catch (MessagingException e) {
+            response.sendRedirect("client/help.jsp?message=" + e.getMessage());
         }
     }
 

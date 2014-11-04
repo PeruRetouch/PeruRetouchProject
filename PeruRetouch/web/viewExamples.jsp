@@ -5,11 +5,30 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    String idProduct = request.getParameter("product");
-    if (idProduct != null) {
-        if (idProduct.equalsIgnoreCase("basic") || idProduct.equalsIgnoreCase("plus") || idProduct.equalsIgnoreCase("special")) {
-            Integer idPhoto = Integer.parseInt(request.getParameter("photo"));
+<%    boolean showPage = false;
+    if (session.getAttribute(ConstantesWeb.USER_HOME) != null) {
+        UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
+        if (userBean.getPrivilege().equalsIgnoreCase("artist")) {
+            response.sendRedirect("artist/homeArtist.jsp");
+        } else if (userBean.getPrivilege().equalsIgnoreCase("supervisor")) {
+            response.sendRedirect("supervisor/homeSupervisor.jsp");
+        } else if (userBean.getPrivilege().equalsIgnoreCase("manager")) {
+            response.sendRedirect("manager/homeManager.jsp");
+        } else if (userBean.getPrivilege().equalsIgnoreCase("sa")) {
+            response.sendRedirect("sa/homeSa.jsp");
+        } else if (userBean.getPrivilege().equalsIgnoreCase("client")) {
+            response.sendRedirect("client/homeClient.jsp");
+        } else {
+            showPage = true;
+        }
+    } else {
+        showPage = true;
+    }
+    if (showPage) {
+        String idProduct = request.getParameter("product");
+        if (idProduct != null) {
+            if (idProduct.equalsIgnoreCase("basic") || idProduct.equalsIgnoreCase("plus") || idProduct.equalsIgnoreCase("special")) {
+                Integer idPhoto = Integer.parseInt(request.getParameter("photo"));
 %>
 <!DOCTYPE html>
 <html>
@@ -207,10 +226,11 @@
     </body>
 </html>
 <%
+            } else {
+                response.sendRedirect("pricesGalllery.jsp");
+            }
         } else {
             response.sendRedirect("pricesGalllery.jsp");
         }
-    } else {
-        response.sendRedirect("pricesGalllery.jsp");
     }
 %>

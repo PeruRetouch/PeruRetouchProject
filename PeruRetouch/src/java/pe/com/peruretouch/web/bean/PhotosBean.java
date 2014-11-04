@@ -21,27 +21,7 @@ public class PhotosBean implements Serializable {
 
     public PhotosBean() {
     }
-    /*
-     public static LinkedHashSet<String> getListPhotos() {
-     return LIST_PHOTOS_UPLOADED;
-     }
 
-     public static boolean addPhotoToList(String fileName) {
-     return LIST_PHOTOS_UPLOADED.add(fileName);
-     }
-
-     public static void removeAllPhotosFromTheList(String fileSavePath) {
-     if (!LIST_PHOTOS_UPLOADED.isEmpty()) {
-     for (String s : LIST_PHOTOS_UPLOADED) {
-     File file = new File(fileSavePath + "/" + s);
-     file.delete();
-     }
-     LIST_PHOTOS_UPLOADED.clear();
-     }
-     }
-     */
-
-    // CON SESION
     public LinkedHashSet<String> getListPhotos(HttpSession sesion) {
         this.list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
         return list_photos;
@@ -80,17 +60,7 @@ public class PhotosBean implements Serializable {
                 sesion.setAttribute(ConstantesWeb.PHOTO_LIST, list_photos);
             }
         }
-        //sesion.removeAttribute(ConstantesWeb.PHOTO_LIST);
     }
-    /*
-     public static void cleartList(HttpSession sesion) {
-     LinkedHashSet<String> list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);
-     list_photos.size();
-     if (sesion.getAttribute(ConstantesWeb.PHOTO_LIST) == null) {
-     sesion.removeAttribute(ConstantesWeb.PHOTO_LIST);
-     }
-     }
-     */
 
     public void cleartList2(HttpSession sesion) {
         this.list_photos = (LinkedHashSet<String>) sesion.getAttribute(ConstantesWeb.PHOTO_LIST);

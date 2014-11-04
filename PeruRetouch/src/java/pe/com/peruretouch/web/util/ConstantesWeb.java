@@ -10,6 +10,7 @@ public final class ConstantesWeb {
     public static final String GET_NEW_ORDER ="GetNewOrder";
     public static final String SEND_ANSWER = "SendAnswer";
     public static final String CONTACT_US_SEND_EMAIL = "ConstactUsSendEmail";
+    public static final String HELP_CLIENT_SEND_EMAIL = "HelpSendEmail";
     public static final String FORGOT_PASSWORD = "ForgotPassword";
     public static final String FORGOT_USERNAME = "ForgotUsername";
     public static final String MANAGER_PAY_ORDER = "ManagerPayOrder";

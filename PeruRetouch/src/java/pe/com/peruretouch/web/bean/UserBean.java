@@ -19,17 +19,19 @@ public class UserBean implements Serializable{
     private Integer idProfile;
     private String privilege;
     private String userName;
+    private String email;
 
     public UserBean() {
     }
 
-    public UserBean(Integer idUser, String name, String lastName, Integer idProfile, String privilege, String userName) {
+    public UserBean(Integer idUser, String name, String lastName, Integer idProfile, String privilege, String userName, String email) {
         this.idUser = idUser;
         this.name = name;
         this.lastName = lastName;
         this.idProfile = idProfile;
         this.privilege = privilege;
         this.userName = userName;
+        this.email = email;
     }
 
     public Integer getIdUser() {
@@ -78,5 +80,13 @@ public class UserBean implements Serializable{
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
