@@ -1,6 +1,5 @@
-PeruRetouchProject<br>
-==================<br>
-<br>
+PeruRetouchProject
+==================
 Peru Retouch<br>
 <br>
 A web to retouch photos.<br>
