@@ -117,7 +117,7 @@ public final class OrdenBusiness implements BaseBusiness<Orden> {
         }
     }
 
-    public List<Orden> listOrdersBetweenDates(int idUser, Date dateFrom, Date dateTo) throws BusinessException {
+    public List<Orden> listOrdersBetweenDates(int idUser, java.util.Date dateFrom, java.util.Date dateTo) throws BusinessException {
         try {
             return ORDEN_DAO.listOrdersBetweenDates(idUser, dateFrom, dateTo);
         } catch (CoreException ex) {

@@ -7,11 +7,11 @@
 package pe.com.peruretouch.dao.dao;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import pe.com.peruretouch.dao.base.BaseDao;
 import pe.com.peruretouch.dao.util.CoreException;
-import pe.com.peruretouch.entity.Product;
 import pe.com.peruretouch.entity.RetouchXSpecification;
 
 /**
@@ -37,7 +37,7 @@ public final class RetouchXSpecificationDao extends BaseDao<RetouchXSpecificatio
             cl.setInt(1, e.getIdRetouch());
             cl.setInt(2, e.getIdSpecificationType());
             cl.setInt(3, e.getIdAutor());
-            cl.setDate(4, new Date(e.getDateTimeSpecification().getTime()));
+            cl.setTimestamp(4, new Timestamp(e.getDateTimeSpecification().getTime()));
             cl.setString(5, e.getSpecification());
             cl.executeUpdate();
         }catch(Exception ex){
@@ -57,7 +57,7 @@ public final class RetouchXSpecificationDao extends BaseDao<RetouchXSpecificatio
             cl.setInt(2, e.getIdRetouch());
             cl.setInt(3, e.getIdSpecificationType());
             cl.setInt(4, e.getIdAutor());
-            cl.setDate(5, new Date(e.getDateTimeSpecification().getTime()));
+            cl.setTimestamp(5, new Timestamp(e.getDateTimeSpecification().getTime()));
             cl.setString(6, e.getSpecification());
             cl.executeUpdate();
         }catch(Exception ex){
@@ -97,7 +97,7 @@ public final class RetouchXSpecificationDao extends BaseDao<RetouchXSpecificatio
                 retouchXSpecification.setIdRetouch(rs.getInt("idRetouch"));
                 retouchXSpecification.setIdSpecificationType(rs.getInt("idSpecificationType"));
                 retouchXSpecification.setIdAutor(rs.getInt("idAutor"));
-                retouchXSpecification.setDateTimeSpecification(new java.util.Date(rs.getDate("dateTimeSpecification").getTime()));
+                retouchXSpecification.setDateTimeSpecification(new java.util.Date(rs.getTimestamp("dateTimeSpecification").getTime()));
                 retouchXSpecification.setSpecification(rs.getString("specification"));
             }
         }catch(Exception ex){
@@ -123,7 +123,7 @@ public final class RetouchXSpecificationDao extends BaseDao<RetouchXSpecificatio
                 retouchXSpecification.setIdRetouch(rs.getInt("idRetouch"));
                 retouchXSpecification.setIdSpecificationType(rs.getInt("idSpecificationType"));
                 retouchXSpecification.setIdAutor(rs.getInt("idAutor"));
-                retouchXSpecification.setDateTimeSpecification(new java.util.Date(rs.getDate("dateTimeSpecification").getTime()));
+                retouchXSpecification.setDateTimeSpecification(new java.util.Date(rs.getTimestamp("dateTimeSpecification").getTime()));
                 retouchXSpecification.setSpecification(rs.getString("specification"));
                 lista.add(retouchXSpecification);
             }
@@ -152,7 +152,7 @@ public final class RetouchXSpecificationDao extends BaseDao<RetouchXSpecificatio
                 retouchXSpecification.setIdRetouch(rs.getInt("idRetouch"));
                 retouchXSpecification.setIdSpecificationType(rs.getInt("idSpecificationType"));
                 retouchXSpecification.setIdAutor(rs.getInt("idAutor"));
-                retouchXSpecification.setDateTimeSpecification(new java.util.Date(rs.getDate("dateTimeSpecification").getTime()));
+                retouchXSpecification.setDateTimeSpecification(new java.util.Date(rs.getTimestamp("dateTimeSpecification").getTime()));
                 retouchXSpecification.setSpecification(rs.getString("specification"));
                 lista.add(retouchXSpecification);
             }
@@ -180,7 +180,7 @@ public final class RetouchXSpecificationDao extends BaseDao<RetouchXSpecificatio
                 retouchXSpecification.setIdRetouch(rs.getInt("idRetouch"));
                 retouchXSpecification.setIdSpecificationType(rs.getInt("idSpecificationType"));
                 retouchXSpecification.setIdAutor(rs.getInt("idAutor"));
-                retouchXSpecification.setDateTimeSpecification(new java.util.Date(rs.getDate("dateTimeSpecification").getTime()));
+                retouchXSpecification.setDateTimeSpecification(new java.util.Date(rs.getTimestamp("dateTimeSpecification").getTime()));
                 retouchXSpecification.setSpecification(rs.getString("specification"));
                 lista.add(retouchXSpecification);
             }

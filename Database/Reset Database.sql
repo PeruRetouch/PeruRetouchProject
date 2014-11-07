@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `PeruRetouch`.`Orden` (
   `idOrder` INT NOT NULL AUTO_INCREMENT,
   `idClient` INT NOT NULL,
   `orderName` VARCHAR(100) NULL,
-  `dateTimeClientRequest` DATETIME NULL,
+  `dateTimeClientRequest` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `specifications` TEXT NULL,
   `total` DECIMAL(18,2) NULL,
   `state` VARCHAR(50) NULL,
@@ -140,8 +140,8 @@ CREATE TABLE IF NOT EXISTS `PeruRetouch`.`Retouch` (
   `idProduct` INT NOT NULL,
   `idArtist` INT NULL,
   `idSupervisor` INT NULL,
-  `dateTimeArtistRequest` DATETIME NULL,
-  `dateTimeUploadRetouch` DATETIME NULL,
+  `dateTimeArtistRequest` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `dateTimeUploadRetouch` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `fileNombre` VARCHAR(200) NULL,
   `photoId` INT NULL,
   PRIMARY KEY (`idRetouch`),
@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `PeruRetouch`.`RetouchXSpecification` (
   `idRetouch` INT NOT NULL,
   `idSpecificationType` INT NOT NULL,
   `idAutor` INT NOT NULL,
-  `dateTimeSpecification` DATETIME NULL,
+  `dateTimeSpecification` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `specification` TEXT NULL,
   INDEX `fk_RetouchXSpecification_Retouch1_idx` (`idRetouch` ASC),
   INDEX `fk_RetouchXSpecification_SpecificationType1_idx` (`idSpecificationType` ASC),
@@ -2378,7 +2378,7 @@ SELECT
 FROM
     orden p
 WHERE
-	p.idClient = _idUser and p.dateTimeClientRequest >= _dateFrom and p.dateTimeClientRequest <= _dateTo
+	p.idClient = _idUser and p.dateTimeClientRequest >= _dateFrom and p.dateTimeClientRequest <= _dateTo + interval 1 day
 ;
 
 END$$

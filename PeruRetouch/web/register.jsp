@@ -4,7 +4,6 @@
     Author     : Roy Taza Rojas
 --%>
 
-<%@page import="pe.com.peruretouch.web.util.ManejadorFechas"%>
 <%@page import="pe.com.peruretouch.web.util.ConstantesWeb"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%    

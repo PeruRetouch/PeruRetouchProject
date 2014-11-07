@@ -4,6 +4,7 @@
     Author     : Roy Taza Rojas
 --%>
 
+<%@page import="pe.com.peruretouch.web.util.UtilWeb"%>
 <%@page import="pe.com.peruretouch.entity.Product"%>
 <%@page import="pe.com.peruretouch.business.ProductBusiness"%>
 <%@page import="pe.com.peruretouch.entity.Orden"%>
@@ -78,7 +79,7 @@
                             %>
                             <tr>
                                 <td><%= r.getIdOrder()%></td>
-                                <td><%= r.getDateTimeClientRequest()%></td>
+                                <td><%= UtilWeb.convertirDate(r.getDateTimeClientRequest(), "MM/dd/yyyy HH:mm:ss")%></td>
                                 <td><%= ordenBusiness.orderNumberOfPhotos(r.getIdOrder())%></td>
                                 <td><%= ordenBusiness.orderNumberOfReferences(r.getIdOrder())%></td>
                                 <%

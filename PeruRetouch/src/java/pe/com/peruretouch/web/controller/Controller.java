@@ -130,7 +130,6 @@ public class Controller extends HttpServlet {
                     p.setIdProfile(user.getIdProfile());
                     userBean.setPrivilege(profileBusiness.ejecutar(OperacionEnum.OBTENER, p).getName());
                     if (user.getState().equalsIgnoreCase(ConstantesWeb.STATE_INACTIVE)) {
-                        //session.setAttribute(ConstantesWeb.USER_HOME, null);
                         mensaje += "Your account has been disabled";
                         url = "index.jsp?" + ConstantesWeb.MESSAGE + "=" + mensaje;
                     } else if (user.getIdProfile() == ConstantesWeb.ID_CLIENT_PROFILE) {
@@ -159,24 +158,20 @@ public class Controller extends HttpServlet {
                         session.setMaxInactiveInterval(60 * 60);
                         url = "sa/homeSa.jsp";
                     } else {
-                        //session.setAttribute(ConstantesWeb.USER_HOME, null);
                         mensaje += "An error has ocurred";
                         url = "index.jsp?" + ConstantesWeb.MESSAGE + "=" + mensaje;
                     }
                 } else {
-                    //session.setAttribute(ConstantesWeb.USER_HOME, null);
                     mensaje += "User or password incorrect";
                     url = "index.jsp?" + ConstantesWeb.MESSAGE + "=" + mensaje;
                 }
             }
             response.sendRedirect(url);
         } catch (BusinessException e) {
-            //String[] errores = UtilWeb.getMessageExceptionPrintAop(e, e.getMessage());
             mensaje = e.getMessage();
             url = "error.jsp?" + ConstantesWeb.MESSAGE + "=" + mensaje;
             response.sendRedirect(url);
         } catch (Exception e) {
-            //String[] errores = UtilWeb.getMessageExceptionPrintAop(e, e.getMessage());
             mensaje = e.getMessage();
             url = "error.jsp?" + ConstantesWeb.MESSAGE + "=" + mensaje;
             response.sendRedirect(url);
@@ -222,14 +217,11 @@ public class Controller extends HttpServlet {
                 String websiteAddress = request.getParameter("txtWebsiteAddress");
                 String address = request.getParameter("txtAddress");
                 String country = request.getParameter("txtCountry");
-
                 String birthday = request.getParameter("txtBirthday");
-
+                Date birthdayDate = UtilWeb.convertirString(birthday, "yyyy-MM-dd");
                 String telephone = request.getParameter("txtTelephone");
                 String cellphone = request.getParameter("txtCellphone");
                 Integer idClientProfile = ConstantesWeb.ID_CLIENT_PROFILE;
-                // YYY-MM-DD
-                Date birthdayDate = UtilWeb.convertirString(birthday, "yyyymmdd");
 
                 User user = new User(0, userLogin, password, idClientProfile, name, lastName, address, country, birthdayDate, telephone, cellphone, email, websiteAddress, ConstantesWeb.STATE_ACTIVE);
                 userBusiness.ejecutar(OperacionEnum.GUARDAR, user);
@@ -251,19 +243,10 @@ public class Controller extends HttpServlet {
         try {
             session = request.getSession(false);
             PhotosBean photosBean = new PhotosBean();
-            //if (PhotosBean.getListPhotos().isEmpty()) {
             if (photosBean.getListPhotos(session).isEmpty()) {
                 response.sendRedirect("client/homeClient.jsp");
             } else {
-                // Current UTC time
-                ManejadorFechas manejadorFechas = new ManejadorFechas();
-                //formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-                //String sGTM = TimeZone.getTimeZone("PST").toString();
-                //Date dateTimeUserRequest = new Date();
-                String sDate = manejadorFechas.getFechaActual() + " " + manejadorFechas.getHoraActual();
-                Date dateTimeUserRequest = manejadorFechas.deStringToDateTime(sDate);
-                java.sql.Date auxDate = manejadorFechas.deUtilDateToSqlDate(dateTimeUserRequest);
-                //
+                Date dateTimeUserRequest = new Date();
                 /////// CREATE ORDER
                 UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
                 Product product = new Product();
@@ -295,7 +278,6 @@ public class Controller extends HttpServlet {
 
                 ////// CREATE RETOUCH and RetouchXSpecification FOR EVERY PHOTO
                 Double totalOrder = 0D;
-                //LinkedHashSet<String> lstPhotos = PhotosBean.getListPhotos();
                 LinkedHashSet<String> lstPhotos = photosBean.getListPhotos(session);
                 String[] lstSpecifications = request.getParameterValues("txtPhotoSpecification");
                 String[] lstReferences = request.getParameterValues("chkReference");
@@ -390,13 +372,7 @@ public class Controller extends HttpServlet {
             throws ServletException, IOException {
         try {
             session = request.getSession(false);
-            // Current UTC time
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
             Date dateTimeUserRequest = new Date();
-            String sDate = formatter.format(dateTimeUserRequest);
-            dateTimeUserRequest = formatter.parse(sDate);
-            //
             UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
             // Get the order
             int idOrder = Integer.parseInt(request.getParameter("idOrder"));
@@ -578,8 +554,9 @@ public class Controller extends HttpServlet {
                 }
                 RetouchXStatus retouchXStatus = new RetouchXStatus(idPhoto, ConstantesWeb.ID_STATUS_REWORKING);
                 retouchXStatusBusiness.ejecutar(OperacionEnum.GUARDAR, retouchXStatus);
-                ManejadorFechas manejadorFechas = new ManejadorFechas();
-                RetouchXSpecification retouchXSpecification = new RetouchXSpecification(0, idPhoto, ConstantesWeb.ID_SPECIFICATION_REWORK, user.getIdUser(), manejadorFechas.deStringToDateTime(manejadorFechas.getFechaActual() + " " + manejadorFechas.getHoraActual()), request.getParameter("txtSpecification"));
+                RetouchXSpecification retouchXSpecification = new RetouchXSpecification(0, 
+                        idPhoto, ConstantesWeb.ID_SPECIFICATION_REWORK, user.getIdUser(), 
+                        new Date(), request.getParameter("txtSpecification"));
                 retouchXSpecificationBusiness.ejecutar(OperacionEnum.GUARDAR, retouchXSpecification);
                 mensaje = "The photo has been send to rework";
             }
@@ -619,7 +596,6 @@ public class Controller extends HttpServlet {
             message.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(destino));
             message.setSubject(asunto);
-            //message.setText(mensaje);
             message.setContent("<b>De: </b>" + request.getParameter("txtName") + "<br><b>Email: </b>" + request.getParameter("txtEmail") + "<br><br><b>Message: </b><br>" + request.getParameter("txtMessage"), "text/html");
             Transport t = sescsion.getTransport("smtp");
             t.connect((String) properties.get("mail.smtp.user"), (String) properties.get("mail.smtp.password"));

@@ -6,6 +6,7 @@
 package pe.com.peruretouch.dao.dao;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import pe.com.peruretouch.dao.base.BaseDao;
@@ -34,7 +35,7 @@ public final class OrdenDao extends BaseDao<Orden> {
             cl = cn.prepareCall("{CALL spI_Order(?,?,?,?,?,?)}");
             cl.setInt(1, e.getIdClient());
             cl.setString(2, e.getOrderName());
-            cl.setDate(3, new Date(e.getDateTimeClientRequest().getTime()));
+            cl.setTimestamp(3, new Timestamp(e.getDateTimeClientRequest().getTime()));
             cl.setString(4, e.getSpecifications());
             cl.setDouble(5, e.getTotal());
             cl.setString(6, e.getState());
@@ -55,7 +56,7 @@ public final class OrdenDao extends BaseDao<Orden> {
             cl.setInt(1, e.getIdOrder());
             cl.setInt(2, e.getIdClient());
             cl.setString(3, e.getOrderName());
-            cl.setDate(4, new Date(e.getDateTimeClientRequest().getTime()));
+            cl.setTimestamp(4, new Timestamp(e.getDateTimeClientRequest().getTime()));
             cl.setString(5, e.getSpecifications());
             cl.setDouble(6, e.getTotal());
             cl.setString(7, e.getState());
@@ -96,7 +97,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
                 order.setOrderName(rs.getString("orderName"));
-                order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
+                order.setDateTimeClientRequest(new java.util.Date(rs.getTimestamp("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
                 order.setState(rs.getString("state"));
@@ -123,7 +124,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
                 order.setOrderName(rs.getString("orderName"));
-                order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
+                order.setDateTimeClientRequest(new java.util.Date(rs.getTimestamp("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
                 order.setState(rs.getString("state"));
@@ -151,7 +152,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
                 order.setOrderName(rs.getString("orderName"));
-                order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
+                order.setDateTimeClientRequest(new java.util.Date(rs.getTimestamp("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
                 order.setState(rs.getString("state"));
@@ -175,7 +176,7 @@ public final class OrdenDao extends BaseDao<Orden> {
             cl.registerOutParameter(1, java.sql.Types.INTEGER);
             cl.setInt(2, e.getIdClient());
             cl.setString(3, e.getOrderName());
-            cl.setDate(4, new Date(e.getDateTimeClientRequest().getTime()));
+            cl.setTimestamp(4, new Timestamp(e.getDateTimeClientRequest().getTime()));
             cl.setString(5, e.getSpecifications());
             cl.setDouble(6, e.getTotal());
             cl.setString(7, e.getState());
@@ -201,7 +202,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
                 order.setOrderName(rs.getString("orderName"));
-                order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
+                order.setDateTimeClientRequest(new java.util.Date(rs.getTimestamp("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
                 order.setState(rs.getString("state"));
@@ -288,7 +289,7 @@ public final class OrdenDao extends BaseDao<Orden> {
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
                 order.setOrderName(rs.getString("orderName"));
-                order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
+                order.setDateTimeClientRequest(new java.util.Date(rs.getTimestamp("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
                 order.setState(rs.getString("state"));
@@ -304,21 +305,21 @@ public final class OrdenDao extends BaseDao<Orden> {
         return lista;
     }
 
-    public List<Orden> listOrdersBetweenDates(int idUser, Date dateFrom, Date dateTo) throws CoreException {
+    public List<Orden> listOrdersBetweenDates(int idUser, java.util.Date dateFrom, java.util.Date dateTo) throws CoreException {
         List<Orden> lista = new ArrayList<>();
         try {
             cn = obtenerConexion();
             cl = cn.prepareCall("{CALL spF_OrdersBetweenDates(?,?,?)}");
             cl.setInt(1, idUser);
-            cl.setDate(2, dateFrom);
-            cl.setDate(3, dateTo);
+            cl.setDate(2, new Date(dateFrom.getTime()));
+            cl.setDate(3, new Date(dateTo.getTime()));
             rs = cl.executeQuery();
             while (rs.next()) {
                 Orden order = new Orden();
                 order.setIdOrder(rs.getInt("idOrder"));
                 order.setIdClient(rs.getInt("idClient"));
                 order.setOrderName(rs.getString("orderName"));
-                order.setDateTimeClientRequest(new java.util.Date(rs.getDate("dateTimeClientRequest").getTime()));
+                order.setDateTimeClientRequest(new java.util.Date(rs.getTimestamp("dateTimeClientRequest").getTime()));
                 order.setSpecifications(rs.getString("specifications"));
                 order.setTotal(rs.getDouble("total"));
                 order.setState(rs.getString("state"));

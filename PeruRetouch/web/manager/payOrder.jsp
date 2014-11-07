@@ -4,6 +4,7 @@
     Author     : Roy Taza Rojas
 --%>
 
+<%@page import="pe.com.peruretouch.web.util.UtilWeb"%>
 <%@page import="pe.com.peruretouch.business.UserBusiness"%>
 <%@page import="pe.com.peruretouch.entity.User"%>
 <%@page import="pe.com.peruretouch.entity.Orden"%>
@@ -79,7 +80,7 @@
                         %>
                         <tr>
                             <td><%= o.getIdOrder()%></td>
-                            <td><%= o.getDateTimeClientRequest()%></td>
+                            <td><%= UtilWeb.convertirDate(o.getDateTimeClientRequest(), "MM/dd/yyyy HH:mm:ss")%></td>
                             <%
                                 for (User u : lstUser) {
                                     if (o.getIdClient() == u.getIdUser()) {

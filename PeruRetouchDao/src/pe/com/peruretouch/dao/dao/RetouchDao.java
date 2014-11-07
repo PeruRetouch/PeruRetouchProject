@@ -6,6 +6,7 @@
 package pe.com.peruretouch.dao.dao;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import pe.com.peruretouch.dao.base.BaseDao;
@@ -36,8 +37,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
             cl.setInt(2, e.getIdProduct());
             cl.setInt(3, e.getIdArtist());
             cl.setInt(4, e.getIdSupervisor());
-            cl.setDate(5, new Date(e.getDateTimeArtistRequest().getTime()));
-            cl.setDate(6, new Date(e.getDateTimeUploadRetouch().getTime()));
+            cl.setTimestamp(5, new Timestamp(e.getDateTimeArtistRequest().getTime()));
+            cl.setTimestamp(6, new Timestamp(e.getDateTimeUploadRetouch().getTime()));
             cl.setString(7, e.getFileNombre());
             cl.setInt(8, e.getPhotoId());
             cl.executeUpdate();
@@ -59,8 +60,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
             cl.setInt(3, e.getIdProduct());
             cl.setInt(4, e.getIdArtist());
             cl.setInt(5, e.getIdSupervisor());
-            cl.setDate(6, new Date(e.getDateTimeArtistRequest().getTime()));
-            cl.setDate(7, new Date(e.getDateTimeUploadRetouch().getTime()));
+            cl.setTimestamp(6, new Timestamp(e.getDateTimeArtistRequest().getTime()));
+            cl.setTimestamp(7, new Timestamp(e.getDateTimeUploadRetouch().getTime()));
             cl.setString(8, e.getFileNombre());
             cl.setInt(9, e.getPhotoId());
             cl.executeUpdate();
@@ -102,8 +103,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
             }
@@ -131,8 +132,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
                 lista.add(retouch);
@@ -157,8 +158,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
             cl.setInt(3, e.getIdProduct());
             cl.setInt(4, e.getIdArtist());
             cl.setInt(5, e.getIdSupervisor());
-            cl.setDate(6, new Date(e.getDateTimeArtistRequest().getTime()));
-            cl.setDate(7, new Date(e.getDateTimeUploadRetouch().getTime()));
+            cl.setTimestamp(6, new Timestamp(e.getDateTimeArtistRequest().getTime()));
+            cl.setTimestamp(7, new Timestamp(e.getDateTimeUploadRetouch().getTime()));
             cl.setString(8, e.getFileNombre());
             cl.setInt(9, e.getPhotoId());
             cl.executeUpdate();
@@ -186,8 +187,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
                 lista.add(retouch);
@@ -216,8 +217,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
                 lista.add(retouch);
@@ -246,8 +247,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
             }
@@ -276,8 +277,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
             }
@@ -306,8 +307,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
                 lista.add(retouch);
@@ -337,8 +338,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
                 lista.add(retouch);
@@ -367,8 +368,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
                 lista.add(retouch);
@@ -397,8 +398,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
                 lista.add(retouch);
@@ -428,8 +429,8 @@ public final class RetouchDao extends BaseDao<Retouch> {
                 retouch.setIdProduct(rs.getInt("idProduct"));
                 retouch.setIdArtist(rs.getInt("idArtist"));
                 retouch.setIdSupervisor(rs.getInt("idSupervisor"));
-                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getDate("dateTimeArtistRequest").getTime()));
-                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getDate("dateTimeUploadRetouch").getTime()));
+                retouch.setDateTimeArtistRequest(new java.util.Date(rs.getTimestamp("dateTimeArtistRequest").getTime()));
+                retouch.setDateTimeUploadRetouch(new java.util.Date(rs.getTimestamp("dateTimeUploadRetouch").getTime()));
                 retouch.setFileNombre(rs.getString("fileNombre"));
                 retouch.setPhotoId(rs.getInt("photoId"));
                 lista.add(retouch);

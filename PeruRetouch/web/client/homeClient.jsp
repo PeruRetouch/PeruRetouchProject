@@ -102,7 +102,7 @@
                                             }
                                         }
                                         //Agrego una columna
-                                    %>
+%>
                                     <td>
                                         <h2># <%= o.getIdOrder()%></h2><br />
                                         <a href="orderPhotos.jsp?idOrder=<%= o.getIdOrder()%>"><img src="../images/folderImage.png" alt="<%= o.getIdOrder()%>"></a><br>
@@ -132,7 +132,7 @@
                                                         break;
                                                 }
                                             }%>
-                                        <p>Date: <%= o.getDateTimeClientRequest()%></p>
+                                        <p>Date: <%= UtilWeb.convertirDate(o.getDateTimeClientRequest(), "MM/dd/yyyy HH:mm:ss")%></p>
                                     </td>
                                     <%
                                             i++;

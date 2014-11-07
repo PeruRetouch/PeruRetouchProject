@@ -16,21 +16,6 @@ public final class UtilWeb {
         return sdf.format(fecha);
     }
 
-    public static final String id() {
-        return convertirDate(new Date(), "ddMMyyyyhhmmss");
-    }
-
-    public static final String codigoError(String codigo) {
-        return "Ocurrio un error inesperado con id: " + codigo;
-    }
-
-    public static final String[] getMessageExceptionPrintAop(Exception e,
-            String prefijo) {
-        String idError = id();
-        String mensaje = codigoError(idError);
-        return new String[]{idError, mensaje};
-    }
-
     public static Date convertirString(String fecha, String formato) {
         SimpleDateFormat formatter = new SimpleDateFormat(formato);
         Date fechaConvertida = new Date();

@@ -4,6 +4,7 @@
     Author     : Roy Taza Rojas
 --%>
 
+<%@page import="pe.com.peruretouch.web.util.UtilWeb"%>
 <%@page import="pe.com.peruretouch.entity.Orden"%>
 <%@page import="pe.com.peruretouch.business.OrdenBusiness"%>
 <%@page import="pe.com.peruretouch.business.RetouchXSpecificationBusiness"%>
@@ -90,7 +91,7 @@
                         %>
                         <tr>
                             <td><%= r.getFileNombre()%></td>
-                            <td><%= r.getDateTimeArtistRequest()%></td>
+                            <td><%= UtilWeb.convertirDate(r.getDateTimeArtistRequest(), "MM/dd/yyyy HH:mm:ss")%></td>
                             <%
                                 productAux.setIdProduct(r.getIdProduct());
                             %>
@@ -135,7 +136,7 @@
                         %>
                         <tr>
                             <td><%= r.getFileNombre()%></td>
-                            <td><%= r.getDateTimeArtistRequest()%></td>
+                            <td><%= UtilWeb.convertirDate(r.getDateTimeArtistRequest(), "MM/dd/yyyy HH:mm:ss")%></td>
                             <%
                                 productAux.setIdProduct(r.getIdProduct());
                             %>
@@ -180,7 +181,7 @@
                                 break;
                             case ConstantesWeb.ID_SPECIFICATION_REWORK:
                         %>
-                        <b>Rework (<%= rxs.getDateTimeSpecification()%>):</b><br>
+                        <b>Rework (<%= UtilWeb.convertirDate(rxs.getDateTimeSpecification(), "MM/dd/yyyy HH:mm:ss")%>):</b><br>
                         <%= rxs.getSpecification()%><br>
                         <%
                                     break;
@@ -224,7 +225,7 @@
                                     break;
                                 case ConstantesWeb.ID_SPECIFICATION_REWORK:
                             %>
-                            <b>Rework (<%= rxs.getDateTimeSpecification()%>):</b>
+                            <b>Rework (<%= UtilWeb.convertirDate(rxs.getDateTimeSpecification(), "MM/dd/yyyy HH:mm:ss")%>):</b>
                             <%= rxs.getSpecification()%><br>
                             <%
                                         break;

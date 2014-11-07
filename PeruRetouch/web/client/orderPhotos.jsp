@@ -248,7 +248,7 @@
                             %>
                             <br><br>
                             Rework:&nbsp
-                            (<%= rxsItem.getDateTimeSpecification()%>)<br>
+                            <%= UtilWeb.convertirDate(rxsItem.getDateTimeSpecification(), "MM/dd/yyyy HH:mm:ss")%><br>
                             <%= rxsItem.getSpecification()%>
                             <%
                                             break;

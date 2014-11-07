@@ -4,7 +4,6 @@
     Author     : Roy Taza Rojas
 --%>
 
-<%@page import="pe.com.peruretouch.web.util.ManejadorFechas"%>
 <%@page import="pe.com.peruretouch.web.util.UtilWeb"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.util.ArrayList"%>
@@ -33,9 +32,9 @@
             List<Orden> listOrders = new ArrayList<Orden>();
             if (request.getParameter("from") != null) {
                 if (request.getParameter("to") != null) {
-                    listOrders = ordenBusiness.listOrdersBetweenDates(userBean.getIdUser(),
-                            new Date(UtilWeb.convertirString(request.getParameter("from"), "yyyy-MM-dd").getTime()),
-                            new Date(UtilWeb.convertirString(request.getParameter("to"), "yyyy-MM-dd").getTime()));
+                    listOrders = ordenBusiness.listOrdersBetweenDates(userBean.getIdUser(), 
+                            UtilWeb.convertirString(request.getParameter("from"), "yyyy-MM-dd"), 
+                            UtilWeb.convertirString(request.getParameter("to"), "yyyy-MM-dd"));
                 } else {
                     listOrders = ordenBusiness.listOrdersByClient(userBean.getIdUser());
                 }
@@ -75,8 +74,8 @@
                         <h1><%= userBean.getName()%>'s Orders</h1><br><br>
                         <form action="../Controller" method="post">
                             <input type="hidden" name="action" value="<%= ConstantesWeb.ORDERS_BETWEEN_DATES%>">
-                            <p>From: <input type="date" name="dateFrom" value="">
-                                &nbsp;&nbsp;&nbsp;&nbsp;To: <input type="date" name="dateTo" value="">
+                            <p>From: <input type="date" name="dateFrom" value="" required>
+                                &nbsp;&nbsp;&nbsp;&nbsp;To: <input type="date" name="dateTo" value="" required>
                                 &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="btnSearch" value="Search"></p>
                         </form>
                         <br><br>
@@ -91,7 +90,7 @@
                         %>
                         <h2>All the orders.</h2>
                         <br>
-                        <%
+                        <%        
                             }
                             for (Orden orden : listOrders) {
                         %>
@@ -106,7 +105,7 @@
                         <p><b>Order's specifications:</b> <%= orden.getSpecifications()%></p>
                         <p><b>Number of Photos:</b> <%= ordenBusiness.orderNumberOfPhotos(orden.getIdOrder())%></p>
                         <p><b>Number of References:</b> <%= ordenBusiness.orderNumberOfReferences(orden.getIdOrder())%></p>
-                        <p><b>Date:</b> <%= orden.getDateTimeClientRequest()%></p>
+                        <p><b>Date:</b> <%= UtilWeb.convertirDate(orden.getDateTimeClientRequest(), "MM/dd/yyyy HH:mm:ss")%></p>
                         <p><b>Total: <%= orden.getTotal()%></b></p>
                         <p><a href="orderPhotos.jsp?idOrder=<%= orden.getIdOrder()%>">View photos</a></p>
                         <br>
@@ -127,7 +126,7 @@
                         <br>
                         <h2>You don't have orders.</h2>
                         <p><a href="chooseProduct.jsp">Upload Photos</a></p>
-                        <%
+                        <%            
                                 }
                             }
                         %>
