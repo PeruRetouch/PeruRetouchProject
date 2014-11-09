@@ -55,16 +55,7 @@
         <div id="bg1">
             <div id="content">
                 <!-- header -->
-                <div id="header" style="height: auto">
-                    <!--img id="logoPeruRetouch" src="images/logoPeruRetouch.jpg" alt="logoPeruRetouch"-->
-                    <script language="javascript">AC_FL_RunContent = 0;</script>
-                    <script src="../js/AC_RunActiveContent.js"></script>
-                    <%@include file="../template/logo.jsp" %>
-                    <div id="contenedorLogout">
-                        Welcome <%= userBean.getName()%> <%= userBean.getLastName()%>&nbsp;&nbsp;<a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><div id="btnLogout"></div></a>
-                    </div>
-                    <%@include file="../template/menu.jsp" %>
-                </div>
+                <%@include file="../template/header.jsp" %>
                 <!-- / header -->
                 <!-- content -->
                 <br><br><br><br>
@@ -83,7 +74,6 @@
                             <br>
                             <p>Add the requirement for all the photos and/or each photo:</p>
                             <br>
-
                             <!--p>
                                 Artist: <select>
                                     <option value="0">Anyone</option>
@@ -126,7 +116,7 @@
                                 %>
                                 <td>
                                     <%= UtilWeb.formatName(s, userBean.getIdUser().toString().length())%><br />
-                                    <img src="../photoResources/temporary/<%= s%>" height="100"><br />
+                                    <img src="../photoResources/temporary/<%= s%>" width="200"><br />
                                     <textarea name="txtPhotoSpecification" cols="20" rows="4" placeholder="Photo's specification"></textarea><br />
                                     <input type="checkbox" name="chkReference" value="<%= s%>" >Reference
                                 </td>
@@ -149,7 +139,6 @@
                                 <input type="hidden" name="idClient" value="<%= product.getIdProduct()%>" />
                                 <input type="hidden" name="idProduct" value="<%= product.getIdProduct()%>" />
                                 <input type="hidden" name="action" value="<%= ConstantesWeb.UPLOAD_PHOTOS_CLIENT%>" />
-                                <!--input type="submit" name="btnContinue" value="Confirm and Send the Order" /-->
                                 <input type="image" src="../images/send.png" name="btnSendNow" style="float: right;margin-top: -12px;" height="55" alt="SendNow"/>
                             </div>
                         </div>

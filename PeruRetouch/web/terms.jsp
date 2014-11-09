@@ -21,10 +21,7 @@
             <div id="content">
                 <!-- header -->
                 <div id="header" style="height: auto">
-                    <!--img id="logoPeruRetouch" src="images/logoPeruRetouch.jpg" alt="logoPeruRetouch"-->
-                    <script language="javascript">AC_FL_RunContent = 0;</script>
-                    <script src="js/AC_RunActiveContent.js"></script>
-                    <%@include file="template/logo.jsp" %>
+                    <img id="logoPeruRetouch" src="images/LogoPeruRetouch.gif" alt="logoPeruRetouch">
                 </div>
                 <!-- / header -->
                 <!-- content -->

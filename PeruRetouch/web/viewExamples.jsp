@@ -48,21 +48,7 @@
         <div id="bg1">
             <div id="content">
                 <!-- header -->
-                <div id="header" style="height: auto">
-                    <!--img id="logoPeruRetouch" src="images/logoPeruRetouch.jpg" alt="logoPeruRetouch"-->
-                    <script language="javascript">AC_FL_RunContent = 0;</script>
-                    <script src="js/AC_RunActiveContent.js"></script>
-                    <%@include file="template/logo.jsp" %>
-                    <br><br><br>
-                    <div id="menu">
-                        <ul>
-                            <li id="button1"><a href="index.jsp" title="">Home</a></li>
-                            <li id="button2"><a href="pricesGalllery.jsp" title="">Prices & Gallery</a></li>
-                            <li id="button4"><a href="about.jsp" title="">About</a></li>
-                            <li id="button5"><a href="contact.jsp" title="">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <%@include file="template/header.jsp" %>
                 <!-- / header -->
                 <!-- content -->
                 <br><br><br><br>

@@ -6,8 +6,7 @@
 
 <%@page import="pe.com.peruretouch.web.util.ConstantesWeb"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%    
-    boolean showPage = false;
+<%    boolean showPage = false;
     if (session.getAttribute(ConstantesWeb.USER_HOME) != null) {
         UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
         if (userBean.getPrivilege().equalsIgnoreCase("artist")) {
@@ -51,46 +50,33 @@
         <div id="bg1">
             <div id="content">
                 <!-- header -->
-                <div id="header">
-                    <!--img id="logoPeruRetouch" src="images/logoPeruRetouch.jpg" alt="logoPeruRetouch"-->
-                    <script language="javascript">AC_FL_RunContent = 0;</script>
-                    <script src="js/AC_RunActiveContent.js"></script>
-                    <%@include file="template/logo.jsp" %>
-                    <br><br><br>
-                    <div id="menu">
-                        <ul>
-                            <li id="button1"><a href="index.jsp" title="">Home</a></li>
-                            <li id="button2"><a href="pricesGalllery.jsp" title="">Prices & Gallery</a></li>
-                            <li id="button4"><a href="about.jsp" title="">About</a></li>
-                            <li id="button5"><a href="contact.jsp" title="">Contact</a></li>
-                        </ul>
-                    </div>
-                    <!--div id="logo"-->
-                    <br><br><br><br><br>
-                    <div style="background: gray;height: 10px;width: 987px;"></div>
-                    <!--Carrusel de imagenes-->
-                    <div id="wrap">
-                        <div id="slider-wrapper">
-                            <div id="slider" class="nivoSlider">
-                                <img src="images/portrait0.jpg" alt=""/>
-                                <img src="images/portrait1.jpg" alt=""/>
-                                <img src="images/portrait2.jpg" alt=""/>
-                                <img src="images/portrait3.jpg" alt=""/>
-                                <img src="images/portrait4.jpg" alt=""/>
-                            </div>
+                <%@include file="template/header.jsp" %>
+                <!--div id="logo"-->
+                <br><br><br><br><br>
+                <div style="background: gray;height: 10px;width: 987px;"></div>
+                <!--Carrusel de imagenes-->
+                <div id="wrap">
+                    <div id="slider-wrapper">
+                        <div id="slider" class="nivoSlider">
+                            <img src="images/portrait0.jpg" alt=""/>
+                            <img src="images/portrait1.jpg" alt=""/>
+                            <img src="images/portrait2.jpg" alt=""/>
+                            <img src="images/portrait3.jpg" alt=""/>
+                            <img src="images/portrait4.jpg" alt=""/>
                         </div>
                     </div>
-                    <script type="text/javascript" src="slider/jquery-1.4.3.min.js"></script>
-                    <script type="text/javascript" src="slider/jquery.nivo.slider.pack.js"></script>
-                    <script type="text/javascript">
-                        $(window).load(function() {
-                            $('#slider').nivoSlider();
-                        });
-                    </script>
-                    <!--Carrusel de imagenes-->
-                    <!--/div-->
-                </div><div class="inner_copy"></div>
-                <div style="background: gray;height: 205px;width: 987px;"></div>
+                </div>
+                <script type="text/javascript" src="slider/jquery-1.4.3.min.js"></script>
+                <script type="text/javascript" src="slider/jquery.nivo.slider.pack.js"></script>
+                <script type="text/javascript">
+                    $(window).load(function() {
+                        $('#slider').nivoSlider();
+                    });
+                </script>
+                <!--Carrusel de imagenes-->
+                <!--/div-->
+                <div class="inner_copy"></div>
+                <div style="background: gray;height: 10px;width: 987px;"></div>
                 <br><br>
                 <!-- / header -->
                 <!-- content -->

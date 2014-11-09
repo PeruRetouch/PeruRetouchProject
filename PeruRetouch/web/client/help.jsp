@@ -43,16 +43,7 @@
         <div id="bg1">
             <div id="content">
                 <!-- header -->
-                <div id="header" style="height: auto">
-                    <!--img id="logoPeruRetouch" src="images/logoPeruRetouch.jpg" alt="logoPeruRetouch"-->
-                    <script language="javascript">AC_FL_RunContent = 0;</script>
-                    <script src="../js/AC_RunActiveContent.js"></script>
-                    <%@include file="../template/logo.jsp" %>
-                    <div id="contenedorLogout">
-                        Welcome <%= userBean.getName()%> <%= userBean.getLastName()%>&nbsp;&nbsp;<a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><div id="btnLogout"></div></a>
-                    </div>
-                    <%@include file="../template/menu.jsp" %>
-                </div>
+                <%@include file="../template/header.jsp" %>
                 <br><br><br><br>
                 <p style="font-family:Arial, Helvetica, sans-serif;text-align: center;margin-left: 20px;margin-right: 20px;font-size:15px;color: #0f3d85">
                     If you have some request or need some help, please send us a message.<br>

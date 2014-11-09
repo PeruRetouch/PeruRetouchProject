@@ -10,13 +10,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import static java.nio.file.StandardCopyOption.*;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
-import java.util.TimeZone;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -265,16 +263,12 @@ public class Controller extends HttpServlet {
                 orderXStatus1.setIdStatus(ConstantesWeb.ID_STATUS_ACTIVE);
                 OrderXStatus orderXStatus2 = new OrderXStatus();
                 orderXStatus2.setIdStatus(ConstantesWeb.ID_STATUS_NEW);
-                OrderXStatus orderXStatus3 = new OrderXStatus();
-                orderXStatus3.setIdStatus(ConstantesWeb.ID_STATUS_WORKING);
-                // Insert the order and its status in the database            
+                // Insert the order and its status in the database
                 int idorder = ordenBusiness.insertOrderAndReturnId(orden);
                 orderXStatus1.setIdOrder(idorder);
                 orderXStatus2.setIdOrder(idorder);
-                orderXStatus3.setIdOrder(idorder);
                 orderXStatusBusiness.ejecutar(OperacionEnum.GUARDAR, orderXStatus1);
                 orderXStatusBusiness.ejecutar(OperacionEnum.GUARDAR, orderXStatus2);
-                orderXStatusBusiness.ejecutar(OperacionEnum.GUARDAR, orderXStatus3);
 
                 ////// CREATE RETOUCH and RetouchXSpecification FOR EVERY PHOTO
                 Double totalOrder = 0D;
@@ -378,12 +372,12 @@ public class Controller extends HttpServlet {
             int idOrder = Integer.parseInt(request.getParameter("idOrder"));
             Orden orden = new Orden();
             orden.setIdOrder(idOrder);
-            //orden = ordenBusiness.ejecutar(OperacionEnum.OBTENER, orden);
             // Setear la orden ya NO es nueva
             List<OrderXStatus> listOxS = orderXStatusBusiness.listByOrder(idOrder);
             for (OrderXStatus oxs : listOxS) {
                 if (oxs.getIdStatus() == ConstantesWeb.ID_STATUS_NEW) {
                     orderXStatusBusiness.ejecutar(OperacionEnum.ELIMINAR, oxs);
+                    break;
                 }
             }
             // Obtener todas las fotos de la orden y actualizar

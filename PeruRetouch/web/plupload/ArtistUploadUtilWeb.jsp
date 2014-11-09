@@ -4,6 +4,8 @@
     Author     : Roy Taza Rojas
 --%>
 
+<%@page import="pe.com.peruretouch.entity.OrderXStatus"%>
+<%@page import="pe.com.peruretouch.business.OrderXStatusBusiness"%>
 <%@page import="pe.com.peruretouch.entity.Orden"%>
 <%@page import="pe.com.peruretouch.business.OrdenBusiness"%>
 <%@page import="javax.mail.MessagingException"%>
@@ -78,14 +80,14 @@
                                             retouchXStatusBusiness.ejecutar(OperacionEnum.ELIMINAR, rxs);
                                             rxs.setIdStatus(ConstantesWeb.ID_STATUS_WORKING);
                                             retouchXStatusBusiness.ejecutar(OperacionEnum.ELIMINAR, rxs);
-                                            rxs.setIdStatus(ConstantesWeb.ID_STATUS_WAITING_ANSWER);
+                                            rxs.setIdStatus(ConstantesWeb.ID_STATUS_APPROVED);
                                             retouchXStatusBusiness.ejecutar(OperacionEnum.GUARDAR, rxs);
                                             break;
                                         } else if (rxs.getIdStatus() == ConstantesWeb.ID_STATUS_WORKING) {
                                             retouchXStatusBusiness.ejecutar(OperacionEnum.ELIMINAR, rxs);
                                             rxs.setIdStatus(ConstantesWeb.ID_STATUS_NEW);
                                             retouchXStatusBusiness.ejecutar(OperacionEnum.ELIMINAR, rxs);
-                                            rxs.setIdStatus(ConstantesWeb.ID_STATUS_WAITING_ANSWER);
+                                            rxs.setIdStatus(ConstantesWeb.ID_STATUS_APPROVED);
                                             retouchXStatusBusiness.ejecutar(OperacionEnum.GUARDAR, rxs);
                                             break;
                                         } else if (rxs.getIdStatus() == ConstantesWeb.ID_STATUS_REWORKING) {
@@ -105,10 +107,7 @@
                                     for (Retouch ret : listRetouchs) {
                                         listRxS = retouchXStatusBusiness.listarByRetouch(ret.getPhotoId());
                                         for (RetouchXStatus rxs : listRxS) {
-                                            if (rxs.getIdStatus() == ConstantesWeb.ID_STATUS_WAITING_ANSWER) {
-                                                contador++;
-                                                break;
-                                            } else if (rxs.getIdStatus() == ConstantesWeb.ID_STATUS_REWORKED) {
+                                            if (rxs.getIdStatus() == ConstantesWeb.ID_STATUS_REWORKED) {
                                                 contador++;
                                                 break;
                                             } else if (rxs.getIdStatus() == ConstantesWeb.ID_STATUS_REFERENCE) {
@@ -130,6 +129,16 @@
                                         User user = new User();
                                         user.setIdUser(orden.getIdClient());
                                         user = userBusiness.ejecutar(OperacionEnum.OBTENER, user);
+                                        
+                                        /*
+                                        //ACA habria que modificar el o los estados de la orden.
+                                        OrderXStatusBusiness orderXStatusBusiness = OrderXStatusBusiness.obtenerEntidad();
+                                        List<OrderXStatus> listOrderXStatuses = orderXStatusBusiness.listByOrder(orden.getIdOrder());
+                                        for(OrderXStatus oxs : listOrderXStatuses) {
+                                            
+                                        }
+                                        */
+                                        
                                         Properties properties = new Properties();
                                         Session sescsion;
 
@@ -163,7 +172,6 @@
                                         t.connect((String) properties.get("mail.smtp.user"), (String) properties.get("mail.smtp.password"));
                                         t.sendMessage(message, message.getAllRecipients());
                                         t.close();
-                                        //response.sendRedirect("requestPassword.jsp?type=1&message=Your new password has been sent to your email.");
                                     }
                                 }
                             }

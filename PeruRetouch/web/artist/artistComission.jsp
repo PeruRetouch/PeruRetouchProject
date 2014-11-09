@@ -45,13 +45,7 @@
         <div id="bg1">
             <div id="content">
                 <!-- header -->
-                <div id="header" style="height: auto">
-                    <img id="logoPeruRetouch" src="../images/logoPeruRetouch.jpg" alt="logoPeruRetouch">
-                    <div id="contenedorLogout">
-                        Bienvenido <%= userBean.getName()%> <%= userBean.getLastName()%>&nbsp;&nbsp;<a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><div id="btnLogout"></div></a>
-                    </div>
-                    <%@include file="../template/menu.jsp" %>
-                </div>
+                <%@include file="../template/header.jsp" %>
                 <!-- / header -->
                 <!-- content -->
                 <br><br><br>

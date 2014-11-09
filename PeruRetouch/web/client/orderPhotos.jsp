@@ -69,16 +69,7 @@
         <div id="bg1">
             <div id="content">
                 <!-- header -->
-                <div id="header" style="height: auto">
-                    <!--img id="logoPeruRetouch" src="images/logoPeruRetouch.jpg" alt="logoPeruRetouch"-->
-                    <script language="javascript">AC_FL_RunContent = 0;</script>
-                    <script src="../js/AC_RunActiveContent.js"></script>
-                    <%@include file="../template/logo.jsp" %>
-                    <div id="contenedorLogout">
-                        Welcome <%= userBean.getName()%> <%= userBean.getLastName()%>&nbsp;&nbsp;<a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><div id="btnLogout"></div></a>
-                    </div>
-                    <%@include file="../template/menu.jsp" %>
-                </div>
+                <%@include file="../template/header.jsp" %>
                 <!-- / header -->
                 <!-- content -->
                 <br><br><br><br>
@@ -86,10 +77,6 @@
                     <br>
                     <div id="viewOrder">
                         <!-- / content -->
-                        <br>
-                        <!--a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder()%>">Donwload all the orginal photos</a> | 
-                        <a href="Controller?action=downloadAllOriginales&idOrder=<%= orden.getIdOrder()%>">Donwload all the orginal photos</a-->
-                        <br>
                         <%
                             if (request.getParameter("idPhoto") != null) {
                                 // Verficar que la foto le pertenezaca al cliente respectivo
@@ -116,35 +103,6 @@
                             <img src="../photoResources/photos/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="400"><br />
                             <a style="text-decoration: none" href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a><br>
                             <label>STATUS: WORKING</label><br />
-                        </div>
-                        <br />
-                        <%
-                                break;
-                            case ConstantesWeb.ID_STATUS_WAITING_ANSWER:
-                        %>
-                        <div id="photoWorking">
-                            <div id="before" style="float: left">
-                                <label>BEFORE</label><br>
-                                <img src="../photoResources/photos/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="450"><br>
-                                <a style="text-decoration: none" href="../photoResources/photos/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
-                            </div>
-                            <div id="after" style="float: right;margin-right: 5px">
-                                <label>AFTER</label><br>
-                                <img src="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="450"><br>
-                                <a style="text-decoration: none" href="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
-                            </div>
-                            <br /><br /><br /><br /><br /><br /><br /><br />
-                            <label>STATUS: WAITING FOR AN ASNWER</label><br />
-                            <form method="post" action="../Controller">
-                                <input type="hidden" name="action" value="<%=ConstantesWeb.SEND_ANSWER%>" />
-                                <input type="hidden" name="idOrder" value="<%= retouch.getIdOrder()%>" />
-                                <input type="hidden" name="idPhoto" value="<%= retouch.getIdRetouch()%>" />
-                                <input id="rdbApproved" type="radio" name="rdbAnswer" value="A" required onclick="enableSpec()">Approved&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input id="rdbRework" type="radio" name="rdbAnswer" value="R" required onclick="disableSpec()">Rework<br />
-
-                                <textarea id="Specifications" name="txtSpecification" placeholder="Specification" cols="25" rows="5" required></textarea><br />
-                                <input id="btnSendAnswer" type="submit" name="btnSendAnswer" value="Send Answer"><br />
-                            </form>
                         </div>
                         <br />
                         <%
@@ -208,12 +166,22 @@
                                 <img src="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" alt="<%= retouch.getFileNombre()%>-Retouched" width="450"><br>
                                 <a style="text-decoration: none" href="../photoResources/photosRetouched/<%= retouch.getFileNombre()%>" download="<%= retouch.getFileNombre().substring(userBean.getIdUser().toString().length() + 3)%>" target="_blank">DOWNLOAD</a>
                             </div>
-                            <br /><br /><br /><br /><br /><br /><br /><br />
-                            <label>STATUS: APPROVED</label><br />
+                            <br /><br /><br /><br /><br />
+                            <form method="post" action="../Controller">
+                                <input type="hidden" name="action" value="<%=ConstantesWeb.SEND_ANSWER%>" />
+                                <input type="hidden" name="idOrder" value="<%= retouch.getIdOrder()%>" />
+                                <input type="hidden" name="idPhoto" value="<%= retouch.getIdRetouch()%>" />
+                                <input type="hidden" name="rdbAnswer" value="R" />
+                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                <label style="">If you want to send the order to rework:</label><br />
+                                <textarea id="Specifications" name="txtSpecification" placeholder="Specification" cols="25" rows="5" required></textarea><br />
+                                <input id="btnSendAnswer" type="submit" name="btnSendAnswer" value="Send to Rework"><br />
+                            </form>
+                            <br />
                             <%
                                 if (request.getParameter("message") != null) {
                             %>
-                            <label for="message" style="color: green"><%=request.getParameter("message")%></label><br /><br />
+                            <label for="message" style="color: green"><%= request.getParameter("message")%></label><br /><br />
                             <%
                                 }
                             %>
@@ -257,7 +225,9 @@
                             } else {
                             %>
                             - - - -
-                            <%}%>
+                            <%
+                                }
+                            %>
                         </div>
                         <br /><br /><br /><br />
                         <%
@@ -306,7 +276,7 @@
                                                     switch (rxs.getIdStatus()) {
                                                         case ConstantesWeb.ID_STATUS_APPROVED:
                                             %>
-                                        <img src="../images/approved.png" alt="approved" height="11" /><label id="photoType" style="color: green">Approved</label>
+                                        <img src="../images/approved.png" alt="approved" height="11" /><label id="photoType" style="color: green"></label>
                                         <%
                                                 break;
                                             case ConstantesWeb.ID_STATUS_PAYED:

@@ -1,25 +1,27 @@
-<%-- 
-    Document   : header
-    Created on : 17/09/2014, 08:41:05 AM
-    Author     : Roy Taza Rojas
---%>
-
-<%@page import="pe.com.peruretouch.web.bean.UserBean"%>
-<%@page import="pe.com.peruretouch.web.util.ConstantesWeb"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%    UserBean userInfo = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
-    if (userInfo != null) {
-%>
-<link href="../css/styles.css" rel="stylesheet" type="text/css" media="screen" />
 <div id="header" style="height: auto">
-    <img id="logoPeruRetouch" src="../images/logoPeruRetouch.jpg" alt="logoPeruRetouch" >
+    
+    <%    UserBean userBeanxx = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
+        if (userBeanxx != null) {
+    %>
+    <img id="logoPeruRetouch" src="../images/LogoPeruRetouch.gif" alt="logoPeruRetouch">
+    <div id="contenedorLogout">
+        Welcome <%= userBeanxx.getName()%> <%= userBeanxx.getLastName()%>&nbsp;&nbsp;<a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><div id="btnLogout"></div></a>
+    </div>
+    <%@include file="menu.jsp" %>
+    <%
+    } else {
+    %>
+    <img id="logoPeruRetouch" src="images/LogoPeruRetouch.gif" alt="logoPeruRetouch">
     <br><br><br>
-    <%@include file="../template/header.jsp" %> 
+    <div id="menu">
+        <ul>
+            <li id="button1"><a href="index.jsp" title="">Home</a></li>
+            <li id="button2"><a href="pricesGalllery.jsp" title="">Prices & Gallery</a></li>
+            <li id="button4"><a href="about.jsp" title="">About</a></li>
+            <li id="button5"><a href="contact.jsp" title="">Contact</a></li>
+        </ul>
+    </div>
+    <%
+        }
+    %>
 </div>
-<br>
-<div class="contenedorLogout" style="float: right;">
-    Welcome <%= userInfo.getName()%> <%= userInfo.getLastName()%> <a href="../Controller?action=<%= ConstantesWeb.LOGOUT%>"><img id="btnLogoutx" src="../images/logoutHover.png" alt="Logout" /></a>
-</div>
-<%
-}
-%>
