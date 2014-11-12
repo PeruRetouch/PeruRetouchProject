@@ -63,7 +63,7 @@
                         <div align="center">
                             <a href="uploadPhotos.jsp">Let's start uploading photo's.</a>
                             <br><br>See a video to get reference.<br>
-                            <iframe width="300" height="190" src="//www.youtube.com/embed/T2bL65weZt4" frameborder="1" allowfullscreen></iframe>
+                            <iframe width="300" height="190" src="//www.youtube.com/embed/qfkv-ZegXoA" frameborder="1" allowfullscreen></iframe>
                         </div>
                         <br><br>
                         <fieldset>
@@ -93,7 +93,7 @@
                                             }
                                         }
                                         //Agrego una columna
-%>
+                                    %>
                                     <td>
                                         <h2># <%= o.getIdOrder()%></h2><br />
                                         <a href="orderPhotos.jsp?idOrder=<%= o.getIdOrder()%>"><img src="../images/folderImage.png" alt="<%= o.getIdOrder()%>"></a><br>
@@ -123,7 +123,8 @@
                                                         break;
                                                 }
                                             }%>
-                                        <p>Date: <%= UtilWeb.convertirDate(o.getDateTimeClientRequest(), "MM/dd/yyyy HH:mm:ss")%></p>
+                                        <p><%= o.getOrderName()%></p>
+                                        <p><%= UtilWeb.convertirDate(o.getDateTimeClientRequest(), "MMM/dd/yyyy HH:mm:ss")%></p>
                                     </td>
                                     <%
                                             i++;
@@ -136,7 +137,7 @@
                         <div align="center">
                             <a href="uploadPhotos.jsp">Let's start uploading photo's.</a>
                             <br><br>See a video to get reference.<br>
-                            <iframe width="560" height="315" src="//www.youtube.com/embed/T2bL65weZt4" frameborder="1" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="//www.youtube.com/embed/qfkv-ZegXoA" frameborder="1" allowfullscreen></iframe>
                         </div>
                         <%}%>
                         <br>

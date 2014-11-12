@@ -68,10 +68,11 @@
                         <%
                             }
                         %>
-                        <p><b>Order's specifications:</b> <%= orden.getSpecifications()%></p>
+                        <p><b>Order name:</b> <%= orden.getOrderName()%></p>
+                        <p><b>Order specifications:</b> <%= orden.getSpecifications()%></p>
                         <p><b>Number of Photos:</b> <%= ordenBusiness.orderNumberOfPhotos(orden.getIdOrder())%></p>
                         <p><b>Number of References:</b> <%= ordenBusiness.orderNumberOfReferences(orden.getIdOrder())%></p>
-                        <p><b>Date:</b> <%= UtilWeb.convertirDate(orden.getDateTimeClientRequest(), "MM/dd/yyyy HH:mm:ss")%></p>
+                        <p><b>Date:</b> <%= UtilWeb.convertirDate(orden.getDateTimeClientRequest(), "MMM/dd/yyyy HH:mm:ss")%></p>
                         <p><b>Total: <%= orden.getTotal()%></b></p>                                
                         <br>
                         <br>

@@ -5,7 +5,12 @@
  */
 package pe.com.peruretouch.web.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -100,6 +105,9 @@ public class Controller extends HttpServlet {
                 break;
             case ConstantesWeb.DONWLOAD_RETOUCHED_PHOTOS:
                 this.DonwloadRetouchedPhotos(request, response);
+                break;
+            case ConstantesWeb.DONWLOAD_ARTIST_PHOTOS:
+                this.DonwloadArtistPhotos(request, response);
                 break;
             case ConstantesWeb.ORDERS_BETWEEN_DATES:
                 this.RedirectOrdersBetweenDates(request, response);
@@ -254,6 +262,7 @@ public class Controller extends HttpServlet {
 
                 Orden orden = new Orden();
                 orden.setIdClient(userBean.getIdUser());
+                orden.setOrderName(request.getParameter("txtOrderName"));
                 orden.setDateTimeClientRequest(dateTimeUserRequest);
                 orden.setSpecifications(orderEpecifications);
                 orden.setTotal(0D);
@@ -548,8 +557,8 @@ public class Controller extends HttpServlet {
                 }
                 RetouchXStatus retouchXStatus = new RetouchXStatus(idPhoto, ConstantesWeb.ID_STATUS_REWORKING);
                 retouchXStatusBusiness.ejecutar(OperacionEnum.GUARDAR, retouchXStatus);
-                RetouchXSpecification retouchXSpecification = new RetouchXSpecification(0, 
-                        idPhoto, ConstantesWeb.ID_SPECIFICATION_REWORK, user.getIdUser(), 
+                RetouchXSpecification retouchXSpecification = new RetouchXSpecification(0,
+                        idPhoto, ConstantesWeb.ID_SPECIFICATION_REWORK, user.getIdUser(),
                         new Date(), request.getParameter("txtSpecification"));
                 retouchXSpecificationBusiness.ejecutar(OperacionEnum.GUARDAR, retouchXSpecification);
                 mensaje = "The photo has been send to rework";
@@ -818,24 +827,103 @@ public class Controller extends HttpServlet {
             int idOrder = Integer.parseInt(request.getParameter("idOrder"));
             List<Retouch> listRetouchs = retouchBusiness.listarByOrder(idOrder);
             String fileSavePathDestino = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_RETOUCHED;
-            String fileSavePathZip = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_ZIP;
-            String filenameZip = "Order" + idOrder + ".zip";
-            //UtilZip.generateZip(session, listRetouchs, fileSavePathDestino, fileSavePathZip, filenameZip);
-            String resultadoCompresion = UtilZip.generateZip(session, listRetouchs, fileSavePathDestino, fileSavePathZip, filenameZip);
+            String fileSavePathZip = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_ZIP_CLIENT;
+            String filenameZip = request.getParameter("orderName") + ".zip";
+            String resultadoCompresion = UtilZip.generateZipClient(session, listRetouchs, fileSavePathDestino, fileSavePathZip, filenameZip);
             if (!resultadoCompresion.equalsIgnoreCase("invalid")) {
-                Path path = Paths.get(resultadoCompresion);
-                byte[] data = Files.readAllBytes(path);
-                ServletOutputStream out2 = response.getOutputStream();
-                out2.write(data);
+                response.reset();
+                ServletOutputStream sOutStream = response.getOutputStream();
+                streamBinaryData(filenameZip, fileSavePathZip + "/" + filenameZip, sOutStream, response);
+            } else {
+                PrintWriter out = response.getWriter();
+                response.setContentType("text/html");
+                out.println("There aren't retouched photos for this order.");
             }
+            File file = new File(fileSavePathZip + "/" + filenameZip);
+            file.delete();
         } catch (BusinessException e) {
-            rpta = "manager/errorClient.jsp";
+            rpta = "client/errorClient.jsp";
             mensaje = e.getMessage();
             response.sendRedirect(rpta + "?message=" + mensaje);
         } catch (Exception e) {
-            rpta = "manager/errorClient.jsp";
+            rpta = "client/errorClient.jsp";
             mensaje = e.getMessage();
             response.sendRedirect(rpta + "?message=" + mensaje);
+        }
+    }
+
+    protected void DonwloadArtistPhotos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        session = request.getSession(false);
+        String rpta = "";
+        String mensaje = "";
+        try {
+            UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
+            int idOrder = Integer.parseInt(request.getParameter("idOrder"));
+            List<Retouch> listRetouchs = retouchBusiness.obtenerRetouchPendienteByOrder(userBean.getIdUser(), idOrder);
+            String fileSavePathDestino = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT;
+            String fileSavePathZip = getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_ZIP_ARTIST;
+            String filenameZip = "Order" + idOrder + ".zip";
+            String resultadoCompresion = UtilZip.generateZipArtist(session, listRetouchs, fileSavePathDestino, fileSavePathZip, filenameZip);
+            if (!resultadoCompresion.equalsIgnoreCase("invalid")) {
+                response.reset();
+                ServletOutputStream sOutStream = response.getOutputStream();
+                streamBinaryData(filenameZip, fileSavePathZip + "/" + filenameZip, sOutStream, response);
+            }
+            File file = new File(fileSavePathZip + "/" + filenameZip);
+            file.delete();
+        } catch (Exception e) {
+            rpta = "artist/errorArtist.jsp";
+            mensaje = e.getMessage();
+            response.sendRedirect(rpta + "?message=" + mensaje);
+        }
+    }
+
+    private void streamBinaryData(String fileName, String filePath, ServletOutputStream outstr, HttpServletResponse resp) throws IOException {
+        String ErrorStr = null;
+
+        try {
+            BufferedInputStream bis = null;
+            BufferedOutputStream bos = null;
+            String inFile = filePath;
+            int tam = (int) new File(inFile).length();
+            bis = new BufferedInputStream(new FileInputStream(inFile));
+
+            try {
+                //Asignamos el tipo de fichero zip
+                resp.setContentType("application/x-zip-compressed"); //Cualquier mime type
+                //Seteamos el tamaño de la respuesta
+                resp.setContentLength(tam);
+                resp.setHeader("Content-Disposition", "attachment;filename=\"" + fileName + "\"");
+
+                bos = new BufferedOutputStream(outstr);
+
+                // Bucle para leer de un fichero y escribir en el otro.
+                byte[] array = new byte[1000];
+                int leidos = bis.read(array);
+                while (leidos > 0) {
+                    bos.write(array, 0, leidos);
+                    leidos = bis.read(array);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                ErrorStr = "Error Streaming the Data";
+                outstr.print(ErrorStr);
+            } finally {
+                if (bis != null) {
+                    bis.close();
+                }
+                if (bos != null) {
+                    bos.close();
+                }
+                if (outstr != null) {
+                    outstr.flush();
+                    outstr.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Fichero no encontrado");
+            resp.sendRedirect("fileNotFound.jsp");
         }
     }
 

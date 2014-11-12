@@ -46,48 +46,52 @@
                 <!-- content -->
                 <br><br><br><br>
                 <div id="main1">
-
                     <div id="left1">
-                        <h5>Complete retouch: $2.50/image</h5><img src="../images/portrait1.jpg" alt="" style="float: left; padding-right: 10px;height: 200px;" />
-                        <div style="margin-left: 10px;">
+                        <h5>Basic retouch: $2.50/image</h5><img src="../images/portrait1.jpg" alt="" style="float: left; padding-right: 10px;height: 200px;" />
+                        <div style="margin-left: 650px">
                             <p style="font-size: 15px;"><b>INCLUDES:</b></p>
                             <ul>
-                                <li style="font-size: 15px;">Removal of facial glare</li>
-                                <li style="font-size: 15px;">Stray hairs</li>
-                                <li style="font-size: 15px;">Skin blemishes</li>
-                                <li style="font-size: 15px;">Spots in background</li>
-                                <li style="font-size: 15px;">Whitening of teeth and eyes</li>
-                                <li style="font-size: 15px;">Image exposure</li>
+                                <li style="font-size: 15px;">Remove tan lines</li>
+                                <li style="font-size: 15px;">Remove blemishes</li>
+                                <li style="font-size: 15px;">Remove under eye bags</li>
+                                <li style="font-size: 15px;">Remove facial glare</li>
+                                <li style="font-size: 15px;">Whitening teeth and eyes</li>
+                                <li style="font-size: 15px;">Remove stray hairs around heads</li>
+                                <li style="font-size: 15px;">Remove sensor dust</li>
+                                <li style="font-size: 15px;">Fix spots in background</li>
+                                <li style="font-size: 15px;">Overall skin smoothing</li>
                             </ul>
                         </div>
-                        <div class="readl"><a href="viewExamples.jsp?product=basic&photo=1">more</a></div>
+                        <a style="float: right" href="viewExamples.jsp?product=basic&photo=1"><img src="../images/viewGallery.png" alt="View Gallery" width="150"></a>
                     </div>
-                    <br><br><br><br><br><br>
+                    <br><br><br><br><br>
                     <div id="left1">
-                        <h5>Complete plus: $5.00/image</h5><img src="../images/portrait4.jpg" alt="" style="float: left; padding-right: 10px;height: 200px;" />
-                        <div>
+                        <h5>Plus Retouch: $5.00/image</h5><img src="../images/portrait4.jpg" alt="" style="float: left; padding-right: 10px;height: 200px;" />
+                        <div style="margin-left: 650px">
                             <p style="font-size: 15px;"><b>INCLUDES:</b></p>
                             <ul>
-                                <li style="font-size: 15px;">All "complete retouch" image enhancements</li>
+                                <li style="font-size: 15px;">“Basic retouch”</li>
+                                <li style="font-size: 15px;">Smoothing background wrinkles and creases</li>
                                 <li style="font-size: 15px;">Braces removal</li>
                                 <li style="font-size: 15px;">Eyeglass glare removal</li>
                                 <li style="font-size: 15px;">Head swap</li>
                                 <li style="font-size: 15px;">Opening eyes</li>
                                 <li style="font-size: 15px;">Extending the background</li>
                                 <li style="font-size: 15px;">Moderate Lense Flare / Hot Spots</li>
-                                <li style="font-size: 15px;">Background removal (solid color replacement)</li>
+                                <li style="font-size: 15px;">Background removal (original solid color replacement only)</li>
                                 <li style="font-size: 15px;">Spot Coloring (all B&W except 1 object)</li>
+                                <li style="font-size: 15px;">Remove doble chin.</li>
                             </ul>
                         </div>
-                        <div class="readl"><a href="viewExamples.jsp?product=plus&photo=1">more</a></div>
+                        <a style="float: right" href="viewExamples.jsp?product=plus&photo=1"><img src="../images/viewGallery.png" alt="View Gallery" width="150"></a>
                     </div>
                     <br><br><br><br>
                     <div id="left1">
-                        <h5>Special services: $10.00/image</h5><img src="../images/portrait2.jpg" alt="" style="float: left; padding-right: 10px;height: 200px;" />
-                        <div>
+                        <h5>Special Retouch: $10.00/image</h5><img src="../images/portrait2.jpg" alt="" style="float: left; padding-right: 10px;height: 200px;" />
+                        <div style="margin-left: 650px">
                             <p style="font-size: 15px;"><b>INCLUDES:</b></p>
                             <ul>
-                                <li style="font-size: 15px;">All "complete" and "complete plus" image enhancements</li>
+                                <li style="font-size: 15px;">“Basic retouch” and “plus retouch”</li>
                                 <li style="font-size: 15px;">Change color of clothing</li>
                                 <li style="font-size: 15px;">Background change (new background image)</li>
                                 <li style="font-size: 15px;">Add or Remove people</li>
@@ -95,16 +99,18 @@
                                 <li style="font-size: 15px;">Extreme Lense Flare / Hot Spots</li>
                                 <li style="font-size: 15px;">Take off 10 years, 20 lbs, etc.</li>
                                 <li style="font-size: 15px;">Anything not covered by complete or complete plus</li>
-                            </ul>                                
-                            <div class="readl"><a href="viewExamples.jsp?product=special&photo=1">more</a></div>
-                        </div>
+                            </ul>
+                            <a style="float: right" href="viewExamples.jsp?product=special&photo=1"><img src="../images/viewGallery.png" alt="View Gallery" width="150"></a>
+                        </div>                 
+                        <!-- / content -->
+                        <!-- footer -->
                     </div>
-                    <!-- / content -->
-                    <!-- footer -->
+                    <br><br><br>
                 </div>
                 <%@include file="../template/footer.jsp" %>
             </div>
         </div>
+        <!-- / footer -->
     </body>
 </html>
 <%

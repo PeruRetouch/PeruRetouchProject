@@ -74,7 +74,7 @@
                         %>
                         <tr>
                             <td><%= o.getIdOrder()%></td>
-                            <td><%= UtilWeb.convertirDate(o.getDateTimeClientRequest(), "MM/dd/yyyy HH:mm:ss")%></td>
+                            <td><%= UtilWeb.convertirDate(o.getDateTimeClientRequest(), "MMM/dd/yyyy HH:mm:ss")%></td>
                             <%
                                 for (User u : lstUser) {
                                     if (o.getIdClient() == u.getIdUser()) {

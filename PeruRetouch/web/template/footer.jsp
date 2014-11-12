@@ -15,13 +15,13 @@
         %>
         <p>Copyright  2014. <!--a href="#">Privacy Policy | </a--><a href="../terms.jsp" target="_blank">Terms & Conditions</a></p>
         <p>Developed by Roy Taza Rojas</p>
-        <p><img src="../images/compatible_chrome2020.gif" alt="Chrome">&nbsp;&nbsp;<img src="../images/compatible_firefox2020.gif" alt="Firefox"></p>
+        <p><img src="../images/compatible_chrome2020.gif" alt="Chrome">&nbsp;&nbsp;<img src="../images/compatible_firefox2020.gif" alt="Firefox">&nbsp;&nbsp;<img src="../images/compatible_ie10.jpg" alt="IE10"></p>
         <%
         } else {
         %>
         <p>Copyright  2014. <!--a href="#">Privacy Policy | </a--><a href="terms.jsp" target="_blank">Terms & Conditions</a></p> 
         <p>Developed by Roy Taza Rojas</p>
-        <p><img src="images/compatible_chrome2020.gif" alt="Chrome">&nbsp;&nbsp;<img src="images/compatible_firefox2020.gif" alt="Firefox"></p>
+        <p><img src="images/compatible_chrome2020.gif" alt="Chrome">&nbsp;&nbsp;<img src="images/compatible_firefox2020.gif" alt="Firefox">&nbsp;&nbsp;<img src="images/compatible_ie10.jpg" alt="IE10"></p>
         <%
             }
         %>

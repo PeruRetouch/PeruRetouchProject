@@ -125,7 +125,7 @@
                         max_file_size: '1024mb',
                         // Specify what files to browse for
                         mime_types: [
-                            {title: "Image files", extensions: "jpg,gif,png,tiff,bmp"}
+                            {title: "Image files", extensions: "jpg,gif,png,tiff,tif,bmp"}
                         ]
                     },
                     // Rename files by clicking on their titles

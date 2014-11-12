@@ -49,24 +49,25 @@
                 <div id="main1">
                     <div id="left1">
                         <h5>About Us: Peru Retouch</h5>
-                        <iframe style="margin-left: 212px" width="560" height="315" src="//www.youtube.com/embed/T2bL65weZt4" frameborder="1" allowfullscreen></iframe>
+                        <iframe style="margin-left: 212px" width="560" height="315" src="//www.youtube.com/embed/qfkv-ZegXoA" frameborder="1" allowfullscreen></iframe>
                         <br><br>
                         <div style="font-size: 15px;font-family: Arial, Helvetica, sans-serif;margin-left: 15px;margin-right: 15px;text-align: justify">
                             <p>
-                                ArteRetouch, We are a very dynamic company that understands the need of every photographer. With ArteRetouch techniques you will get amazing results.
+                                PeruRetouch, we are a very dynamic company that understands the need of every photographer. With PeruRetouch techniques you will get amazing results.
                             </p>
                             <p>
                                 A service specially designed for photographers and businesses who just need to do the retouching and artwork of your photographs.
-                                we love to highlight the excellent work of professional photographer.
+                                We love to highlight the excellent work of professional photographer.
                             </p>
                             <p>
-                                The images post-production is routine and takes too much time for it ArteRetouch offers a professional team with 10 years experience. We offer low prices and punctual delivery with excellent quality.
+                                The images post-production is routine and takes too much time, for it, PeruRetouch offers a professional team with 10 years experience. 
+                                We offer low prices and punctual delivery with excellent quality.
                             </p>
                             <p>
                                 Take advantage of 15 free photo retouching and check our quality.
                             </p>
                         </div>
-                    </div>     
+                    </div>
                     <!-- / content -->
                     <!-- footer -->
                 </div>

@@ -6,8 +6,7 @@
 
 <%@page import="pe.com.peruretouch.web.util.ConstantesWeb"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%    
-    boolean showPage = false;
+<%    boolean showPage = false;
     if (session.getAttribute(ConstantesWeb.USER_HOME) != null) {
         UserBean userBean = (UserBean) session.getAttribute(ConstantesWeb.USER_HOME);
         if (userBean.getPrivilege().equalsIgnoreCase("artist")) {
@@ -38,6 +37,13 @@
         <meta name="keywords" content="retouch,peru,photo,photographer,retouch photo">
         <meta name="author" content="Roy Taza Rojas">
         <link href="css/styles.css" rel="stylesheet" type="text/css" media="screen" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+        <script>
+            webshims.setOptions('forms-ext', {types: 'date'});
+            webshims.polyfill('forms forms-ext');
+        </script>
     </head>
     <body>
         <div id="bg1">
@@ -47,7 +53,7 @@
                 <!-- / header -->
                 <!-- content -->
                 <br><br><br><br><br><br>
-                <div style="margin-left: 310px">
+                <div style="margin-left: 327px">
                     <div id="main">
                         <div id="main_bot">
                             <div id="left">
@@ -72,12 +78,13 @@
                                             <label for="text1">Website Address (*)</label><br /><input id="text1" type="text" name="txtWebsiteAddress" maxlength="200" value="http://" required /><br />
                                             <label for="text1">Address</label><br /><input id="text1" type="text" name="txtAddress" maxlength="200" value="" /><br />
                                             <label for="text1">Country</label><br /><input id="text1" type="text" name="txtCountry" maxlength="50" value="" /><br />
-                                            <label for="text1">Birthday</label><br /><input id="text1" type="date" name="txtBirthday" value="" /><br />
+                                            <label for="text1">Birthdate</label><br /><input id="text1" type="date" name="txtBirthday" value="" lang="" /><br />
                                             <label for="text1">Telephone</label><br /><input id="text1" type="text" name="txtTelephone" maxlength="50" value="" /><br /> 
                                             <label for="text1">Cellphone</label><br /><input id="text1" type="text" name="txtCellphone" maxlength="50" value="" /><br /> <br />
                                             <label for="text1"><input type="checkbox" name="txtCellphone" value="Agree" required />I agree to all the <a href="terms.jsp" target="_blank">TERMS AND CONDITIONS</a>(*)</label><br /> 
                                             <h5 align="right">(*)Required fields</h5><br>
-                                            <input type="submit" value="Register" name="btnRegister" align="center"/>
+                                            <!--input type="submit" value="Register" name="btnRegister" align="center"/-->
+                                            <input type="image" style="margin-left: 75px" src="images/register.png" name="btnRegister" width="154" alt="Register"/>
                                         </fieldset>
                                     </form>
                                 </div>

@@ -32,8 +32,8 @@
             List<Orden> listOrders = new ArrayList<Orden>();
             if (request.getParameter("from") != null) {
                 if (request.getParameter("to") != null) {
-                    listOrders = ordenBusiness.listOrdersBetweenDates(userBean.getIdUser(), 
-                            UtilWeb.convertirString(request.getParameter("from"), "yyyy-MM-dd"), 
+                    listOrders = ordenBusiness.listOrdersBetweenDates(userBean.getIdUser(),
+                            UtilWeb.convertirString(request.getParameter("from"), "yyyy-MM-dd"),
                             UtilWeb.convertirString(request.getParameter("to"), "yyyy-MM-dd"));
                 } else {
                     listOrders = ordenBusiness.listOrdersByClient(userBean.getIdUser());
@@ -50,6 +50,13 @@
         <link rel="icon" type="image/png" href="../images/iconoPR.jpg" />
         <meta name="author" content="Roy Taza Rojas">
         <link href="../css/styles.css" rel="stylesheet" type="text/css" media="screen" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+        <script>
+            webshims.setOptions('forms-ext', {types: 'date'});
+            webshims.polyfill('forms forms-ext');
+        </script>
     </head>
     <body>
         <div id="bg1">
@@ -81,7 +88,7 @@
                         %>
                         <h2>All the orders.</h2>
                         <br>
-                        <%        
+                        <%
                             }
                             for (Orden orden : listOrders) {
                         %>
@@ -93,10 +100,11 @@
                         <%
                             }
                         %>
+                        <p><b>Order name:</b> <%= orden.getOrderName()%></p>
                         <p><b>Order's specifications:</b> <%= orden.getSpecifications()%></p>
                         <p><b>Number of Photos:</b> <%= ordenBusiness.orderNumberOfPhotos(orden.getIdOrder())%></p>
                         <p><b>Number of References:</b> <%= ordenBusiness.orderNumberOfReferences(orden.getIdOrder())%></p>
-                        <p><b>Date:</b> <%= UtilWeb.convertirDate(orden.getDateTimeClientRequest(), "MM/dd/yyyy HH:mm:ss")%></p>
+                        <p><b>Date:</b> <%= UtilWeb.convertirDate(orden.getDateTimeClientRequest(), "MMM/dd/yyyy HH:mm:ss")%></p>
                         <p><b>Total: <%= orden.getTotal()%></b></p>
                         <p><a href="orderPhotos.jsp?idOrder=<%= orden.getIdOrder()%>">View photos</a></p>
                         <br>
@@ -117,7 +125,7 @@
                         <br>
                         <h2>You don't have orders.</h2>
                         <p><a href="chooseProduct.jsp">Upload Photos</a></p>
-                        <%            
+                        <%
                                 }
                             }
                         %>

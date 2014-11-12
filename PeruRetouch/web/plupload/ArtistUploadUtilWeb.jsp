@@ -129,15 +129,18 @@
                                         User user = new User();
                                         user.setIdUser(orden.getIdClient());
                                         user = userBusiness.ejecutar(OperacionEnum.OBTENER, user);
-                                        
-                                        /*
+
                                         //ACA habria que modificar el o los estados de la orden.
                                         OrderXStatusBusiness orderXStatusBusiness = OrderXStatusBusiness.obtenerEntidad();
                                         List<OrderXStatus> listOrderXStatuses = orderXStatusBusiness.listByOrder(orden.getIdOrder());
-                                        for(OrderXStatus oxs : listOrderXStatuses) {
-                                            
+                                        for (OrderXStatus oxs : listOrderXStatuses) {
+                                            orderXStatusBusiness.ejecutar(OperacionEnum.ELIMINAR, oxs);
                                         }
-                                        */
+                                        OrderXStatus oxs1 = new OrderXStatus(orden.getIdOrder(), ConstantesWeb.ID_STATUS_ACTIVE);
+                                        OrderXStatus oxs2 = new OrderXStatus(orden.getIdOrder(), ConstantesWeb.ID_STATUS_APPROVED);
+                                        orderXStatusBusiness.ejecutar(OperacionEnum.GUARDAR, oxs1);
+                                        orderXStatusBusiness.ejecutar(OperacionEnum.GUARDAR, oxs2);
+                                        //
                                         
                                         Properties properties = new Properties();
                                         Session sescsion;

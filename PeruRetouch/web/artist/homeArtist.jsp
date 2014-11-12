@@ -73,7 +73,7 @@
                             %>
                             <tr>
                                 <td><%= r.getIdOrder()%></td>
-                                <td><%= UtilWeb.convertirDate(r.getDateTimeClientRequest(), "MM/dd/yyyy HH:mm:ss")%></td>
+                                <td><%= UtilWeb.convertirDate(r.getDateTimeClientRequest(), "MMM/dd/yyyy HH:mm:ss")%></td>
                                 <td><%= ordenBusiness.orderNumberOfPhotos(r.getIdOrder())%></td>
                                 <td><%= ordenBusiness.orderNumberOfReferences(r.getIdOrder())%></td>
                                 <%

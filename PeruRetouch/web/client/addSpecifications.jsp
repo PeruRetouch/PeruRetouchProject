@@ -26,7 +26,6 @@
             response.sendRedirect("../sa/homeSa.jsp");
         } else if (request.getParameter("idProduct") == null) {
             response.sendRedirect("chooseProduct.jsp");
-            //} else if (PhotosBean.getListPhotos().size() == 0) {
         } else if (photosBean.getListPhotos(session).size() == 0) {
             response.sendRedirect("chooseProduct.jsp");
         } else {
@@ -72,18 +71,13 @@
                             <p style="font-size: 15px">Photo references does NOT have price.</p>
                             <br>
                             <br>
+                            <br>
+                            <p>Order name: <input type="text" name="txtOrderName" value="" maxlength="100" required></p>
+                            <br>
+                            <br>
                             <p>Add the requirement for all the photos and/or each photo:</p>
                             <br>
-                            <!--p>
-                                Artist: <select>
-                                    <option value="0">Anyone</option>
-                                    <option value="1">Luis Deudor</option>
-                                    <option value="2">Jose Herrera</option>
-                                    <option value="3">Williams Carmona</option>
-                                    <option value="4">Nemias Estrella</option>
-                                </select>
-                            </p-->
-                            <textarea name="txtOrderSpecification" cols="75" rows="5" placeholder="Order's specification"></textarea>
+                            <textarea name="txtOrderSpecification" cols="75" rows="5" placeholder="Order's specification..." required></textarea>
                         </div>
 
                         <%
@@ -113,7 +107,7 @@
                                         }
                                     }
                                     //Agrego una columna
-                                %>
+%>
                                 <td>
                                     <%= UtilWeb.formatName(s, userBean.getIdUser().toString().length())%><br />
                                     <img src="../photoResources/temporary/<%= s%>" width="200"><br />
@@ -133,13 +127,12 @@
                                 <input type="checkbox" name="chkConfirm" value="1" required />I'm sure about the specifications, pay $<%= product.getPrice()%> per photo and SEND the order.
                             </div>
                             <br><br>
-                            <!--button onclick="location.href = 'chooseProduct.jsp';" name="btnCancel" style="float: left;" >Choose another product</button-->
                             <a href="chooseProduct.jsp" style="float: left;" ><img src="../images/cancel.png" alt="Cancel" height="40"></a>
                             <div style="float: right;">
                                 <input type="hidden" name="idClient" value="<%= product.getIdProduct()%>" />
                                 <input type="hidden" name="idProduct" value="<%= product.getIdProduct()%>" />
                                 <input type="hidden" name="action" value="<%= ConstantesWeb.UPLOAD_PHOTOS_CLIENT%>" />
-                                <input type="image" src="../images/send.png" name="btnSendNow" style="float: right;margin-top: -12px;" height="55" alt="SendNow"/>
+                                <input type="image" src="../images/sendNow.png" name="btnSendNow" style="float: right;margin-top: -12px;" height="55" alt="SendNow"/>
                             </div>
                         </div>
                     </form>

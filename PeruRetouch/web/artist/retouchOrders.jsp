@@ -64,18 +64,19 @@
                 <div id="main1">
 
                     <h2>Photos to rework</h2>
-                    <%
+                    <%                        
                         if (lstReworks.size() > 0) {
                     %>
-                    <table cellspacing="10">
+                    <table cellspacing="15">
                         <tr>
+                            <td>Order</td>
                             <td>File</td>
                             <td>Date Time Request</td>
                             <td>Type</td>
                             <td>Specifications</td>
                             <td>Donwload</td>
                         </tr>
-                        <%
+                        <%        
                             for (Retouch r : lstReworks) {
                                 if (request.getParameter("idRetouch") != null) {
                                     if (r.getIdRetouch() == idRetouch) {
@@ -84,15 +85,16 @@
                                 }
                         %>
                         <tr>
+                            <td><%= r.getIdOrder()%></td>
                             <td><%= r.getFileNombre()%></td>
-                            <td><%= UtilWeb.convertirDate(r.getDateTimeArtistRequest(), "MM/dd/yyyy HH:mm:ss")%></td>
+                            <td><%= UtilWeb.convertirDate(r.getDateTimeArtistRequest(), "MMM/dd/yyyy HH:mm:ss")%></td>
                             <%
                                 productAux.setIdProduct(r.getIdProduct());
                             %>
                             <td><%= productBusiness.ejecutar(OperacionEnum.OBTENER, productAux).getName()%></td>
                             <%
                             %>
-                            <td><a href="retouchOrders.jsp?idRetouch=<%= r.getIdRetouch()%>" style="text-decoration: none;color: #008ae8;">View</a></td>
+                            <td><a href="retouchOrders.jsp?idRetouch=<%= r.getIdRetouch()%>&type=Rework" style="text-decoration: none;color: #008ae8;">View</a></td>
                             <td align="center"><a href="../photoResources/photos/<%= r.getFileNombre()%>" download target="_blank"><img src="../images/download.png" height="20"></a></td>
                         </tr>
                         <%
@@ -104,7 +106,7 @@
                     %>
                     <h3 style="margin-left: 10px">You don't have photos to rework.</h3>
 
-                    <%
+                    <%        
                         }%>
                     <br><hr><br>
                     <h2>Photos to retouch</h2>
@@ -112,8 +114,9 @@
                         if (lstRetouchs.size() > 0) {
                     %>
                     <a href="../Controller?action=<%= ConstantesWeb.ARTIST_DELETE_REFERENCES_APPROVED_ORDERS%>" style="">Clean References</a>
-                    <table cellspacing="10">
+                    <table cellspacing="15">
                         <tr>
+                            <td>Order</td>
                             <td>File</td>
                             <td>Date Time Request</td>
                             <td>Type</td>
@@ -129,15 +132,16 @@
                                 }
                         %>
                         <tr>
+                            <td><%= r.getIdOrder()%></td>
                             <td><%= r.getFileNombre()%></td>
-                            <td><%= UtilWeb.convertirDate(r.getDateTimeArtistRequest(), "MM/dd/yyyy HH:mm:ss")%></td>
+                            <td><%= UtilWeb.convertirDate(r.getDateTimeArtistRequest(), "MMM/dd/yyyy HH:mm:ss")%></td>
                             <%
                                 productAux.setIdProduct(r.getIdProduct());
                             %>
                             <td><%= productBusiness.ejecutar(OperacionEnum.OBTENER, productAux).getName()%></td>
                             <%
                             %>
-                            <td><a href="retouchOrders.jsp?idRetouch=<%= r.getIdRetouch()%>" style="text-decoration: none;color: #008ae8;">View</a></td>
+                            <td><a href="retouchOrders.jsp?idRetouch=<%= r.getIdRetouch()%>&type=Normal" style="text-decoration: none;color: #008ae8;">View</a></td>
                             <td align="center"><a href="../photoResources/photos/<%= r.getFileNombre()%>" download target="_blank"><img src="../images/download.png" height="20"></a></td>
                         </tr>
                         <%
@@ -148,7 +152,7 @@
                     } else {
                     %>
                     <h3 style="margin-left: 10px">You don't have assigned photos.</h3>
-                    <%
+                    <%        
                         }
                         if (retouch != null) {
                             // Mostrar la especificacion del retoque solicitado
@@ -175,18 +179,18 @@
                                 break;
                             case ConstantesWeb.ID_SPECIFICATION_REWORK:
                         %>
-                        <b>Rework (<%= UtilWeb.convertirDate(rxs.getDateTimeSpecification(), "MM/dd/yyyy HH:mm:ss")%>):</b><br>
+                        <b>Rework (<%= UtilWeb.convertirDate(rxs.getDateTimeSpecification(), "MMM/dd/yyyy HH:mm:ss")%>):</b><br>
                         <%= rxs.getSpecification()%><br>
                         <%
                                     break;
                             }
                         %>
-                        <%
+                        <%        
                             }
                         } else {
                         %>
                         - - -<br>
-                        <%
+                        <%        
                             }
                             // Mostrar la informacion de todos los retoques de la orden
                             OrdenBusiness ordenBusiness = OrdenBusiness.obtenerEntidad();
@@ -194,7 +198,9 @@
                             orden.setIdOrder(retouch.getIdOrder());
                             orden = ordenBusiness.ejecutar(OperacionEnum.OBTENER, orden);
                         %>
-                        <br><br><br><h2><img src="../images/principalItem.png">Order #<%= retouch.getIdOrder()%></h2>
+                        <br><br>
+                        <a style="text-decoration: none" href="../Controller?action=<%= ConstantesWeb.DONWLOAD_ARTIST_PHOTOS%>&idOrder=<%= orden.getIdOrder()%>&type=<%= request.getParameter("type")%>" target="_blank"><img src="../images/download.png" alt="D" height="20">&nbsp;Donwload all the order's pending photos</a>
+                        <br><h2><img src="../images/principalItem.png">Order #<%= retouch.getIdOrder()%></h2>
                         <div id="retouchesSpecifications" style="margin-left: 10px;margin-right: 20px">
                             <%= orden.getSpecifications()%><br>
                             <%
@@ -219,7 +225,7 @@
                                     break;
                                 case ConstantesWeb.ID_SPECIFICATION_REWORK:
                             %>
-                            <b>Rework (<%= UtilWeb.convertirDate(rxs.getDateTimeSpecification(), "MM/dd/yyyy HH:mm:ss")%>):</b>
+                            <b>Rework (<%= UtilWeb.convertirDate(rxs.getDateTimeSpecification(), "MMM/dd/yyyy HH:mm:ss")%>):</b>
                             <%= rxs.getSpecification()%><br>
                             <%
                                         break;
@@ -230,7 +236,7 @@
                             } else {
                             %>
                             - - -
-                            <%
+                            <%            
                                     }
                                 }
                             %>

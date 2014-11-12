@@ -27,7 +27,7 @@ public final class UtilZip {
     private UtilZip() {
     }
 
-    public static final String generateZip(HttpSession sesion, List<Retouch> listRetouchs, String pathRetouched, String pathZip, String fileName) {
+    public static final String generateZipClient(HttpSession sesion, List<Retouch> listRetouchs, String pathRetouched, String pathZip, String fileName) {
         try {
             ZipFile zipFile = new ZipFile(pathZip + "/" + fileName);
 
@@ -61,6 +61,28 @@ public final class UtilZip {
             e.printStackTrace();
         } catch (BusinessException ex) {
             ex.printStackTrace();
+        }
+        return "invalid";
+    }
+
+    public static final String generateZipArtist(HttpSession sesion, List<Retouch> listRetouchs, String pathRetouched, String pathZip, String fileName) {
+        try {
+            ZipFile zipFile = new ZipFile(pathZip + "/" + fileName);
+
+            ArrayList filesToAdd = new ArrayList();
+            for (Retouch retouch : listRetouchs) {
+                filesToAdd.add(new File(pathRetouched + "/" + retouch.getFileNombre()));
+            }
+
+            ZipParameters parameters = new ZipParameters();
+            parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE); // set compression method to deflate compression
+
+            parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
+
+            zipFile.addFiles(filesToAdd, parameters);
+            return pathZip + "/" + fileName;
+        } catch (ZipException e) {
+            e.printStackTrace();
         }
         return "invalid";
     }

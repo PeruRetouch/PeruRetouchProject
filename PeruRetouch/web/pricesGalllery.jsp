@@ -64,7 +64,7 @@
                                 <li style="font-size: 15px;">Overall skin smoothing</li>
                             </ul>
                         </div>
-                        <div class="readl"><a href="viewExamples.jsp?product=basic&photo=1">more</a></div>
+                        <a style="float: right" href="viewExamples.jsp?product=basic&photo=1"><img src="images/viewGallery.png" alt="View Gallery" width="150"></a>
                     </div>
                     <br><br><br><br><br>
                     <div id="left1">
@@ -85,9 +85,9 @@
                                 <li style="font-size: 15px;">Remove doble chin.</li>
                             </ul>
                         </div>
-                        <div class="readl"><a href="viewExamples.jsp?product=plus&photo=1">more</a></div>
+                        <a style="float: right" href="viewExamples.jsp?product=plus&photo=1"><img src="images/viewGallery.png" alt="View Gallery" width="150"></a>
                     </div>
-                    <br><br><br>
+                    <br><br><br><br>
                     <div id="left1">
                         <h5>Special Retouch: $10.00/image</h5><img src="images/portrait2.jpg" alt="" style="float: left; padding-right: 10px;height: 200px;" />
                         <div style="margin-left: 650px">
@@ -102,7 +102,7 @@
                                 <li style="font-size: 15px;">Take off 10 years, 20 lbs, etc.</li>
                                 <li style="font-size: 15px;">Anything not covered by complete or complete plus</li>
                             </ul>
-                            <div class="readl"><a href="viewExamples.jsp?product=special&photo=1">more</a></div>
+                            <a style="float: right" href="viewExamples.jsp?product=special&photo=1"><img src="images/viewGallery.png" alt="View Gallery" width="150"></a>
                         </div>                 
                         <!-- / content -->
                         <!-- footer -->

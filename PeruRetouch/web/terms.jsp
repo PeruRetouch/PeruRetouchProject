@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Peru Retouch - About</title>
+        <title>Peru Retouch - Terms and Conditions</title>
         <link rel="icon" type="image/png" href="images/iconoPR.jpg" />
-        <meta name="description" content="Peru Retouch gives you a post-photography service">
-        <meta name="keywords" content="retouch,peru,photo,photographer,retouch photo">
+        <meta name="description" content="Peru Retouch gives you a post-photography service. Terms and conditions.">
+        <meta name="keywords" content="retouch,peru,photo,photographer,retouch photo,terms,conditions">
         <meta name="author" content="Roy Taza Rojas">
         <link href="css/styles.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
@@ -32,32 +32,32 @@
                         <br><br>
                         <div style="font-size: 15px;font-family: Arial, Helvetica, sans-serif;margin-left: 25px;margin-right: 25px;text-align: justify">
                             <p>
-                                This Web Site agreement, herein after the "agreement", is between you and Retouchup.com, (the company which operates Retouchup.com). Use of www.Retouchup.com, herein after "RTU", signifies your agreement with all the terms and conditions of the agreement. If you do not agree with the set forth terms and conditions of the agreement, do not go any further into the web site.
+                                This Web Site agreement, herein after the "agreement", is between you and Peruretouch.com, (the company which operates Peruretouch.com). Use of www.Peruretouch.com, herein after "PRT", signifies your agreement with all the terms and conditions of the agreement. If you do not agree with the set forth terms and conditions of the agreement, do not go any further into the web site.
                             </p>
                             <br><br>
                             <p>
                                 <b>Conditions of Use:</b><br><br>
-                                You agree to read the terms and conditions carefully before using RTU. Continued use of RTU indicates your acceptance of such terms and conditions.
+                                You agree to read the terms and conditions carefully before using PRT. Continued use of PRT indicates your acceptance of such terms and conditions.
                             </p>
                             <br><br>
                             <p>
-                                <b>License to Use RTU Web Site:</b><br><br>
-                                Retouchup.com grants you a non-exclusive, limited right to use RTU. Such right is based on your compliance with all the terms and conditions set forth herein the agreement.
+                                <b>License to Use PRT Web Site:</b><br><br>
+                                Peruretouch.com grants you a non-exclusive, limited right to use PRT. Such right is based on your compliance with all the terms and conditions set forth herein the agreement.
                             </p>
                             <br><br>
                             <p>
-                                <b>RTU Material Rights:</b><br><br>
-                                By submitting images for digital retouch or hosting, emailing RTU, its employees or authorized agents, you grant RTU the right to copy, produce, transmit, modify, display, and edit any communication or images received through use of RTU STRICTLY FOR THE PURPOSES OF COMPLETING YOUR ORDER.  You acknowledge that you understand all Federal Copyright/Trademark laws, and that all images, materials and/or communications submitted to RTU (by you) do not violate such laws. RTU is under no obligation to use any communications or images that are submitted by you for any purpose.
+                                <b>PRT Material Rights:</b><br><br>
+                                By submitting images for digital retouch or hosting, emailing PRT, its employees or authorized agents, you grant PRT the right to copy, produce, transmit, modify, display, and edit any communication or images received through use of PRT STRICTLY FOR THE PURPOSES OF COMPLETING YOUR ORDER.  You acknowledge that you understand all Federal Copyright/Trademark laws, and that all images, materials and/or communications submitted to PRT (by you) do not violate such laws. PRT is under no obligation to use any communications or images that are submitted by you for any purpose.
                             </p>
                             <br><br>
                             <p>
                                 <b>Information Security:</b><br><br>
-                                RTU uses reasonable measures to ensure the protection and privacy of communications, images and billing information submitted to www.Retouchup.com. RTU uses Secure Socket Layer (SSL) encryption to secure all payment information. You acknowledge that communications and images submitted to RTU are not confidential and may be read or intercepted by unanticipated third parties. You agree that if such interceptions occur, RTU is not liable in any manner under all applicable laws and jurisdictions.
+                                PRT uses reasonable measures to ensure the protection and privacy of communications, images and billing information submitted to www.Peruretouch.com.<!-- PRT uses Secure Socket Layer (SSL) encryption to secure all payment information.--> You acknowledge that communications and images submitted to PRT are not confidential and may be read or intercepted by unanticipated third parties. You agree that if such interceptions occur, PRT is not liable in any manner under all applicable laws and jurisdictions.
                             </p>
                             <br><br>
                             <p>
                                 <b>Billing and Shipping:</b><br><br>
-                                You agree that all billing/shipping information that you submit is accurate. You agree that you have reviewed your billing/shipping information and that you deem it accurate. You agree that you have not created multiple accounts in an effort to defraud RTU of any promotions or deals or to decieve RTU in any way. You also agree that you will notify RTU upon any change in billing/shipping information. You will be held liable for all additional billing or shipping costs that may be incurred due to inaccurate billing/shipping information provided by you. Such costs include, but are not limited to additional postage, shipping materials, photo lab fees, collection and attorney's fees. Retouchup.com is not liable for any delay in services or products that result from inaccurate billing/shipping information.
+                                You agree that all billing/shipping information that you submit is accurate. You agree that you have reviewed your billing/shipping information and that you deem it accurate. You agree that you have not created multiple accounts in an effort to defraud PRT of any promotions or deals or to decieve PRT in any way. You also agree that you will notify PRT upon any change in billing/shipping information. You will be held liable for all additional billing or shipping costs that may be incurred due to inaccurate billing/shipping information provided by you. Such costs include, but are not limited to additional postage, shipping materials, photo lab fees, collection and attorney's fees. Peruretouch.com is not liable for any delay in services or products that result from inaccurate billing/shipping information.
                             </p>
                             <br><br>
                             <p>
@@ -67,7 +67,7 @@
                             <br><br>
                             <p>
                                 <b>Disclaimer:</b><br><br>
-                                Retouchup.com provides these terms and conditions "as is". Retouchup.com maintains the sole right to revise these terms and conditions at any time. Retouchup.com reserves the right to terminate such agreement any time without any notice to any such user. Retouchup.com, employees, and authorized agents under no circumstances shall be held liable for any damages or any unforeseen damages that may result directly or indirectly from any communications and or images that are submitted for personal Non-Commercial and Commercial Uses. Retouchup.com shall not be held liable for any communications or images that may be received by an unanticipated third party. 
+                                Peruretouch.com provides these terms and conditions "as is". Peruretouch.com maintains the sole right to revise these terms and conditions at any time. Peruretouch.com reserves the right to terminate such agreement any time without any notice to any such user. Peruretouch.com, employees, and authorized agents under no circumstances shall be held liable for any damages or any unforeseen damages that may result directly or indirectly from any communications and or images that are submitted for personal Non-Commercial and Commercial Uses. Peruretouch.com shall not be held liable for any communications or images that may be received by an unanticipated third party. 
                             </p>
                             <br><br>
                             <p>
@@ -75,7 +75,6 @@
                                 We serve professional photographers, and know the importance of providing our best service, and the sensitive nature of working with photographs.  These terms and conditions are intended to cover our butts for UNFORSEEN problems.  We understand the importance of providing quick, professional service, respecting copyright, and being in good communication one with another.  If you have any problems, comments or feedback, we expect you to let us know so that we can improve and continue.
                             </p>
                         </div>
-                        <br>
                         <center><a href="javascript:window.close()" name="btnCloseWindow" style="text-align: center"><img src="images/close.png" alt="Close" height="50"></a></center>
                         <br>
                     </div>

@@ -140,13 +140,14 @@
                             <br /><br /><br /><br /><br /><br /><br /><br />
                             <label>STATUS: RE-WORKED</label><br />
                             <form method="post" action="../Controller">
+                                <br /><label>Do you approve the rework?</label><br />
                                 <input type="hidden" name="action" value="<%=ConstantesWeb.SEND_ANSWER%>" />
                                 <input type="hidden" name="idOrder" value="<%= retouch.getIdOrder()%>" />
                                 <input type="hidden" name="idPhoto" value="<%= retouch.getIdRetouch()%>" />
                                 <input id="rdbApproved" type="radio" name="rdbAnswer" value="A" required onclick="enableSpec()">Approved&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input id="rdbRework" type="radio" name="rdbAnswer" value="R" required onclick="disableSpec()">Rework<br />
 
-                                <textarea id="Specifications" name="txtSpecification" placeholder="Specification" cols="25" rows="5" required></textarea><br />
+                                <textarea id="Specifications" name="txtSpecification" placeholder="Rework specification..." cols="25" rows="5" required></textarea><br />
                                 <input id="btnSendAnswer" type="submit" name="btnSendAnswer" value="Send Answer"><br />
                             </form>
                         </div>
@@ -172,9 +173,11 @@
                                 <input type="hidden" name="idOrder" value="<%= retouch.getIdOrder()%>" />
                                 <input type="hidden" name="idPhoto" value="<%= retouch.getIdRetouch()%>" />
                                 <input type="hidden" name="rdbAnswer" value="R" />
-                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                                <label style="">If you want to send the order to rework:</label><br />
-                                <textarea id="Specifications" name="txtSpecification" placeholder="Specification" cols="25" rows="5" required></textarea><br />
+                                <!--br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                <label>as</label><br /-->
+                                <div style="color: transparent">Espacio</div>
+                                <label>Isn't this what you asked? Send a <b>Rework</b> request.<br /></label>
+                                <textarea id="Specifications" name="txtSpecification" placeholder="Rework specification..." cols="25" rows="5" required></textarea><br />
                                 <input id="btnSendAnswer" type="submit" name="btnSendAnswer" value="Send to Rework"><br />
                             </form>
                             <br />
@@ -216,7 +219,7 @@
                             %>
                             <br><br>
                             Rework:&nbsp
-                            <%= UtilWeb.convertirDate(rxsItem.getDateTimeSpecification(), "MM/dd/yyyy HH:mm:ss")%><br>
+                            <%= UtilWeb.convertirDate(rxsItem.getDateTimeSpecification(), "MMM/dd/yyyy HH:mm:ss")%><br>
                             <%= rxsItem.getSpecification()%>
                             <%
                                             break;
@@ -237,9 +240,9 @@
                         <%
                             if (lstRetouch.size() > 0) {
                         %>
-                        <a style="float: right;text-decoration: none" href="../Controller?action=<%= ConstantesWeb.DONWLOAD_RETOUCHED_PHOTOS%>&idOrder=<%= orden.getIdOrder()%>" target="_blank"><img src="../images/download-all-files.png" alt="#" height="15">&nbsp;Donwload all retouched photos</a><br>
+                        <a style="float: right;text-decoration: none" href="../Controller?action=<%= ConstantesWeb.DONWLOAD_RETOUCHED_PHOTOS%>&idOrder=<%= orden.getIdOrder()%>&orderName=<%= orden.getOrderName()%>" target="_blank"><img src="../images/download-all-files.png" alt="#" height="15">&nbsp;Donwload all retouched photos</a><br>
                         <fieldset style="width: 100%">
-                            <legend><h2>Order's Photos</h2></legend>
+                            <legend><h2><%= orden.getOrderName()%></h2><h4>[<%= UtilWeb.convertirDate(orden.getDateTimeClientRequest(), "MMM/dd/yyyy HH:mm:ss")%>]</h4></legend>
                             <br>
                             <p style="margin-left: 10px;margin-right: 10px;text-align: justify"><b>Specification:</b> <%= orden.getSpecifications()%></p>
                             <table cellspacing="40" align="center">
@@ -266,7 +269,7 @@
                                             }
                                         }
                                         //Agrego una columna
-%>
+                                    %>
                                     <td>
                                         <b><%= UtilWeb.formatName(r.getFileNombre(), userBean.getIdUser().toString().length())%></b><br />
                                         <a href="orderPhotos.jsp?idOrder=<%= idOrder%>&idPhoto=<%= r.getPhotoId()%>"><img src="../photoResources/photos/<%= r.getFileNombre()%>" height="110"></a><br />
