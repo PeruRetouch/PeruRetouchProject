@@ -53,10 +53,10 @@
                         <br><br>
                         <div style="font-size: 15px;font-family: Arial, Helvetica, sans-serif;margin-left: 15px;margin-right: 15px;text-align: justify">
                             <p>
-                                PeruRetouch, we are a very dynamic company that understands the need of every photographer. With PeruRetouch techniques you will get amazing results.
+                                PeruRetouch is a very dynamic company that understands the need of every photographer. With PeruRetouch techniques you will get amazing results.
                             </p>
                             <p>
-                                A service specially designed for photographers and businesses who just need to do the retouching and artwork of your photographs.
+                                A service specially designed for photographers and businesses who just need to do the retouching and artwork of photographs.
                                 We love to highlight the excellent work of professional photographer.
                             </p>
                             <p>

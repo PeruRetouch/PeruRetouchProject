@@ -83,6 +83,13 @@
                 <div id="main">
                     <div id="main_bot">
                         <div id="right">
+                            <label style="text-align: justify;font-size: 15px;color: #0f3d85">
+                                The images post-production is routine and takes too much time, 
+                                for it, PeruRetouch offers a service specially designed for 
+                                photographers and businesses who just need to do the retouching 
+                                and artwork of photographs.<br>
+                                <b>Take advantage of 15 free photo retouching and check our quality.</b>
+                            </label>
                             <h5>Reviews</h5><img src="images/img1.jpg" alt="" title="" style="float: left; padding-right: 10px;" />
                             <p><strong>"Very good service, efficient in their work."</strong><br>Esteban Huamán</p>
                             <p><strong>"Delivery on time, very good service"</strong><br>Ángel Chávez B.</p>
@@ -110,9 +117,11 @@
                                         %>
                                         <label for="text1">Username</label><br /><input id="text1" type="text" name="txtUser" value="" maxlength="50" required/><br />
                                         <label for="text2">Password</label><br /><input id="text2" type="password" name="txtPassword" value="" maxlength="50" required /><br />
-                                        <input type="submit" id="login-submit" value="Login" name="btnLogin" />
+                                        <!--input type="submit" id="login-submit" value="Login" name="btnLogin" /-->
+                                        <input style="float: right" type="image" src="images/login.png" name="btnLogin" alt="Login" height="40"/>
                                     </fieldset>
                                 </form>
+                                <br>
                                 <img src="images/logls.jpg" title="" alt="" style="padding-right: 5px; padding-left:10px;"/><a href="register.jsp">Create new account</a><br />
                                 <img src="images/logls.jpg" title="" alt="" style="padding-right: 5px; padding-left:10px;"/><a href="requestPassword.jsp">Forgot your password?</a>
                             </div>
