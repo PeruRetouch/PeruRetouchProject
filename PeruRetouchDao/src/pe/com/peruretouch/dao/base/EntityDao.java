@@ -15,7 +15,7 @@ import pe.com.peruretouch.dao.util.CoreException;
  */
 interface EntityDao<E> {
 
-    void insertar(E e) throws CoreException;
+    int insertar(E e) throws CoreException;
 
     void actualizar(E e) throws CoreException;
 

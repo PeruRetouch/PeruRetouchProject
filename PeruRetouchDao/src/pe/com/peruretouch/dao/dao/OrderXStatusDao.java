@@ -28,7 +28,7 @@ public final class OrderXStatusDao extends BaseDao<OrderXStatus> {
     }
 
     @Override
-    public void insertar(OrderXStatus e) throws CoreException {
+    public int insertar(OrderXStatus e) throws CoreException {
         try{
             cn = obtenerConexion();
             cl = cn.prepareCall("{CALL spI_OrderXStatus(?,?)}");
@@ -41,6 +41,7 @@ public final class OrderXStatusDao extends BaseDao<OrderXStatus> {
             cerrar(cl);
             cerrar(cn);
         }
+        return 1;
     }
 
     @Override

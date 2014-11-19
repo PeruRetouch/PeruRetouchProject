@@ -56,7 +56,7 @@
                                             <label for="text1">Name (*)</label><br /><input id="text1" type="text" name="txtName" value="<%= user.getName()%>" maxlength="50" required /><br />
                                             <label for="text1">Last Name (*)</label><br /><input id="text1" type="text" name="txtLastName" maxlength="50" value="<%= user.getLastName()%>" required /><br />
                                             <label for="text1">Email (*)</label><br /><input id="text1" type="text" name="txtEmail" value="<%= user.getEmail()%>" maxlength="50" required /><br />
-                                            <label for="text1">Website Address (*)</label><br /><input id="text1" type="text" name="txtWebsiteAddress" maxlength="200" value="<%= user.getWebPage()%>" required /><br />
+                                            <label for="text1">Website Address or Facebook Page(*)</label><br /><input id="text1" type="text" name="txtWebsiteAddress" maxlength="200" value="<%= user.getWebPage()%>" required /><br />
                                             <label for="text1">Address</label><br /><input id="text1" type="text" name="txtAddress" maxlength="200" value="<%= user.getAddress()%>" /><br />
                                             <label for="text1">Country</label><br /><input id="text1" type="text" name="txtCountry" maxlength="50" value="<%= user.getCountry()%>" /><br />
                                             <!--label for="text1">Birthday</label><br /><input id="text1" type="date" name="txtBirthday" value="" /><br /-->

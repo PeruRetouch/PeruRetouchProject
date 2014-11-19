@@ -68,7 +68,7 @@
                                         <label for="text1">Name</label><br /><label for="text1" style="color: black"><%= user.getName()%></label><br /><br />
                                         <label for="text1">Last Name</label><br /><label for="text1" style="color: black"><%= user.getLastName()%></label><br /><br />
                                         <label for="text1">Email</label><br /><label for="text1" style="color: black"><%= user.getEmail()%></label><br /><br />
-                                        <label for="text1">Website Address</label><br /><label for="text1" style="color: black"><%= user.getWebPage()%></label><br /><br />
+                                        <label for="text1">Website Address/Facebook Page</label><br /><label for="text1" style="color: black"><%= user.getWebPage()%></label><br /><br />
                                         <label for="text1">Address</label><br /><label for="text1" style="color: black"><%= user.getAddress()%></label><br /><br />
                                         <label for="text1">Country</label><br /><label for="text1" style="color: black"><%= user.getCountry()%></label><br /><br />
                                         <label for="text1">Birthday</label><br /><label for="text1" style="color: black"><%= user.getBirthDay()%></label><br /><br />

@@ -27,7 +27,7 @@ public final class ProfileDao extends BaseDao<Profile> {
     }
 
     @Override
-    public void insertar(Profile e) throws CoreException {
+    public int insertar(Profile e) throws CoreException {
         try{
             cn = obtenerConexion();
             cl = cn.prepareCall("{CALL spI_Profile(?,?,?)}");
@@ -41,6 +41,7 @@ public final class ProfileDao extends BaseDao<Profile> {
             cerrar(cl);
             cerrar(cn);
         }
+        return 1;
     }
 
     @Override

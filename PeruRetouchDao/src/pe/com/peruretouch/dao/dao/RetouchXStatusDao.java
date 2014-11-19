@@ -27,7 +27,7 @@ public final class RetouchXStatusDao extends BaseDao<RetouchXStatus> {
     }
 
     @Override
-    public void insertar(RetouchXStatus e) throws CoreException {
+    public int insertar(RetouchXStatus e) throws CoreException {
         try {
             cn = obtenerConexion();
             cl = cn.prepareCall("{CALL spI_RetouchXStatus(?,?)}");
@@ -40,6 +40,7 @@ public final class RetouchXStatusDao extends BaseDao<RetouchXStatus> {
             cerrar(cl);
             cerrar(cn);
         }
+        return 1;
     }
 
     @Override

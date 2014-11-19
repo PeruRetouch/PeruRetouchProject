@@ -34,7 +34,7 @@ public final class RetouchBusiness implements BaseBusiness<Retouch> {
         try {
             if (operacionEnum == OperacionEnum.GUARDAR) {
                 if (retouch.getIdRetouch() == null || retouch.getIdRetouch() <= 0) {
-                    RETOUCH_DAO.insertar(retouch);
+                    retouch.setIdRetouch(RETOUCH_DAO.insertar(retouch));
                 } else {
                     RETOUCH_DAO.actualizar(retouch);
                 }
@@ -131,7 +131,7 @@ public final class RetouchBusiness implements BaseBusiness<Retouch> {
             throw new CoreException(ex);
         }
     }
-    
+
     public List<Retouch> listarRetouchsApprovedOfTheArtistByProduct(int idArtist, int idProduct) throws CoreException {
         try {
             return RETOUCH_DAO.listarRetouchsApprovedOfTheArtistByProduct(idArtist, idProduct);
