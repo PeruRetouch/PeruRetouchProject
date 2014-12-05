@@ -35,7 +35,7 @@ public final class OrdenBusiness implements BaseBusiness<Orden> {
         try {
             if (operacionEnum == OperacionEnum.GUARDAR) {
                 if (orden.getIdOrder() == null || orden.getIdOrder() <= 0) {
-                    ORDEN_DAO.insertar(orden);
+                    orden.setIdOrder(ORDEN_DAO.insertar(orden));
                 } else {
                     ORDEN_DAO.actualizar(orden);
                 }

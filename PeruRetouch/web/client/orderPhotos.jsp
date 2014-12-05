@@ -173,8 +173,6 @@
                                 <input type="hidden" name="idOrder" value="<%= retouch.getIdOrder()%>" />
                                 <input type="hidden" name="idPhoto" value="<%= retouch.getIdRetouch()%>" />
                                 <input type="hidden" name="rdbAnswer" value="R" />
-                                <!--br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                                <label>as</label><br /-->
                                 <div style="color: transparent">Espacio</div>
                                 <label>Isn't this what you asked? Send a <b>Rework</b> request.<br /></label>
                                 <textarea id="Specifications" name="txtSpecification" placeholder="Rework specification..." cols="25" rows="5" required></textarea><br />
@@ -245,7 +243,7 @@
                             <legend><h2><%= orden.getOrderName()%></h2><h4>[<%= UtilWeb.convertirDate(orden.getDateTimeClientRequest(), "MMM/dd/yyyy HH:mm:ss")%>]</h4></legend>
                             <br>
                             <p style="margin-left: 10px;margin-right: 10px;text-align: justify"><b>Specification:</b> <%= orden.getSpecifications()%></p>
-                            <table cellspacing="40" align="center">
+                            <table cellspacing="40" style="margin-left: -20px">
                                 <%
                                     int i = 1;
                                     boolean aux = true;
@@ -270,9 +268,9 @@
                                         }
                                         //Agrego una columna
                                     %>
-                                    <td>
-                                        <b><%= UtilWeb.formatName(r.getFileNombre(), userBean.getIdUser().toString().length())%></b><br />
-                                        <a href="orderPhotos.jsp?idOrder=<%= idOrder%>&idPhoto=<%= r.getPhotoId()%>"><img src="../photoResources/photos/<%= r.getFileNombre()%>" height="110"></a><br />
+                                    <td style="max-width: 220px;">
+                                        <%= UtilWeb.formatName(r.getFileNombre(), userBean.getIdUser().toString().length())%><br />
+                                        <a href="orderPhotos.jsp?idOrder=<%= idOrder%>&idPhoto=<%= r.getPhotoId()%>"><img src="../photoResources/photos/<%= r.getFileNombre()%>" height="100"></a><br />
                                             <%
                                                 List<RetouchXStatus> lstRxS = retouchXStatusBusiness.listarByRetouch(r.getIdRetouch());
                                                 for (RetouchXStatus rxs : lstRxS) {
@@ -289,7 +287,7 @@
                                                 break;
                                             case ConstantesWeb.ID_STATUS_REFERENCE:
                                         %>
-                                        <!--img src="../images/reference.png" alt="reference" height="11" /--><label id="photoType">Reference</label>
+                                        <label id="photoType">Reference</label>
                                         <%
                                                 break;
                                             case ConstantesWeb.ID_STATUS_REWORKED:

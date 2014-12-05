@@ -60,7 +60,7 @@
                     <div id="viewOrder">
                         <h1>Order Details</h1>
                         <br>
-                        <h2>ID: # <%= orden.getIdOrder()%></h2>
+                        <!--h2>ID: # <%= orden.getIdOrder()%></h2-->
                         <%
                             if (request.getParameter("n") != null) {
                         %>
@@ -73,7 +73,7 @@
                         <p><b>Number of Photos:</b> <%= ordenBusiness.orderNumberOfPhotos(orden.getIdOrder())%></p>
                         <p><b>Number of References:</b> <%= ordenBusiness.orderNumberOfReferences(orden.getIdOrder())%></p>
                         <p><b>Date:</b> <%= UtilWeb.convertirDate(orden.getDateTimeClientRequest(), "MMM/dd/yyyy HH:mm:ss")%></p>
-                        <p><b>Total: <%= orden.getTotal()%></b></p>                                
+                        <p><b>Total: <%= orden.getTotal()%></b></p>
                         <br>
                         <br>
                         <a href="homeClient.jsp">Go Home</a>

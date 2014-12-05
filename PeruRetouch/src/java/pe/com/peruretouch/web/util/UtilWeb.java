@@ -41,12 +41,20 @@ public final class UtilWeb {
 
     public static String formatName(String name, int aux) {
         String formatedName = "";
-        int ext = 30;
-        if (name.length() > ext) {
-            String fileType = name.substring(name.length() - 4, name.length());
-            formatedName = name.substring(aux + 3, ext - 10) + "..." + fileType;
+        /*
+         int ext = 30;
+         if (name.length() > ext) {
+         String fileType = name.substring(name.length() - 4, name.length());
+         formatedName = name.substring(aux + 3, ext - 10) + "..." + fileType;
+         } else {
+         formatedName = name.substring(aux + 3);
+         }
+         */
+        if (name.length() >= 30) {
+            formatedName = name.substring(String.valueOf(aux).length() + 3);
+            formatedName = formatedName.substring(0, 30) + "\n" + formatedName.substring(30);
         } else {
-            formatedName = name.substring(aux + 3);
+            formatedName = name.substring(String.valueOf(aux).length() + 3);
         }
         return formatedName;
     }

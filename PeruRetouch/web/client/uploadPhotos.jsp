@@ -55,16 +55,6 @@
         <script type="text/javascript" src="../plupload/jquery.ui.plupload.min.js"></script>
         <script type="text/javascript" src="../plupload/uploadScript.js.js"></script>
         <!-- PLUPLOAD IMPORTS-->
-
-        <!--script>
-            var bPreguntar = false;
-            window.onbeforeunload = preguntarAntesDeSalir;
-
-            function preguntarAntesDeSalir() {
-                if (bPreguntar)
-                    return "Are you sure you want to leave?";
-            }
-        </script-->
     </head>
     <body>
         <div id="bg1">
@@ -93,11 +83,9 @@
                     </div>
                     <br>
                     <div id="buttonsUploadFiles" style="margin-left: 12px;margin-right: 12px">
-                        <!--button onclick="location.href = 'chooseProduct.jsp';" name="btnCancel" style="float: left;" ><img src="../images/cancel.png" alt="Cancel" height="50"></button-->
                         <a href="chooseProduct.jsp" style="float: left;" ><img src="../images/cancel.png" alt="Cancel" height="40"></a>
                         <form id="form" method="post" action="addSpecifications.jsp?idProduct=<%= product.getIdProduct()%>" >
                             <input type="image" src="../images/continue.png" name="btnContinue" style="float: right;margin-top: -10px;" height="70" alt="Continue"/>
-                            <!--a href="chooseProduct.jsp" style="float: left;" ><img src="../images/continue.png" alt="Cancel" height="50"></a-->
                         </form>
                     </div>
                     <!-- / content -->

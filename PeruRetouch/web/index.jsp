@@ -51,7 +51,6 @@
             <div id="content">
                 <!-- header -->
                 <%@include file="template/header.jsp" %>
-                <!--div id="logo"-->
                 <br><br><br><br><br>
                 <div style="background: gray;height: 10px;width: 987px;"></div>
                 <!--Carrusel de imagenes-->
@@ -74,7 +73,6 @@
                     });
                 </script>
                 <!--Carrusel de imagenes-->
-                <!--/div-->
                 <div class="inner_copy"></div>
                 <div style="background: gray;height: 10px;width: 987px;"></div>
                 <br><br>
@@ -117,7 +115,6 @@
                                         %>
                                         <label for="text1">Username</label><br /><input id="text1" type="text" name="txtUser" value="" maxlength="50" required/><br />
                                         <label for="text2">Password</label><br /><input id="text2" type="password" name="txtPassword" value="" maxlength="50" required /><br />
-                                        <!--input type="submit" id="login-submit" value="Login" name="btnLogin" /-->
                                         <input style="float: right" type="image" src="images/login.png" name="btnLogin" alt="Login" height="40"/>
                                     </fieldset>
                                 </form>

@@ -28,7 +28,7 @@ public final class ProductDao extends BaseDao<Product>{
     }
 
     @Override
-    public void insertar(Product e) throws CoreException {
+    public int insertar(Product e) throws CoreException {
         try{
             cn = obtenerConexion();
             cl = cn.prepareCall("{CALL spI_Product(?,?,?,?,?)}");
@@ -44,6 +44,7 @@ public final class ProductDao extends BaseDao<Product>{
             cerrar(cl);
             cerrar(cn);
         }
+        return 1;
     }
 
     @Override

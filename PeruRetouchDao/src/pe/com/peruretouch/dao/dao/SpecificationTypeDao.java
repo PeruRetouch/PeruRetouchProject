@@ -28,7 +28,7 @@ public final class SpecificationTypeDao extends BaseDao<SpecificationType> {
     }
 
     @Override
-    public void insertar(SpecificationType e) throws CoreException {
+    public int insertar(SpecificationType e) throws CoreException {
         try{
             cn = obtenerConexion();
             cl = cn.prepareCall("{CALL spI_SpecificationType(?,?,?)}");
@@ -42,6 +42,7 @@ public final class SpecificationTypeDao extends BaseDao<SpecificationType> {
             cerrar(cl);
             cerrar(cn);
         }
+        return 1;
     }
 
     @Override

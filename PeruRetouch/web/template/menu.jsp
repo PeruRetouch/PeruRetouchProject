@@ -19,7 +19,7 @@ Author     : Roy Taza Rojas
         <li id="button2"><a href="../client/viewUserInfo.jsp">My Profile</a></li>
         <li id="button3"><a href="../client/chooseProduct.jsp">Upload Photos</a></li>
         <li id="button4"><a href="../client/productsInfo.jsp">Our Products</a></li>
-        <li id="button5"><a href="../client/ordersClient.jsp">My Orders</a></li>
+        <li id="button5"><a href="../client/ordersClient.jsp">My Orders and Prices</a></li>
         <li id="button9"><a href="../client/help.jsp">Help</a></li>
     </ul>
 </div>
@@ -29,7 +29,6 @@ Author     : Roy Taza Rojas
 <br /><br /><br /><br /><br /><br /><br /><br />
 <div id="menu">
     <ul>
-        <!--li id="button1"><a href="../artist/homeArtist.jsp">Home</a></li-->
         <li id="button2"><a href="../artist/viewUserInfo.jsp">My Profile</a></li>
         <li id="button3"><a href="../artist/retouchOrders.jsp">Retouch Orders</a></li>
         <li id="button4"><a href="../artist/getNewOrder.jsp">Get New Order</a></li>

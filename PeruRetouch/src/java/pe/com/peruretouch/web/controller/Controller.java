@@ -206,35 +206,35 @@ public class Controller extends HttpServlet {
         String rpta = "";
         String mensaje = "";
         try {
-            String userLogin = request.getParameter("txtUserName");
-            // Comprobar si el usuario ya existe
-            User userAux = new User();
-            userAux.setUserLogin(userLogin);
-            if (userBusiness.getUserIfExist(userLogin) != null) {
-                rpta = "register.jsp";
-                mensaje = "The username is being used";
-                response.sendRedirect(rpta + "?message=" + mensaje);
-            } else {
-                //
-                String password = Encryptor.encrypt(request.getParameter("txtPassword"));
-                String name = request.getParameter("txtName");
-                String lastName = request.getParameter("txtLastName");
-                String email = request.getParameter("txtEmail");
-                String websiteAddress = request.getParameter("txtWebsiteAddress");
-                String address = request.getParameter("txtAddress");
-                String country = request.getParameter("txtCountry");
-                String birthday = request.getParameter("txtBirthday");
-                Date birthdayDate = UtilWeb.convertirString(birthday, "yyyy-MM-dd");
-                String telephone = request.getParameter("txtTelephone");
-                String cellphone = request.getParameter("txtCellphone");
-                Integer idClientProfile = ConstantesWeb.ID_CLIENT_PROFILE;
+                String userLogin = request.getParameter("txtUserName");
+                // Comprobar si el usuario ya existe
+                User userAux = new User();
+                userAux.setUserLogin(userLogin);
+                if (userBusiness.getUserIfExist(userLogin) != null) {
+                    rpta = "register.jsp";
+                    mensaje = "The username is being used";
+                    response.sendRedirect(rpta + "?message=" + mensaje);
+                } else {
+                    //
+                    String password = Encryptor.encrypt(request.getParameter("txtPassword"));
+                    String name = request.getParameter("txtName");
+                    String lastName = request.getParameter("txtLastName");
+                    String email = request.getParameter("txtEmail");
+                    String websiteAddress = request.getParameter("txtWebsiteAddress");
+                    String address = request.getParameter("txtAddress");
+                    String country = request.getParameter("txtCountry");
+                    String birthday = request.getParameter("txtBirthday");
+                    Date birthdayDate = UtilWeb.convertirString(birthday, "yyyy-MM-dd");
+                    String telephone = request.getParameter("txtTelephone");
+                    String cellphone = request.getParameter("txtCellphone");
+                    Integer idClientProfile = ConstantesWeb.ID_CLIENT_PROFILE;
 
-                User user = new User(0, userLogin, password, idClientProfile, name, lastName, address, country, birthdayDate, telephone, cellphone, email, websiteAddress, ConstantesWeb.STATE_ACTIVE);
-                userBusiness.ejecutar(OperacionEnum.GUARDAR, user);
-                rpta = "index.jsp";
-                mensaje = "The user has been created succesfully";
-                response.sendRedirect(rpta + "?message=" + mensaje);
-            }
+                    User user = new User(0, userLogin, password, idClientProfile, name, lastName, address, country, birthdayDate, telephone, cellphone, email, websiteAddress, ConstantesWeb.STATE_ACTIVE);
+                    userBusiness.ejecutar(OperacionEnum.GUARDAR, user);
+                    rpta = "index.jsp";
+                    mensaje = "The user has been created succesfully";
+                    response.sendRedirect(rpta + "?message=" + mensaje);
+                }
         } catch (BusinessException e) {
             rpta = "error.jsp";
             response.sendRedirect(rpta + "?message=" + e.getMessage());
@@ -360,7 +360,6 @@ public class Controller extends HttpServlet {
                 orden.setIdOrder(idorder);
                 orden.setTotal(totalOrder);
                 ordenBusiness.ejecutar(OperacionEnum.ACTUALIZAR, orden);
-                //PhotosBean.getListPhotos().clear();
                 photosBean.cleartList2(session);
                 response.sendRedirect("client/orderDetail.jsp?order=" + idorder + "&n=" + product.getName());
             }
@@ -739,7 +738,6 @@ public class Controller extends HttpServlet {
             message.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(destino));
             message.setSubject(asunto);
-            //message.setText(mensaje);
             message.setContent("<b>De: </b>" + userBean.getName() + " " + userBean.getLastName()
                     + "<br><b>Usuario: </b>" + userBean.getUserName()
                     + "<br><b>Email: </b>" + userBean.getEmail()
@@ -763,7 +761,6 @@ public class Controller extends HttpServlet {
             int idOrder = Integer.parseInt(request.getParameter("idOrder"));
             Orden orden = new Orden();
             orden.setIdOrder(idOrder);
-            //orden = ordenBusiness.ejecutar(OperacionEnum.OBTENER, orden);
             List<OrderXStatus> listoOrderXStatuses = orderXStatusBusiness.listByOrder(idOrder);
             for (OrderXStatus orderXStatus : listoOrderXStatuses) {
                 if (orderXStatus.getIdStatus() == ConstantesWeb.ID_STATUS_APPROVED) {

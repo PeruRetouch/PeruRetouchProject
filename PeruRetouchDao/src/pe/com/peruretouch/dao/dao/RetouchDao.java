@@ -29,25 +29,29 @@ public final class RetouchDao extends BaseDao<Retouch> {
     }
 
     @Override
-    public void insertar(Retouch e) throws CoreException {
+    public int insertar(Retouch e) throws CoreException {
+        Integer idRetouch = 0;
         try {
             cn = obtenerConexion();
-            cl = cn.prepareCall("{CALL spI_Retouch(?,?,?,?,?,?,?,?)}");
-            cl.setInt(1, e.getIdOrder());
-            cl.setInt(2, e.getIdProduct());
-            cl.setInt(3, e.getIdArtist());
-            cl.setInt(4, e.getIdSupervisor());
-            cl.setTimestamp(5, new Timestamp(e.getDateTimeArtistRequest().getTime()));
-            cl.setTimestamp(6, new Timestamp(e.getDateTimeUploadRetouch().getTime()));
-            cl.setString(7, e.getFileNombre());
-            cl.setInt(8, e.getPhotoId());
+            cl = cn.prepareCall("{CALL spI_Retouch_2(?,?,?,?,?,?,?,?,?)}");
+            cl.registerOutParameter(1, java.sql.Types.INTEGER);
+            cl.setInt(2, e.getIdOrder());
+            cl.setInt(3, e.getIdProduct());
+            cl.setInt(4, e.getIdArtist());
+            cl.setInt(5, e.getIdSupervisor());
+            cl.setTimestamp(6, new Timestamp(e.getDateTimeArtistRequest().getTime()));
+            cl.setTimestamp(7, new Timestamp(e.getDateTimeUploadRetouch().getTime()));
+            cl.setString(8, e.getFileNombre());
+            cl.setInt(9, e.getPhotoId());
             cl.executeUpdate();
+            idRetouch = cl.getInt(1);
         } catch (Exception ex) {
             throw new CoreException(ex);
         } finally {
             cerrar(cl);
             cerrar(cn);
         }
+        return idRetouch;
     }
 
     @Override

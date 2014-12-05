@@ -29,23 +29,27 @@ public final class OrdenDao extends BaseDao<Orden> {
     }
 
     @Override
-    public void insertar(Orden e) throws CoreException {
+    public int insertar(Orden e) throws CoreException {
+        Integer idOrder = 0;
         try {
             cn = obtenerConexion();
-            cl = cn.prepareCall("{CALL spI_Order(?,?,?,?,?,?)}");
-            cl.setInt(1, e.getIdClient());
-            cl.setString(2, e.getOrderName());
-            cl.setTimestamp(3, new Timestamp(e.getDateTimeClientRequest().getTime()));
-            cl.setString(4, e.getSpecifications());
-            cl.setDouble(5, e.getTotal());
-            cl.setString(6, e.getState());
+            cl = cn.prepareCall("{CALL spI_Order_2(?,?,?,?,?,?,?)}");
+            cl.registerOutParameter(1, java.sql.Types.INTEGER);
+            cl.setInt(2, e.getIdClient());
+            cl.setString(3, e.getOrderName());
+            cl.setTimestamp(4, new Timestamp(e.getDateTimeClientRequest().getTime()));
+            cl.setString(5, e.getSpecifications());
+            cl.setDouble(6, e.getTotal());
+            cl.setString(7, e.getState());
             cl.executeUpdate();
+            idOrder = cl.getInt(1);
         } catch (Exception ex) {
             throw new CoreException(ex);
         } finally {
             cerrar(cl);
             cerrar(cn);
         }
+        return idOrder;
     }
 
     @Override

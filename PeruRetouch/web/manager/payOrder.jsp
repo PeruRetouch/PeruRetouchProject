@@ -26,7 +26,6 @@
         } else if (userBean.getPrivilege().equalsIgnoreCase("sa")) {
             response.sendRedirect("../sa/homeSa.jsp");
         } else {
-            //PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
             OrdenBusiness ordenBusiness = OrdenBusiness.obtenerEntidad();
             UserBusiness userBusiness = UserBusiness.obtenerEntidad();
             List<Orden> lstOrden = ordenBusiness.listOrdersNoPayed();
@@ -67,7 +66,6 @@
                             <td>ID User</td>
                             <td>Name and Last name</td>
                             <td>Pay</td>
-                            <!--td>Desactive</td-->
                         </tr>
                         <%
                             for (Orden o : lstOrden) {
@@ -82,7 +80,6 @@
                             <td><%= u.getIdUser()%></td>
                             <td><%= u.getName()%>&nbsp;<%= u.getLastName()%></td>
                             <td><a href="../Controller?idOrder=<%= o.getIdOrder()%>&action=<%= ConstantesWeb.MANAGER_PAY_ORDER%>"><img src="../images/pay.png" alt="pay order" height="21"></a></td>
-                            <!--td><a href="../Controller?idOrder=<%= o.getIdOrder()%>&action=<%= ConstantesWeb.MANAGER_DISABLE_ACOCUNT%>"><img src="../images/desactivar.png" alt="to inactive order" height="22"></a></td-->
                                     <%
                                                 break;
                                             }

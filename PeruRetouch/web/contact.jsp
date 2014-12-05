@@ -37,9 +37,6 @@
         <meta name="keywords" content="retouch,peru,photo,photographer,retouch photo">
         <meta name="author" content="Roy Taza Rojas">
         <link href="css/styles.css" rel="stylesheet" type="text/css" media="screen" />
-
-        <link rel="stylesheet" href="slider/styles-nivo-slider.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="slider/nivo-slider.css" type="text/css" media="screen" />
     </head>
     <body>
         <div id="bg1">
@@ -86,7 +83,6 @@
                                             <label for="text2">Subject (*)</label><br /><input id="text2" type="text" name="txtSubject" value="" maxlength="50" required/><br />
                                             <label for="text1">Message (*)</label><br /><textarea style="border-color: #0e3c85;min-width: 100%" name="txtMessage" rows="5" cols="33" required></textarea><br />
                                             <h5 align="right">(*)Required fields</h5><br>
-                                            <!--input type="submit" value="Send" name="btnSend" align="center"/-->
                                             <input type="image" style="margin-left: 102px" src="images/send.png" width="76" name="btnSend" alt="Send"/>
                                         </fieldset>
                                     </form>

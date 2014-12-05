@@ -28,7 +28,7 @@ public final class UserDao extends BaseDao<User> {
     }
 
     @Override
-    public void insertar(User e) throws CoreException {
+    public int insertar(User e) throws CoreException {
         try {
             cn = obtenerConexion();
             cl = cn.prepareCall("{CALL spI_User(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
@@ -52,6 +52,7 @@ public final class UserDao extends BaseDao<User> {
             cerrar(cl);
             cerrar(cn);
         }
+        return 1;
     }
 
     @Override

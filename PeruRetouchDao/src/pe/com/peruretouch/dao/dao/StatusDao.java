@@ -27,7 +27,7 @@ public final class StatusDao extends BaseDao<Status> {
     }
 
     @Override
-    public void insertar(Status e) throws CoreException {
+    public int insertar(Status e) throws CoreException {
         try{
             cn = obtenerConexion();
             cl = cn.prepareCall("{CALL spI_Status(?,?,?)}");
@@ -41,6 +41,7 @@ public final class StatusDao extends BaseDao<Status> {
             cerrar(cl);
             cerrar(cn);
         }
+        return 1;
     }
 
     @Override

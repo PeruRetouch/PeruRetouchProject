@@ -40,9 +40,6 @@
         <meta name="keywords" content="retouch,peru,photo,photographer,retouch photo">
         <meta name="author" content="Roy Taza Rojas">
         <link href="css/styles.css" rel="stylesheet" type="text/css" media="screen" />
-
-        <link rel="stylesheet" href="slider/styles-nivo-slider.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="slider/nivo-slider.css" type="text/css" media="screen" />
     </head>
     <body bgcolor="#FFFFFF" text="#000000" onLoad="presImagen()">
         <div id="bg1">
