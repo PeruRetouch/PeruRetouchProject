@@ -83,7 +83,6 @@
                                                 <p style="margin-left: 5px;color: #0f3d85">Put your username. The password will be send to your email.</p>
                                                 <p></p>
                                                 <label for="text1">Username</label><br /><input id="text1" type="text" name="txtUsername" value="" maxlength="50" required /><br />
-                                                <!--input type="submit" value="Send" name="btnSend" align="center"/-->
                                                 <input type="image" style="margin-left: 102px" src="images/send.png" width="76" name="btnSend" alt="Send"/>
                                             </fieldset>
                                         </form>
@@ -97,7 +96,6 @@
                                                 <p style="margin-left: 5px;color: #0f3d85">Put your email. Your username will be send to your email.</p>
                                                 <p></p>
                                                 <label for="text1">Email</label><br /><input id="text1" type="email" name="txtEmail" value="" maxlength="50" required /><br />
-                                                <!--input type="submit" value="Send" name="btnSend" align="center"/-->
                                                 <input type="image" style="margin-left: 102px" src="images/send.png" width="76" name="btnSend" alt="Send"/>
                                             </fieldset>
                                         </form>

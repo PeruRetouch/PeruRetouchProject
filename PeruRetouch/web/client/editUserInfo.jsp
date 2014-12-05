@@ -35,6 +35,13 @@
         <link rel="icon" type="image/png" href="../images/iconoPR.jpg" />
         <meta name="author" content="Roy Taza Rojas">
         <link href="../css/styles.css" rel="stylesheet" type="text/css" media="screen" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+        <script>
+            webshims.setOptions('forms-ext', {types: 'date'});
+            webshims.polyfill('forms forms-ext');
+        </script>
     </head>
     <body>
         <div id="bg1">
@@ -51,15 +58,15 @@
                                     <h3>User Info</h3>
                                     <form id="formLogin" method="post" action="../Controller">
                                         <fieldset>
-                                            <input type="hidden" name="action" value="<%= ConstantesWeb.EDIT_USER %>" />
-                                            <input type="hidden" name="idUser" value="<%= userBean.getIdUser() %>" />
+                                            <input type="hidden" name="action" value="<%= ConstantesWeb.EDIT_USER%>" />
+                                            <input type="hidden" name="idUser" value="<%= userBean.getIdUser()%>" />
                                             <label for="text1">Name (*)</label><br /><input id="text1" type="text" name="txtName" value="<%= user.getName()%>" maxlength="50" required /><br />
                                             <label for="text1">Last Name (*)</label><br /><input id="text1" type="text" name="txtLastName" maxlength="50" value="<%= user.getLastName()%>" required /><br />
                                             <label for="text1">Email (*)</label><br /><input id="text1" type="text" name="txtEmail" value="<%= user.getEmail()%>" maxlength="50" required /><br />
                                             <label for="text1">Website Address or Facebook Page(*)</label><br /><input id="text1" type="text" name="txtWebsiteAddress" maxlength="200" value="<%= user.getWebPage()%>" required /><br />
                                             <label for="text1">Address</label><br /><input id="text1" type="text" name="txtAddress" maxlength="200" value="<%= user.getAddress()%>" /><br />
                                             <label for="text1">Country</label><br /><input id="text1" type="text" name="txtCountry" maxlength="50" value="<%= user.getCountry()%>" /><br />
-                                            <!--label for="text1">Birthday</label><br /><input id="text1" type="date" name="txtBirthday" value="" /><br /-->
+                                            <label for="text1">Birthdate</label><br /><input id="text1" type="date" name="txtBirthday" value="" /><br />
                                             <label for="text1">Telephone</label><br /><input id="text1" type="text" name="txtTelephone" maxlength="50" value="<%= user.getTelephone()%>" /><br /> 
                                             <label for="text1">Cellphone</label><br /><input id="text1" type="text" name="txtCellphone" maxlength="50" value="<%= user.getCellphone()%>" /><br /> 
                                             <h5 align="right">(*)Required fields</h5><br>

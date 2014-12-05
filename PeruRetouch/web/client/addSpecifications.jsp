@@ -59,7 +59,6 @@
                 <!-- content -->
                 <br><br><br><br>
                 <div id="main1">
-
                     <form method="post" action="../Controller" onsubmit="document.forms['frmPhotos']['btnSendNow'].disabled = true;" name="frmPhotos">
                         <div id="uploadFiles">
                             <h3><%= product.getName()%></h3>
@@ -108,11 +107,13 @@
                                     }
                                     //Agrego una columna
 %>
-                                <td>
-                                    <%= UtilWeb.formatName(s, userBean.getIdUser().toString().length())%><br />
-                                    <img src="../photoResources/temporary/<%= s%>" width="200"><br />
-                                    <textarea name="txtPhotoSpecification" cols="20" rows="4" placeholder="Photo's specification"></textarea><br />
-                                    <input type="checkbox" name="chkReference" value="<%= s%>" >Reference
+                                <td style="max-width: 225px;">
+                                    <table>
+                                        <tr align="center"><td><%= UtilWeb.formatName(s, userBean.getIdUser().toString().length())%></td></tr>
+                                        <tr align="center"><td><img src="../photoResources/temporary/<%= s%>" width="125"></td></tr>
+                                        <tr align="center"><td><textarea name="txtPhotoSpecification" cols="20" rows="4" placeholder="Photo's specification"></textarea></td></tr>
+                                        <tr align="center"><td><input type="checkbox" name="chkReference" value="<%= s%>" >Reference</td></tr>
+                                    </table>
                                 </td>
                                 <%
                                         i++;

@@ -30,6 +30,9 @@ public final class UtilZip {
     public static final String generateZipClient(HttpSession sesion, List<Retouch> listRetouchs, String pathRetouched, String pathZip, String fileName) {
         try {
             ZipFile zipFile = new ZipFile(pathZip + "/" + fileName);
+            ZipParameters parameters = new ZipParameters();
+            parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE); // set compression method to deflate compression
+            parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
 
             ArrayList filesToAdd = new ArrayList();
             boolean guardar;
@@ -46,22 +49,59 @@ public final class UtilZip {
                     }
                 }
                 if (guardar) {
-                    filesToAdd.add(new File(pathRetouched + "/" + retouch.getFileNombre()));
+                    parameters.setFileNameInZip(retouch.getFileNombre().substring(String.valueOf(retouch.getIdRetouch()).length() + 3));
+                    parameters.setSourceExternalStream(true);
+                    zipFile.addFile(new File(pathRetouched + "/" + retouch.getFileNombre()), parameters);
                 }
             }
 
-            ZipParameters parameters = new ZipParameters();
-            parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE); // set compression method to deflate compression
-
-            parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
-
-            zipFile.addFiles(filesToAdd, parameters);
-            return pathZip + "/" + fileName;
+            //zipFile.addFiles(filesToAdd, parameters);
+            if (zipFile.getFileHeaders().isEmpty()) {
+                return "invalid";
+            } else {
+                return pathZip + "/" + fileName;
+            }
         } catch (ZipException e) {
             e.printStackTrace();
         } catch (BusinessException ex) {
             ex.printStackTrace();
         }
+        /*
+         try {
+         ZipFile zipFile = new ZipFile(pathZip + "/" + fileName);
+
+         ArrayList filesToAdd = new ArrayList();
+         boolean guardar;
+         for (Retouch retouch : listRetouchs) {
+         //Comprobar si la foto tiene retoque
+         guardar = false;
+         List<RetouchXStatus> listRetouchXStatuses = RetouchXStatusBusiness.obtenerEntidad().listarByRetouch(retouch.getIdRetouch());
+         for (RetouchXStatus rxs : listRetouchXStatuses) {
+         if (rxs.getIdStatus() == ConstantesWeb.ID_STATUS_APPROVED
+         || rxs.getIdStatus() == ConstantesWeb.ID_STATUS_REWORKED
+         || rxs.getIdStatus() == ConstantesWeb.ID_STATUS_WAITING_ANSWER) {
+         guardar = true;
+         break;
+         }
+         }
+         if (guardar) {
+         filesToAdd.add(new File(pathRetouched + "/" + retouch.getFileNombre()));
+         }
+         }
+
+         ZipParameters parameters = new ZipParameters();
+         parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE); // set compression method to deflate compression
+
+         parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
+
+         zipFile.addFiles(filesToAdd, parameters);
+         return pathZip + "/" + fileName;
+         } catch (ZipException e) {
+         e.printStackTrace();
+         } catch (BusinessException ex) {
+         ex.printStackTrace();
+         }
+         */
         return "invalid";
     }
 

@@ -29,6 +29,8 @@ body {background:url(../images/bg_all.jpg);background-repeat:repeat-x;background
 #log input {margin-bottom:5px}
 #login-submit {font-family:Arial, Helvetica, sans-serif;font-size:12px;font-weight:normal;color:#fff;width:60px;height:21px;background:url(../images/subbg.jpg);background-repeat:no-repeat;background-position:left top;border:none;float:right}
 #text1, #text2 {width:269px;height:22px;padding-top:4px;padding-left:8px;padding-right:8px;border:none;background:url(../images/logpole.jpg);background-repeat:no-repeat;background-position:left top;color:#000;padding-bottom:5px}
+#passwd, #passwd2 {width:269px;height:22px;padding-top:4px;padding-left:8px;padding-right:8px;border:none;background:url(../images/logpole.jpg);background-repeat:no-repeat;background-position:left top;color:#000;padding-bottom:5px}
+.texterror {width:269px;height:22px;padding-top:4px;padding-left:8px;padding-right:8px;border:none;background:url(../images/logpole_error.jpg);background-repeat:no-repeat;background-position:left top;color:#000;padding-bottom:5px}
 #left #log a {font-family:Arial, Helvetica, sans-serif;font-size:11px;font-weight:normal;color:#0f3d85;border-bottom:1px dashed #0f3d85}
 #left #log a:hover {color:#000}
 #left H3 {font-family:Arial, Helvetica, sans-serif;font-size:18px;font-weight:normal;color:#fff;text-align:center;background:url(../images/title_log.jpg);background-repeat:no-repeat;background-position:top;width:296px;height:36px;padding-top:10px}

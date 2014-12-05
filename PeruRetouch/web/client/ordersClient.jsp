@@ -90,9 +90,11 @@
                         <br>
                         <%
                             }
+                            int i = 0;
                             for (Orden orden : listOrders) {
+                                i++;
                         %>
-                        <h2>ID: # <%= orden.getIdOrder()%></h2>
+                        <h2>ID: # <%= i%></h2>
                         <%
                             if (request.getParameter("n") != null) {
                         %>

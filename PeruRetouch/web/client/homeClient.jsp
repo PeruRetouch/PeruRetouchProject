@@ -61,9 +61,9 @@
                         %>
                         <h1 style="margin-left: 50px"></h1>
                         <div align="center">
-                            <a href="uploadPhotos.jsp">Let's start uploading photo's.</a>
-                            <br><br>See a video to get reference.<br>
-                            <iframe width="300" height="190" src="//www.youtube.com/embed/qfkv-ZegXoA" frameborder="1" allowfullscreen></iframe>
+                            <a href="uploadPhotos.jsp">Let's start uploading photos.</a>
+                            <!--br><br>See a video to get reference.<br>
+                            <iframe width="300" height="190" src="//www.youtube.com/embed/qfkv-ZegXoA" frameborder="1" allowfullscreen></iframe-->
                         </div>
                         <br><br>
                         <fieldset>
@@ -95,7 +95,7 @@
                                         //Agrego una columna
                                     %>
                                     <td>
-                                        <h2># <%= o.getIdOrder()%></h2><br />
+                                        <h2># <%= i%></h2><br />
                                         <a href="orderPhotos.jsp?idOrder=<%= o.getIdOrder()%>"><img src="../images/folderImage.png" alt="<%= o.getIdOrder()%>"></a><br>
                                             <%
                                                 for (OrderXStatus aid : lsrOxS) {
@@ -135,9 +135,9 @@
                         </fieldset>
                         <%} else {%>
                         <div align="center">
-                            <a href="uploadPhotos.jsp">Let's start uploading photo's.</a>
-                            <br><br>See a video to get reference.<br>
-                            <iframe width="560" height="315" src="//www.youtube.com/embed/qfkv-ZegXoA" frameborder="1" allowfullscreen></iframe>
+                            <a href="uploadPhotos.jsp">Let's start uploading photos.</a>
+                            <!--br><br>See a video to get reference.<br>
+                            <iframe width="560" height="315" src="//www.youtube.com/embed/qfkv-ZegXoA" frameborder="1" allowfullscreen></iframe-->
                         </div>
                         <%}%>
                         <br>

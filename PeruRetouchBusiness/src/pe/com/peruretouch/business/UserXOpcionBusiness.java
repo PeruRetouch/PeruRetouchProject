@@ -55,5 +55,13 @@ public final class UserXOpcionBusiness implements BaseBusiness<UserXOpcion> {
             throw new BusinessException(ex);
         }
     }
+    
+    public List<UserXOpcion> listarXCliente(int idUser) throws BusinessException {
+        try {
+            return USER_XOPCION_DAO.listarXCliente(idUser);
+        } catch (CoreException ex) {
+            throw new BusinessException(ex);
+        }
+    }
 
 }

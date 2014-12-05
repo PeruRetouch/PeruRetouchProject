@@ -45,9 +45,7 @@
                             if (fileName != null) {
                                 String newFileName = userBean.getIdUser() + " - " + fPart.getFileName();
                                 PhotosBean photosBean = new PhotosBean();
-                                //if (PhotosBean.addPhotoToList(newFileName)) {
                                 if (photosBean.addPhotoToList(session, newFileName)) {
-                                    //  fPart.writeTo(new File(fileSavePath));
                                     File newPhoto = new File(fileSavePath);
                                     fPart.writeTo(newPhoto);
                                     // Renombra el archivo

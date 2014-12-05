@@ -67,7 +67,6 @@
                                 <td align="center"><%= p.getAbreviation()%></td>
                                 <td align="center">$<%= p.getPrice()%></td>
                                 <td style="text-align: justify"><%= p.getDescription()%></td>
-                                <!--td><img src="#" width="400" height="120" /></td-->
                             </tr>
                             <%
                                 }

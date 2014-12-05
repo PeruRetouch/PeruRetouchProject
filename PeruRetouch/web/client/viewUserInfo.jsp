@@ -55,9 +55,6 @@
                                     <h3>User Info</h3>
 
                                     <fieldset>
-                                        <!--input type="hidden" name="action" value="" /-->
-                                        <!--label for="text1">Username</label><br /><label for="text1">UserName</label><br /-->
-                                        <!--label for="text1">Repeat Password (*)</label><br /><input id="text1" type="text" name="txtPasswordRepeat" value="" required /><br /-->
                                         <%
                                             if (!message.equalsIgnoreCase("")) {
                                         %>

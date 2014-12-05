@@ -24,7 +24,6 @@
             response.sendRedirect("../sa/homeSa.jsp");
         } else {
             try {
-                //PhotosBean.removeAllPhotosFromTheList(session, getServletContext().getRealPath("/") + ConstantesWeb.FILE_SAVE_PATH_CLIENT);
 %>
 <!DOCTYPE html>
 <html>
@@ -70,11 +69,6 @@
                         <br>
                     </div>
                     <br><br><br><br>
-                    <!--div id="buttonsUploadFiles">
-                        <form id="form" method="post" action="#" >
-                            <input type="submit" name="btnContinue" value="Start" style="float: right;" />
-                        </form>
-                    </div-->
                     <!-- / content -->
                     <!-- footer -->
                 </div>

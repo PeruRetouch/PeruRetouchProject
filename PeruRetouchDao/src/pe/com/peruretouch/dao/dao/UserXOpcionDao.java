@@ -125,4 +125,28 @@ public final class UserXOpcionDao extends BaseDao<UserXOpcion> {
         }
         return lista;
     }
+
+    public List<UserXOpcion> listarXCliente(int idUser) throws CoreException {
+        List<UserXOpcion> lista = new ArrayList<>();
+        try {
+            cn = obtenerConexion();
+            cl = cn.prepareCall("{CALL spF_UserXOpcionByClient(?)}");
+            cl.setInt(idUser, 1);
+            rs = cl.executeQuery();
+            while (rs.next()) {
+                UserXOpcion userXOpcion = new UserXOpcion();
+                userXOpcion.setIdUser(rs.getInt("idUser"));
+                userXOpcion.setIdOpcion(rs.getInt("idOpcion"));
+                userXOpcion.setValue(rs.getInt("value"));
+                lista.add(userXOpcion);
+            }
+        } catch (Exception e) {
+            throw new CoreException(e);
+        } finally {
+            cerrar(cl);
+            cerrar(rs);
+            cerrar(cn);
+        }
+        return lista;
+    }
 }

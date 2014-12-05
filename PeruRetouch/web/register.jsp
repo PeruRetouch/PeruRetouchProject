@@ -59,8 +59,20 @@
                             <div id="left">
                                 <div id="log">
                                     <h3>User Register</h3>
-                                    <form id="formLogin" method="post" action="Controller">
+                                    <form id="formLogin" method="post" action="Controller" onSubmit="return validarPasswd()">
                                         <fieldset>
+                                            <script>
+                                                var validarPasswd = function() {
+                                                    var p1 = document.getElementById("passwd").value;
+                                                    var p2 = document.getElementById("passwd2").value;
+                                                    if (p1 != p2) {
+                                                        alert("Review the password.");
+                                                        return false;
+                                                    } else {
+                                                        return true;
+                                                    }
+                                                };
+                                            </script>
                                             <input type="hidden" name="action" value="<%= ConstantesWeb.REGISTER_USER%>" />
                                             <%
                                                 if (request.getParameter("message") != null) {
@@ -70,8 +82,8 @@
                                                 }
                                             %>
                                             <label for="text1">Username (*)</label><br /><input id="text1" type="text" name="txtUserName" value="" maxlength="50" required /><br />
-                                            <label for="text2">Password (*)</label><br /><input id="text2" type="password" name="txtPassword" value="" maxlength="50" required /><br />
-                                            <!--label for="text1">Repeat Password (*)</label><br /><input id="text1" type="text" name="txtPasswordRepeat" value="" required /><br /-->
+                                            <label for="text2">Password (*)</label><br /><input id="passwd" type="password" name="txtPassword" value="" maxlength="50" required /><br />
+                                            <label for="text1">Repeat Password (*)</label><br /><input id="passwd2" type="password" name="txtPasswordRepeat" value="" required /><br />
                                             <label for="text1">Email (*)</label><br /><input id="text1" type="email" name="txtEmail" value="" maxlength="50" required /><br />
                                             <label for="text1">Name (*)</label><br /><input id="text1" type="text" name="txtName" value="" maxlength="50" required /><br />
                                             <label for="text1">Last Name (*)</label><br /><input id="text1" type="text" name="txtLastName" maxlength="50" value="" required /><br />

@@ -52,7 +52,6 @@
                 <p style="font-family:Arial, Helvetica, sans-serif;text-align: center;margin-left: 20px;margin-right: 20px;font-size:16px;color: #008ae8">
                     <b>PERU RETOUCH</b>
                 </p>
-                <br><br>
                 <!-- content -->
                 <div style="margin-left: 335px;min-height: 300px">
                     <div id="main">
@@ -88,8 +87,12 @@
                             </div>
                         </div>
                     </div>
-                    <br>
                 </div>
+                <div align="center">
+                    <label style="font-family:Arial, Helvetica, sans-serif;text-align: center;margin-left: 20px;margin-right: 20px;font-size:15px;color: #0f3d85">See a video to get reference</label><br>
+                    <iframe width="300" height="190" src="//www.youtube.com/embed/qfkv-ZegXoA" frameborder="1" allowfullscreen></iframe>
+                </div>
+                <br>
                 <%@include file="../template/footer.jsp" %>
             </div>
         </div>
