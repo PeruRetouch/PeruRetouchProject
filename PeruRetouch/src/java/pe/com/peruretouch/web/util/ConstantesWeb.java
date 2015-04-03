@@ -25,6 +25,8 @@ public final class ConstantesWeb {
     public static final int ID_ARTIST_PROFILE = 4;
     public static final int ID_CLIENT_PROFILE = 5;
     public static final String USER_HOME ="userHome";
+    public static final String LIST ="list";
+    public static final String USER ="user";
     public static final String PHOTO_LIST ="photoList";
     public static final String MESSAGE ="message";
     public static final String MY_ORDERS = "viewMyOrders";
